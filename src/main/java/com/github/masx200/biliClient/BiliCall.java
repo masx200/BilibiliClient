@@ -39,7 +39,7 @@ public class BiliCall {
             httpRequest.setConfig(requestConfig);
             Map<String, String> headershashMap = new HashMap<String, String>() {{
                 put("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
-                put("accept-encoding", "gzip, deflate, br, zstd");
+                put("accept-encoding", "gzip");//, deflate, br, zstd");
                 put("accept-language", "zh-CN,zh;q=0.9");
                 put("cache-control", "max-age=0");
                 put("priority", "u=0, i");
@@ -91,9 +91,14 @@ public class BiliCall {
             // 转换
             return JSONObject.parseObject(body, BiliResult.class)
                     .check();
-        } catch (Exception e) {
+        } catch (BiliRequestException e) {
+            System.err.println(e.getMessage());
             e.printStackTrace();
-            System.out.println(JSONObject.parseObject(rawbody));
+            throw e;
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+            System.err.println(JSONObject.parseObject(rawbody));
             throw new BiliRequestException(httpRequest.getURI(), e.getMessage());
         }
     }
