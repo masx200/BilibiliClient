@@ -107,7 +107,7 @@ public class BiliCall {
     public static BiliResult doCall(BiliRequest request, Consumer<HttpRequestBase> beforeRequest) {
         return doCall(new HttpGet(request.getURI()), request.getBaseClient(),beforeRequest);
     }
-    public static BiliResult doCall(HttpRequestBase httpRequest, BaseClient baseClient,) {
+    public static BiliResult doCall(HttpRequestBase httpRequest, BaseClient baseClient) {
         return doCall(httpRequest, baseClient,null);
     }
 }

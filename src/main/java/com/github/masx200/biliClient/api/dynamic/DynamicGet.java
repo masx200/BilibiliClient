@@ -6,6 +6,9 @@ import com.github.masx200.biliClient.able.Gettable;
 import com.github.masx200.biliClient.model.dynamic.Dynamic;
 import com.github.masx200.biliClient.model.dynamic.DynamicCard;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.http.client.methods.HttpRequestBase;
+
+import java.util.function.Consumer;
 
 /**
  * 描述： 动态获取
@@ -16,14 +19,22 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class DynamicGet implements Gettable<Dynamic> {
     private final BiliRequest request;
+    private final Consumer<HttpRequestBase> beforeRequest;
 
+    // 默认构造函数
     public DynamicGet(BiliRequest request) {
+        this(request, null);
+    }
+
+    // 带参数的构造函数
+    public DynamicGet(BiliRequest request, Consumer<HttpRequestBase> beforeRequest) {
         this.request = request;
+        this.beforeRequest = beforeRequest;
     }
 
     @Override
     public Dynamic get() {
-        Object data = BiliCall.doCall(request).getData();
+        Object data = BiliCall.doCall(request,beforeRequest).getData();
         return JSONObject.parseObject(data.toString()).getJSONObject("card")
                 .toJavaObject(DynamicCard.class).toDynamic();
 
