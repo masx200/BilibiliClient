@@ -30,12 +30,12 @@ public class RelationConditionImpl implements IRelationCondition {
     @Override
     public Listable<Relation> toFollowers(long uid) {
         return new RelationList(BiliRequestFactor.getBiliRequest().setPath(RelationPath.RELATION_FOLLOWERS)
-                .setParams("vmid", uid));
+                .setParams("vmid", uid),beforeRequest);
     }
 
     @Override
     public Listable<Relation> toFollowings(long uid) {
         return new RelationList(BiliRequestFactor.getBiliRequest().setPath(RelationPath.RELATION_FOLLOWINGS)
-                .setParams("vmid", uid));
+                .setParams("vmid", uid),beforeRequest);
     }
 }

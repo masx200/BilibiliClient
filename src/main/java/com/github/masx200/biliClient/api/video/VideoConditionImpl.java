@@ -28,12 +28,12 @@ public class VideoConditionImpl implements IVideoCondition {
     }
     @Override
     public Gettable<Video> withAvid(long av) {
-        return new VideoGet(BiliRequestFactor.getBiliRequest().setPath(VideoPath.VIDEO_INFO).setParams("aid", av));
+        return new VideoGet(BiliRequestFactor.getBiliRequest().setPath(VideoPath.VIDEO_INFO).setParams("aid", av),beforeRequest);
     }
 
     @Override
     public Gettable<Video> withBvid(String bvid) {
-        return new VideoGet(BiliRequestFactor.getBiliRequest().setPath(VideoPath.VIDEO_INFO).setParams("bvid", bvid));
+        return new VideoGet(BiliRequestFactor.getBiliRequest().setPath(VideoPath.VIDEO_INFO).setParams("bvid", bvid),beforeRequest);
 
     }
 }

@@ -4,6 +4,9 @@ import com.github.masx200.biliClient.BiliCall;
 import com.github.masx200.biliClient.BiliRequest;
 import com.github.masx200.biliClient.able.Listable;
 import com.github.masx200.biliClient.model.relation.Relation;
+import org.apache.http.client.methods.HttpRequestBase;
+
+import java.util.function.Consumer;
 
 /**
  * 描述： 关系
@@ -15,9 +18,17 @@ import com.github.masx200.biliClient.model.relation.Relation;
 public class RelationList implements Listable<Relation> {
 
     private final BiliRequest result;
+    private final Consumer<HttpRequestBase> beforeRequest;
 
+    // 默认构造函数
     public RelationList(BiliRequest result) {
+        this(result, null);
+    }
+
+    // 带参数的构造函数
+    public RelationList(BiliRequest result, Consumer<HttpRequestBase> beforeRequest) {
         this.result = result;
+        this.beforeRequest = beforeRequest;
     }
 
     @Override
