@@ -1,8 +1,8 @@
 package com.github.masx200.biliClient;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.masx200.biliClient.client.BaseClient;
 import com.github.masx200.biliClient.exception.BiliRequestException;
-import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
@@ -35,7 +35,14 @@ public class BiliCall {
 
             // 发起请求
             HttpResponse response = httpClient.execute(httpRequest);
+            System.out.println(httpRequest.getMethod());
+            System.out.println(httpRequest.getURI());
+            System.out.println(response.getStatusLine());
 
+            int statusCode = response.getStatusLine().getStatusCode();
+            if (statusCode != 200) {
+                throw new BiliRequestException(httpRequest.getURI(), "请求失败，状态码: " + statusCode);
+            }
             // 判空
             String body = EntityUtils.toString(response.getEntity());
             if (body == null || body.isEmpty()) {
