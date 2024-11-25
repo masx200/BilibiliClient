@@ -29,11 +29,11 @@ public class UserConditionImpl implements IUserCondition {
     @Override
     public Gettable<User> withUID(Long uid) {
         return new UserGet(BiliRequestFactor.getBiliRequest().setPath(UserPath.USER_INFO)
-                .setParams("mid", String.valueOf(uid)));
+                .setParams("mid", String.valueOf(uid)),beforeRequest);
     }
 
     @Override
     public Gettable<User> withMe() {
-        return new UserGet(BiliRequestFactor.getBiliRequest().setPath(UserPath.USER_MY_INFO));
+        return new UserGet(BiliRequestFactor.getBiliRequest().setPath(UserPath.USER_MY_INFO),beforeRequest);
     }
 }

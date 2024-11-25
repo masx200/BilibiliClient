@@ -32,12 +32,12 @@ public class DynamicConditionImpl implements IDynamicCondition {
     @Override
     public Gettable<Dynamic> withDynamicId(Long dynamicId) {
         return new DynamicGet(BiliRequestFactor.getBiliRequest().useHostVC().setPath(DynamicPath.DYNAMIC_DETAIL)
-                .setParams("dynamic_id", dynamicId));
+                .setParams("dynamic_id", dynamicId),beforeRequest);
     }
 
     @Override
     public Listable<DynamicItems> withHostUid(Long uid) {
         return new DynamicList(BiliRequestFactor.getBiliRequest().useHostVC().setPath(DynamicPath.DYNAMIC_USER_LIST)
-                .setParams("host_uid", uid));
+                .setParams("host_uid", uid),beforeRequest);
     }
 }
