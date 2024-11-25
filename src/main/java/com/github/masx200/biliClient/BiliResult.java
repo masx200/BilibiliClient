@@ -65,19 +65,25 @@ public class BiliResult {
      * @return 若检测无误返回当前
      */
     public BiliResult check() {
-        switch (this.code) {
-            case -400:
-                System.err.println(this.toString());
+        return switch (this.code) {
+            case -400 -> {
+                System.err.println(this);
                 throw new RuntimeException("发起请求异常！" + this.toMessage());
-            case -101:
-                System.err.println(this.toString());
+            }
+            case -799 -> {
+                System.err.println(this);
+                throw new RuntimeException("发起请求异常！" + this.toMessage());
+            }
+            case -101 -> {
+                System.err.println(this);
                 throw new RuntimeException("请求需要认证！" + this.toMessage());
-            case 0:
-                return this;
-            default:
-                System.err.println(this.toString());
+            }
+            case 0 -> this;
+            default -> {
+                System.err.println(this);
                 throw new RuntimeException("请求错误" + this.toMessage());
-        }
+            }
+        };
     }
 
 }

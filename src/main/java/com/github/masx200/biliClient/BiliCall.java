@@ -31,6 +31,7 @@ public class BiliCall {
      * @return 响应结果
      */
     public static BiliResult doCall(HttpRequestBase httpRequest, BaseClient baseClient,Consumer<HttpRequestBase> beforeRequest) {
+        String rawbody = null;
         try {
             // 获取请求客户端
             HttpClient httpClient = baseClient.getHttpClient();
@@ -86,10 +87,13 @@ public class BiliCall {
             if (body == null || body.isEmpty()) {
                 throw new Exception("响应体为空");
             }
+            rawbody = body;
             // 转换
-            return JSONObject.parseObject(body, BiliResult.class).check();
+            return JSONObject.parseObject(body, BiliResult.class)
+                    .check();
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(JSONObject.parseObject(rawbody));
             throw new BiliRequestException(httpRequest.getURI(), e.getMessage());
         }
     }
