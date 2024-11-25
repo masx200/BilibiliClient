@@ -26,11 +26,11 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <compilerArgs>
-            <arg>--add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
-          </compilerArgs>
-        </configuration>
+<!--        <configuration>-->
+<!--          <compilerArgs>-->
+<!--            <arg>&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>-->
+<!--          </compilerArgs>-->
+<!--        </configuration>-->
       </plugin>
     </plugins>
   </build>
