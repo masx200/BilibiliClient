@@ -6,6 +6,9 @@ import com.github.masx200.biliClient.BiliResult;
 import com.github.masx200.biliClient.able.Listable;
 import com.github.masx200.biliClient.exception.BiliRequestException;
 import com.github.masx200.biliClient.model.dynamic.DynamicItems;
+import org.apache.http.client.methods.HttpRequestBase;
+
+import java.util.function.Consumer;
 
 /**
  * 描述： 动态 list
@@ -16,14 +19,22 @@ import com.github.masx200.biliClient.model.dynamic.DynamicItems;
  */
 public class DynamicList implements Listable<DynamicItems> {
     private final BiliRequest request;
+    private final Consumer<HttpRequestBase> beforeRequest;
 
+    // 默认构造函数
     public DynamicList(BiliRequest request) {
+        this(request, null);
+    }
+
+    // 带参数的构造函数
+    public DynamicList(BiliRequest request, Consumer<HttpRequestBase> beforeRequest) {
         this.request = request;
+        this.beforeRequest = beforeRequest;
     }
 
     @Override
     public DynamicItems list() {
-        BiliResult biliResult = BiliCall.doCall(request);
+        BiliResult biliResult = BiliCall.doCall(request,beforeRequest);
         return DynamicItems.build(biliResult);
     }
 
@@ -47,7 +58,7 @@ public class DynamicList implements Listable<DynamicItems> {
 
     @Override
     public DynamicItems list(Long nextOffset) {
-        BiliResult biliResult = BiliCall.doCall(request.setParams("offset_dynamic_id", nextOffset));
+        BiliResult biliResult = BiliCall.doCall(request.setParams("offset_dynamic_id", nextOffset),beforeRequest);
         return DynamicItems.build(biliResult);
     }
 }
