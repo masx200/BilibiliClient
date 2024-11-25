@@ -79,7 +79,7 @@ public class BiliCall {
 
             int statusCode = response.getStatusLine().getStatusCode();
             if (statusCode != 200) {
-                throw new BiliRequestException(httpRequest.getURI(), "请求失败，状态码: " + statusCode);
+                throw new BiliRequestException(httpRequest.getURI(), "请求地址：" + httpRequest.getURI() + "，请求方法：" + httpRequest.getMethod() + "，请求失败，状态码: " + statusCode);
             }
             // 判空
             String body = EntityUtils.toString(response.getEntity());

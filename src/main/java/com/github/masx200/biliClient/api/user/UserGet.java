@@ -38,7 +38,7 @@ public class UserGet implements Gettable<User> {
             return BiliCall.doCall(request,beforeRequest).toData(User.class);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new BiliRequestException(request.getURI());
+            throw new BiliRequestException(request.getURI(), e.getMessage());
         }
     }
 }
