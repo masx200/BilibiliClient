@@ -33,15 +33,15 @@ Java 包 **将会持续更新**
 public class Config {
     public static void main(String[] args) {
         // 协议
-        BaseClientConfig.setProtocol(String protocol);
+      BaseClientConfig.setProtocol(/*String*/ protocol);
         // 服务host
-        BaseClientConfig.setHost(String host);
+      BaseClientConfig.setHost(/*String*/ host);
         // 服务host Vc
-        BaseClientConfig.setHostVc(String hostVc);
+      BaseClientConfig.setHostVc(/*String*/ hostVc);
         // 配置端口
-        BaseClientConfig.setPort(Integer port);
+      BaseClientConfig.setPort(/*Integer*/ port);
         // 配置请求
-        BaseClientConfig.setRequestConfig(RequestConfig config);
+      BaseClientConfig.setRequestConfig(/*RequestConfig*/ config);
 
         // 配置仅对 之后 执行的请求有效 且会 更改 之后的全部全局配置
     }

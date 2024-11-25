@@ -5,6 +5,9 @@ import com.github.masx200.biliClient.able.Gettable;
 import com.github.masx200.biliClient.able.Listable;
 import com.github.masx200.biliClient.model.dynamic.Dynamic;
 import com.github.masx200.biliClient.model.dynamic.DynamicItems;
+import org.apache.http.client.methods.HttpRequestBase;
+
+import java.util.function.Consumer;
 
 /**
  * 描述：动态条件实现类
@@ -14,6 +17,18 @@ import com.github.masx200.biliClient.model.dynamic.DynamicItems;
  * @since 2021-02-07-21:24
  */
 public class DynamicConditionImpl implements IDynamicCondition {
+
+    private final Consumer<HttpRequestBase> beforeRequest;
+
+    // 默认构造函数
+    public DynamicConditionImpl() {
+        this.beforeRequest = null;
+    }
+
+    // 带参数的构造函数
+    public DynamicConditionImpl(Consumer<HttpRequestBase> beforeRequest) {
+        this.beforeRequest = beforeRequest;
+    }
     @Override
     public Gettable<Dynamic> withDynamicId(Long dynamicId) {
         return new DynamicGet(BiliRequestFactor.getBiliRequest().useHostVC().setPath(DynamicPath.DYNAMIC_DETAIL)
