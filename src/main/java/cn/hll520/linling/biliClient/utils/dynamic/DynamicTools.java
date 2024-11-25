@@ -1,8 +1,8 @@
-package cn.hll520.linling.biliClient.utils.dynamic;
+package com.github.masx200.biliClient.utils.dynamic;
 
-import cn.hll520.linling.biliClient.BiliClient;
-import cn.hll520.linling.biliClient.model.dynamic.Dynamic;
-import cn.hll520.linling.biliClient.model.dynamic.DynamicItems;
+import com.github.masx200.biliClient.BiliClient;
+import com.github.masx200.biliClient.model.dynamic.Dynamic;
+import com.github.masx200.biliClient.model.dynamic.DynamicItems;
 
 import java.util.ArrayList;
 import java.util.List;

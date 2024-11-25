@@ -1,8 +1,8 @@
-package cn.hll520.linling.biliClient.api.video;
+package com.github.masx200.biliClient.api.video;
 
-import cn.hll520.linling.biliClient.BiliClient;
-import cn.hll520.linling.biliClient.BiliClientFactor;
-import cn.hll520.linling.biliClient.model.video.Video;
+import com.github.masx200.biliClient.BiliClient;
+import com.github.masx200.biliClient.BiliClientFactor;
+import com.github.masx200.biliClient.model.video.Video;
 import org.junit.Test;
 
 /**

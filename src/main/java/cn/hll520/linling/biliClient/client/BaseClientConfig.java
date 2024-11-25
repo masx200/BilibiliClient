@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.client;
+package com.github.masx200.biliClient.client;
 
 import org.apache.http.client.config.RequestConfig;
 

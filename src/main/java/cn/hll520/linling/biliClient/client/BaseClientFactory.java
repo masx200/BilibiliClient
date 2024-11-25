@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.client;
+package com.github.masx200.biliClient.client;
 
 /**
  * 描述：默认客户端工厂类

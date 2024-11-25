@@ -1,7 +1,7 @@
-package cn.hll520.linling.biliClient.model.dynamic;
+package com.github.masx200.biliClient.model.dynamic;
 
-import cn.hll520.linling.biliClient.model.BaseModel;
-import cn.hll520.linling.biliClient.utils.TransDate;
+import com.github.masx200.biliClient.model.BaseModel;
+import com.github.masx200.biliClient.utils.TransDate;
 import lombok.Data;
 
 import java.util.Date;

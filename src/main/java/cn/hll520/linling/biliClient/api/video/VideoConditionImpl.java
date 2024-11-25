@@ -1,8 +1,8 @@
-package cn.hll520.linling.biliClient.api.video;
+package com.github.masx200.biliClient.api.video;
 
-import cn.hll520.linling.biliClient.BiliRequestFactor;
-import cn.hll520.linling.biliClient.able.Gettable;
-import cn.hll520.linling.biliClient.model.video.Video;
+import com.github.masx200.biliClient.BiliRequestFactor;
+import com.github.masx200.biliClient.able.Gettable;
+import com.github.masx200.biliClient.model.video.Video;
 
 /**
  * 描述：视频条件

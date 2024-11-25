@@ -1,6 +1,6 @@
-package cn.hll520.linling.biliClient.model.dynamic;
+package com.github.masx200.biliClient.model.dynamic;
 
-import cn.hll520.linling.biliClient.model.video.Video;
+import com.github.masx200.biliClient.model.video.Video;
 import lombok.Data;
 
 /**

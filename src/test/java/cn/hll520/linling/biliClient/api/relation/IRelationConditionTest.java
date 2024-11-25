@@ -1,8 +1,8 @@
-package cn.hll520.linling.biliClient.api.relation;
+package com.github.masx200.biliClient.api.relation;
 
-import cn.hll520.linling.biliClient.BiliClient;
-import cn.hll520.linling.biliClient.BiliClientFactor;
-import cn.hll520.linling.biliClient.model.relation.Relation;
+import com.github.masx200.biliClient.BiliClient;
+import com.github.masx200.biliClient.BiliClientFactor;
+import com.github.masx200.biliClient.model.relation.Relation;
 import org.junit.Test;
 
 /**

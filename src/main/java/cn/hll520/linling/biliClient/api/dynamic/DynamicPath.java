@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.api.dynamic;
+package com.github.masx200.biliClient.api.dynamic;
 
 /**
  * 描述： 动态 path

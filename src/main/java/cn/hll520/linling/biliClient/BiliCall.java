@@ -1,7 +1,7 @@
-package cn.hll520.linling.biliClient;
+package com.github.masx200.biliClient;
 
-import cn.hll520.linling.biliClient.client.BaseClient;
-import cn.hll520.linling.biliClient.exception.BiliRequestException;
+import com.github.masx200.biliClient.client.BaseClient;
+import com.github.masx200.biliClient.exception.BiliRequestException;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;

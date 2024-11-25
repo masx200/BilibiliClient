@@ -1,10 +1,10 @@
-package cn.hll520.linling.biliClient.api.dynamic;
+package com.github.masx200.biliClient.api.dynamic;
 
-import cn.hll520.linling.biliClient.BiliCall;
-import cn.hll520.linling.biliClient.BiliRequest;
-import cn.hll520.linling.biliClient.able.Gettable;
-import cn.hll520.linling.biliClient.model.dynamic.Dynamic;
-import cn.hll520.linling.biliClient.model.dynamic.DynamicCard;
+import com.github.masx200.biliClient.BiliCall;
+import com.github.masx200.biliClient.BiliRequest;
+import com.github.masx200.biliClient.able.Gettable;
+import com.github.masx200.biliClient.model.dynamic.Dynamic;
+import com.github.masx200.biliClient.model.dynamic.DynamicCard;
 import com.alibaba.fastjson.JSONObject;
 
 /**

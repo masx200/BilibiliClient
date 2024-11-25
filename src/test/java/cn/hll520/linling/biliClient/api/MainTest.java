@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.api;
+package com.github.masx200.biliClient.api;
 
 import org.junit.Test;
 

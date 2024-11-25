@@ -1,8 +1,8 @@
-package cn.hll520.linling.biliClient.api.user;
+package com.github.masx200.biliClient.api.user;
 
-import cn.hll520.linling.biliClient.BiliCondition;
-import cn.hll520.linling.biliClient.able.Gettable;
-import cn.hll520.linling.biliClient.model.user.User;
+import com.github.masx200.biliClient.BiliCondition;
+import com.github.masx200.biliClient.able.Gettable;
+import com.github.masx200.biliClient.model.user.User;
 
 /**
  * 描述：用户请求条件

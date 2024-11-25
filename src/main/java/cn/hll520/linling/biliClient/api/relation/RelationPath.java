@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.api.relation;
+package com.github.masx200.biliClient.api.relation;
 
 /**
  * 描述： 关系路径

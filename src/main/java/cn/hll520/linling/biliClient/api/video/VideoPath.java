@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.api.video;
+package com.github.masx200.biliClient.api.video;
 
 /**
  * 描述： video 路径

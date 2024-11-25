@@ -1,10 +1,10 @@
-package cn.hll520.linling.biliClient.utils;
+package com.github.masx200.biliClient.utils;
 
-import cn.hll520.linling.biliClient.BiliClient;
-import cn.hll520.linling.biliClient.BiliClientFactor;
-import cn.hll520.linling.biliClient.model.dynamic.Dynamic;
-import cn.hll520.linling.biliClient.model.user.User;
-import cn.hll520.linling.biliClient.model.video.Video;
+import com.github.masx200.biliClient.BiliClient;
+import com.github.masx200.biliClient.BiliClientFactor;
+import com.github.masx200.biliClient.model.dynamic.Dynamic;
+import com.github.masx200.biliClient.model.user.User;
+import com.github.masx200.biliClient.model.video.Video;
 import lombok.extern.slf4j.Slf4j;
 
 /**

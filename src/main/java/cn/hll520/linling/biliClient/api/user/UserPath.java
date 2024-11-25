@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.api.user;
+package com.github.masx200.biliClient.api.user;
 
 /**
  * 描述：用户相关path

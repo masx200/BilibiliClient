@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.model.user;
+package com.github.masx200.biliClient.model.user;
 
 import lombok.Data;
 

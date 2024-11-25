@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.utils;
+package com.github.masx200.biliClient.utils;
 
 import java.util.Date;
 

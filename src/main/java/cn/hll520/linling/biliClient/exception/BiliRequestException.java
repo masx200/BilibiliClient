@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.exception;
+package com.github.masx200.biliClient.exception;
 
 import java.net.URI;
 

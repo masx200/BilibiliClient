@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient;
+package com.github.masx200.biliClient;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;

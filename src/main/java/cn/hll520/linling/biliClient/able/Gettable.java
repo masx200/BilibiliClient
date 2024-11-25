@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.able;
+package com.github.masx200.biliClient.able;
 
 /**
  * 描述：返回一个对象的方法 Gettable

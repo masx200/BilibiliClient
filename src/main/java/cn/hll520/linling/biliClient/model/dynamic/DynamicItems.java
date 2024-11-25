@@ -1,6 +1,6 @@
-package cn.hll520.linling.biliClient.model.dynamic;
+package com.github.masx200.biliClient.model.dynamic;
 
-import cn.hll520.linling.biliClient.BiliResult;
+import com.github.masx200.biliClient.BiliResult;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

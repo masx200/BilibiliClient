@@ -1,8 +1,8 @@
-package cn.hll520.linling.biliClient;
+package com.github.masx200.biliClient;
 
-import cn.hll520.linling.biliClient.client.BaseClient;
-import cn.hll520.linling.biliClient.client.BaseClientFactory;
-import cn.hll520.linling.biliClient.exception.BiliRequestException;
+import com.github.masx200.biliClient.client.BaseClient;
+import com.github.masx200.biliClient.client.BaseClientFactory;
+import com.github.masx200.biliClient.exception.BiliRequestException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URIBuilder;

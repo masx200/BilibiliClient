@@ -1,10 +1,10 @@
-package cn.hll520.linling.biliClient.api.dynamic;
+package com.github.masx200.biliClient.api.dynamic;
 
-import cn.hll520.linling.biliClient.BiliCondition;
-import cn.hll520.linling.biliClient.able.Gettable;
-import cn.hll520.linling.biliClient.able.Listable;
-import cn.hll520.linling.biliClient.model.dynamic.Dynamic;
-import cn.hll520.linling.biliClient.model.dynamic.DynamicItems;
+import com.github.masx200.biliClient.BiliCondition;
+import com.github.masx200.biliClient.able.Gettable;
+import com.github.masx200.biliClient.able.Listable;
+import com.github.masx200.biliClient.model.dynamic.Dynamic;
+import com.github.masx200.biliClient.model.dynamic.DynamicItems;
 
 /**
  * 描述： 动态条件

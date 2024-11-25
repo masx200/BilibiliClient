@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.model.video;
+package com.github.masx200.biliClient.model.video;
 
 import lombok.Data;
 

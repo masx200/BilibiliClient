@@ -1,8 +1,8 @@
-package cn.hll520.linling.biliClient.api.relation;
+package com.github.masx200.biliClient.api.relation;
 
-import cn.hll520.linling.biliClient.BiliRequestFactor;
-import cn.hll520.linling.biliClient.able.Listable;
-import cn.hll520.linling.biliClient.model.relation.Relation;
+import com.github.masx200.biliClient.BiliRequestFactor;
+import com.github.masx200.biliClient.able.Listable;
+import com.github.masx200.biliClient.model.relation.Relation;
 
 /**
  * 描述： 关系条件

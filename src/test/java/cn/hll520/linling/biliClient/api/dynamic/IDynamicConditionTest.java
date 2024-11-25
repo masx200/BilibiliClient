@@ -1,10 +1,10 @@
-package cn.hll520.linling.biliClient.api.dynamic;
+package com.github.masx200.biliClient.api.dynamic;
 
-import cn.hll520.linling.biliClient.BiliClient;
-import cn.hll520.linling.biliClient.BiliClientFactor;
-import cn.hll520.linling.biliClient.exception.BiliRequestException;
-import cn.hll520.linling.biliClient.model.dynamic.Dynamic;
-import cn.hll520.linling.biliClient.model.dynamic.DynamicItems;
+import com.github.masx200.biliClient.BiliClient;
+import com.github.masx200.biliClient.BiliClientFactor;
+import com.github.masx200.biliClient.exception.BiliRequestException;
+import com.github.masx200.biliClient.model.dynamic.Dynamic;
+import com.github.masx200.biliClient.model.dynamic.DynamicItems;
 import org.junit.Test;
 
 /**

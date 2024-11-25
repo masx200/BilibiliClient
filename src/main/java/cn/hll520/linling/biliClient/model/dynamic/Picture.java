@@ -1,4 +1,4 @@
-package cn.hll520.linling.biliClient.model.dynamic;
+package com.github.masx200.biliClient.model.dynamic;
 
 import lombok.Data;
 

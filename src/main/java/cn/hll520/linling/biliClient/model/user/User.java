@@ -1,7 +1,7 @@
-package cn.hll520.linling.biliClient.model.user;
+package com.github.masx200.biliClient.model.user;
 
-import cn.hll520.linling.biliClient.model.LiveRoom;
-import cn.hll520.linling.biliClient.model.SysNotice;
+import com.github.masx200.biliClient.model.LiveRoom;
+import com.github.masx200.biliClient.model.SysNotice;
 import lombok.Data;
 
 /**

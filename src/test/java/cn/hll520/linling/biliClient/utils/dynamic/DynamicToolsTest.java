@@ -1,6 +1,6 @@
-package cn.hll520.linling.biliClient.utils.dynamic;
+package com.github.masx200.biliClient.utils.dynamic;
 
-import cn.hll520.linling.biliClient.BiliClientFactor;
+import com.github.masx200.biliClient.BiliClientFactor;
 import org.junit.Test;
 
 /**

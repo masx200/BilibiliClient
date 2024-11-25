@@ -1,11 +1,11 @@
-package cn.hll520.linling.biliClient.api.dynamic;
+package com.github.masx200.biliClient.api.dynamic;
 
-import cn.hll520.linling.biliClient.BiliCall;
-import cn.hll520.linling.biliClient.BiliRequest;
-import cn.hll520.linling.biliClient.BiliResult;
-import cn.hll520.linling.biliClient.able.Listable;
-import cn.hll520.linling.biliClient.exception.BiliRequestException;
-import cn.hll520.linling.biliClient.model.dynamic.DynamicItems;
+import com.github.masx200.biliClient.BiliCall;
+import com.github.masx200.biliClient.BiliRequest;
+import com.github.masx200.biliClient.BiliResult;
+import com.github.masx200.biliClient.able.Listable;
+import com.github.masx200.biliClient.exception.BiliRequestException;
+import com.github.masx200.biliClient.model.dynamic.DynamicItems;
 
 /**
  * 描述： 动态 list
