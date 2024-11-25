@@ -22,21 +22,21 @@ public class RelationList implements Listable<Relation> {
 
     @Override
     public Relation list() {
-        return Relation.build(BiliCall.doCall(result));
+        return Relation.build(BiliCall.doCall(result,beforeRequest));
     }
 
     @Override
     public Relation list(Long limit, Long offset) {
-        return Relation.build(BiliCall.doCall(result.setParams("pn", offset / limit).setParams("ps", limit)));
+        return Relation.build(BiliCall.doCall(result.setParams("pn", offset / limit).setParams("ps", limit),beforeRequest));
     }
 
     @Override
     public Relation list(Long nextOffset) {
-        return Relation.build(BiliCall.doCall(result.setParams("pn", nextOffset)));
+        return Relation.build(BiliCall.doCall(result.setParams("pn", nextOffset),beforeRequest));
     }
 
     @Override
     public Relation listPage(Long size, Long page) {
-        return Relation.build(BiliCall.doCall(result.setParams("pn", page).setParams("ps", size)));
+        return Relation.build(BiliCall.doCall(result.setParams("pn", page).setParams("ps", size),beforeRequest));
     }
 }

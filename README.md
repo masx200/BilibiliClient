@@ -22,7 +22,7 @@ Java 包 **将会持续更新**
     <groupId>com.github.masx200</groupId>
     <artifactId>BilibiliClient</artifactId>
     <version>1.0.2</version>
-<dependency>
+</dependency>
 ```
 
 ## 2、配置

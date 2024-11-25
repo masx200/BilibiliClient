@@ -23,7 +23,7 @@ public class UserGet implements Gettable<User> {
     @Override
     public User get() {
         try {
-            return BiliCall.doCall(request).toData(User.class);
+            return BiliCall.doCall(request,beforeRequest).toData(User.class);
         } catch (Exception e) {
             e.printStackTrace();
             throw new BiliRequestException(request.getURI());
