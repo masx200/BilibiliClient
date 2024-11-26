@@ -72,7 +72,7 @@ public class BiliResult {
             }
             case -799 -> {
                 System.err.println(this);
-                throw new RuntimeException("发起请求异常！" + this.toMessage());
+                throw new RuntimeException("请求过于频繁，请稍后再试" + this.toMessage());
             }
             case -101 -> {
                 System.err.println(this);
