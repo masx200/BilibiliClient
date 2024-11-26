@@ -1,7 +1,7 @@
 package com.github.masx200.biliClient.model.dynamic;
 
-import com.github.masx200.biliClient.BiliResult;
 import com.alibaba.fastjson.JSONObject;
+import com.github.masx200.biliClient.BiliResult;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -50,9 +50,9 @@ public class DynamicItems {
         try {
             DynamicItems dynamicItems = result.toData(DynamicItems.class);
             // 没有更多就返回包含源数据的对象
-            if (dynamicItems.hasMore != 1) {
-                return dynamicItems;
-            }
+//            if (dynamicItems.hasMore != 1) {
+//                return dynamicItems;
+//            }
 
             // 否则进行遍历 并过滤空对象
             List<Dynamic> cards = JSONObject.parseObject(result.getData().toString()).getJSONArray("cards")
@@ -65,7 +65,7 @@ public class DynamicItems {
         } catch (Exception e) {
             e.printStackTrace();
             log.error("当前请求解析异常!原始请求数据为\n {}", result);
-            return null;
+            throw e;
         }
 
     }
