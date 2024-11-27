@@ -2,6 +2,7 @@ package com.github.masx200.biliClient.utils.dynamic;
 
 import com.github.masx200.biliClient.model.dynamic.Dynamic;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.Map;
  * @version 1.0  2021-02-08-15:20
  * @since 2021-02-08-15:20
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class DynamicSortInfo extends DynamicInfo {
     private Map<Dynamic.DType, DynamicInfo> sortInfo = new HashMap<>();

@@ -2,6 +2,8 @@ package com.github.masx200.biliClient.model.dynamic;
 
 import com.github.masx200.biliClient.model.video.Video;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 描述： 动态对象
@@ -11,7 +13,10 @@ import lombok.Data;
  * @since 2021-02-07-20:54
  */
 @Data
+@Setter
+@Getter
 public class Dynamic {
+    private Video video;
     /**
      * 作者ID
      */
@@ -51,7 +56,11 @@ public class Dynamic {
     /**
      * 当DType 为 video 时
      */
-    private Video video;
+    private ESSAY essay;
+
+    public void setESSAY(ESSAY essay) {
+        this.essay = essay;
+    }
 
     /**
      * 动态类型枚举

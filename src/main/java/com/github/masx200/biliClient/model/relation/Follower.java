@@ -4,6 +4,7 @@ import com.github.masx200.biliClient.model.BaseModel;
 import com.github.masx200.biliClient.model.user.User;
 import com.github.masx200.biliClient.utils.TransDate;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
@@ -14,6 +15,7 @@ import java.util.Date;
  * @version 1.0  2021-02-08-16:34
  * @since 2021-02-08-16:34
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class Follower extends User implements BaseModel {
     /**

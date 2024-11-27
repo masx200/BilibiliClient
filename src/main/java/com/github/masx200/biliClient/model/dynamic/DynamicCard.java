@@ -1,7 +1,7 @@
 package com.github.masx200.biliClient.model.dynamic;
 
-import com.github.masx200.biliClient.model.video.Video;
 import com.alibaba.fastjson.JSONObject;
+import com.github.masx200.biliClient.model.video.Video;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -61,6 +61,11 @@ public class DynamicCard {
                 dynamic.setType(Dynamic.DType.VIDEO);
                 // 视频内容
                 dynamic.setVideo(JSONObject.parseObject(dynamicCard.toString(), Video.class));
+            } else if (this.getDesc().getType() == 64) {
+                // 专栏动态
+                dynamic.setType(Dynamic.DType.ESSAY);
+                // 写入详情
+                dynamic.setESSAY(JSONObject.parseObject(dynamicCard.toString(), ESSAY.class));
             } else {
                 // 普通动态
                 dynamic.setType(Dynamic.DType.COMMON);
@@ -85,7 +90,7 @@ public class DynamicCard {
             return dynamic;
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("动态解析遇到错误！可能遇到了格式不支持的动态或该类型为新型动态,原始内容如下\n {}", toString());
+            log.error("动态解析遇到错误！可能遇到了格式不支持的动态或该类型为新型动态,原始内容如下\n {}", this);
             return null;
         }
     }
