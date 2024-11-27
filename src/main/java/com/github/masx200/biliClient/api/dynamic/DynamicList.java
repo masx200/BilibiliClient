@@ -33,7 +33,7 @@ public class DynamicList implements Listable<DynamicItems> {
     }
 
     @Override
-    public DynamicItems list() {
+    public DynamicItems list() throws Exception {
         BiliResult biliResult = BiliCall.doCall(request,beforeRequest);
         return DynamicItems.build(biliResult);
     }
@@ -57,7 +57,7 @@ public class DynamicList implements Listable<DynamicItems> {
     }
 
     @Override
-    public DynamicItems list(Long nextOffset) {
+    public DynamicItems list(Long nextOffset) throws Exception {
         BiliResult biliResult = BiliCall.doCall(request.setParams("offset_dynamic_id", nextOffset),beforeRequest);
         return DynamicItems.build(biliResult);
     }

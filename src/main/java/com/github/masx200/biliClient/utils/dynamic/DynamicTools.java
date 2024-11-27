@@ -22,7 +22,7 @@ public class DynamicTools {
      * @param uid        uid
      * @return all dynamic
      */
-    public static List<Dynamic> queryAll(BiliClient biliClient, Long uid) {
+    public static List<Dynamic> queryAll(BiliClient biliClient, Long uid) throws Exception {
         List<Dynamic> dynamics = new ArrayList<>();
         DynamicItems items = biliClient.dynamic().withHostUid(uid).list(0L);
         do {
@@ -40,7 +40,7 @@ public class DynamicTools {
      * @param uid        uid
      * @return all dynamic
      */
-    public static DynamicSortInfo queryData(BiliClient biliClient, Long uid) {
+    public static DynamicSortInfo queryData(BiliClient biliClient, Long uid) throws Exception {
         return (DynamicSortInfo) new DynamicSortInfo(queryAll(biliClient, uid)).analyze();
     }
 

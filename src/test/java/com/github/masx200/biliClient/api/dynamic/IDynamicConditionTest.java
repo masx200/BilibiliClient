@@ -33,7 +33,7 @@ public class IDynamicConditionTest {
     }
 
     @Test
-    public void withHostUid() {
+    public void withHostUid() throws Exception {
         DynamicItems list = biliClient.dynamic().withHostUid(392819792L).list();
         System.out.println(list);
         list.getItems().forEach(System.out::println);
@@ -48,7 +48,7 @@ public class IDynamicConditionTest {
     }
 
     @Test
-    public void withHostUidOffset() {
+    public void withHostUidOffset() throws Exception {
         DynamicItems list = biliClient.dynamic().withHostUid(392819792L).list();
         System.out.println(list);
         System.out.println("__________________");

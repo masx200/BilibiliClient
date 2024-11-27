@@ -26,7 +26,7 @@ public class TransViewUriTest {
     }
 
     @Test
-    public void transDynamic() {
+    public void transDynamic() throws Exception {
         Dynamic dynamic = biliClient.dynamic().withDynamicId(464864767376633630L).get();
         System.out.println(dynamic);
         System.out.println(TransViewUri.trans(dynamic));

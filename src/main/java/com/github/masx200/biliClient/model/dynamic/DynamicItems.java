@@ -1,5 +1,6 @@
 package com.github.masx200.biliClient.model.dynamic;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.github.masx200.biliClient.BiliResult;
 import lombok.Data;
@@ -46,7 +47,7 @@ public class DynamicItems {
      * @param result 响应结果
      * @return di
      */
-    public static DynamicItems build(BiliResult result) {
+    public static DynamicItems build(BiliResult result) throws Exception {
         try {
             DynamicItems dynamicItems = result.toData(DynamicItems.class);
             // 没有更多就返回包含源数据的对象
@@ -55,7 +56,11 @@ public class DynamicItems {
 //            }
 
             // 否则进行遍历 并过滤空对象
-            List<Dynamic> cards = JSONObject.parseObject(result.getData().toString()).getJSONArray("cards")
+            JSONArray cardsarray = JSONObject.parseObject(result.getData().toString()).getJSONArray("cards");
+            if (cardsarray == null) {
+                throw new Exception("cardsarray为null,可能未登录");
+            }
+            List<Dynamic> cards = cardsarray
                     .toJavaList(DynamicCard.class).stream().map(DynamicCard::toDynamic).filter(Objects::nonNull)
                     .collect(Collectors.toList());
             dynamicItems.setItems(cards);

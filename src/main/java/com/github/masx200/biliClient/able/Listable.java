@@ -13,7 +13,7 @@ public interface Listable<T> extends BiliAbel<T> {
      *
      * @return 批量对象
      */
-    T list();
+    T list() throws Exception;
 
     /**
      * 批量返回 带参数
@@ -30,7 +30,7 @@ public interface Listable<T> extends BiliAbel<T> {
      * @param nextOffset next 偏移量
      * @return 批量对象
      */
-    T list(Long nextOffset);
+    T list(Long nextOffset) throws Exception;
 
     /**
      * 分页
