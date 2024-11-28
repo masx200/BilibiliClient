@@ -1,19 +1,21 @@
 package com.github.masx200.biliClient.model.relation;
 
-import com.github.masx200.biliClient.BiliResult;
-import com.alibaba.fastjson.JSONObject;
-import lombok.Data;
-
 import java.util.List;
+
+import com.alibaba.fastjson.JSONObject;
+import com.github.masx200.biliClient.BiliResult;
+
+import lombok.Data;
 
 /**
  * 描述：
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-08-16:32
+ * @version 1.0 2021-02-08-16:32
  * @since 2021-02-08-16:32
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class Relation {
     /**
      * 总数

@@ -6,22 +6,31 @@ import lombok.Data;
  * 描述：直播间信息
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-07-14:28
+ * @version 1.0 2021-02-07-14:28
  * @since 2021-02-07-14:28
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class LiveRoom {
     /**
      * 房间状态
-     * <p>0 无房间</p>
-     * <p>1 有房间</p>
+     * <p>
+     * 0 无房间
+     * </p>
+     * <p>
+     * 1 有房间
+     * </p>
      */
     private Integer roomStatus;
 
     /**
      * 直播状态
-     * <p>0 休息</p>
-     * <p>1 开播</p>
+     * <p>
+     * 0 休息
+     * </p>
+     * <p>
+     * 1 开播
+     * </p>
      */
     private Integer liveStatus;
 
@@ -52,13 +61,17 @@ public class LiveRoom {
 
     /**
      * 轮播状态
-     * <p> 0  无轮播 </p>
-     * <p> 1  轮播 </p>
+     * <p>
+     * 0 无轮播
+     * </p>
+     * <p>
+     * 1 轮播
+     * </p>
      */
     private Integer roundStatus;
 
     /**
-     * 类型  默认0
+     * 类型 默认0
      */
     private Integer broadcast_type;
 }

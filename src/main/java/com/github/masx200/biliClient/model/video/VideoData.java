@@ -6,10 +6,11 @@ import lombok.Data;
  * 描述： 视频数据
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-08-18:50
+ * @version 1.0 2021-02-08-18:50
  * @since 2021-02-08-18:50
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class VideoData {
     /**
      * av
@@ -70,6 +71,5 @@ public class VideoData {
      * 评分
      */
     private String evaluation;
-
 
 }

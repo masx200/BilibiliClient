@@ -1,21 +1,23 @@
 package com.github.masx200.biliClient.model.video;
 
+import java.util.Date;
+import java.util.List;
+
 import com.github.masx200.biliClient.model.BaseModel;
 import com.github.masx200.biliClient.model.user.User;
 import com.github.masx200.biliClient.utils.TransDate;
-import lombok.Data;
 
-import java.util.Date;
-import java.util.List;
+import lombok.Data;
 
 /**
  * 描述： 视频稿件对象
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-08-18:37
+ * @version 1.0 2021-02-08-18:37
  * @since 2021-02-08-18:37
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class Video implements BaseModel {
     /**
      * bv
@@ -43,8 +45,12 @@ public class Video implements BaseModel {
 
     /**
      * 视频类型
-     * <p>1 自制</p>
-     * <p>2 转载</p>
+     * <p>
+     * 1 自制
+     * </p>
+     * <p>
+     * 2 转载
+     * </p>
      */
     private Integer copyright;
 
@@ -72,28 +78,72 @@ public class Video implements BaseModel {
 
     /**
      * 稿件状态
-     * <p>1	橙色通过	</p>
-     * <p>0	开放浏览	</p>
-     * <p>-1	待审	</p>
-     * <p>-2	被打回	</p>
-     * <p>-3	网警锁定	</p>
-     * <p> -4	被锁定	视频撞车了</p>
-     * <p> -5	管理员锁定	</p>
-     * <p>-6	修复待审	</p>
-     * <p>-7	暂缓审核	</p>
-     * <p> -8	补档待审	</p>
-     * <p>-9	等待转码	</p>
-     * <p>-10	延迟审核	</p>
-     * <p>-11	视频源待修	</p>
-     * <p>-12	转储失败	</p>
-     * <p>-13	允许评论待审	</p>
-     * <p>-14	临时回收站	</p>
-     * <p>-15	分发中	</p>
-     * <p>-16	转码失败	</p>
-     * <p>-20	创建未提交	</p>
-     * <p>-30	创建已提交	</p>
-     * <p>-40	定时发布	</p>
-     * <p>-100	用户删除</p>
+     * <p>
+     * 1 橙色通过
+     * </p>
+     * <p>
+     * 0 开放浏览
+     * </p>
+     * <p>
+     * -1 待审
+     * </p>
+     * <p>
+     * -2 被打回
+     * </p>
+     * <p>
+     * -3 网警锁定
+     * </p>
+     * <p>
+     * -4 被锁定 视频撞车了
+     * </p>
+     * <p>
+     * -5 管理员锁定
+     * </p>
+     * <p>
+     * -6 修复待审
+     * </p>
+     * <p>
+     * -7 暂缓审核
+     * </p>
+     * <p>
+     * -8 补档待审
+     * </p>
+     * <p>
+     * -9 等待转码
+     * </p>
+     * <p>
+     * -10 延迟审核
+     * </p>
+     * <p>
+     * -11 视频源待修
+     * </p>
+     * <p>
+     * -12 转储失败
+     * </p>
+     * <p>
+     * -13 允许评论待审
+     * </p>
+     * <p>
+     * -14 临时回收站
+     * </p>
+     * <p>
+     * -15 分发中
+     * </p>
+     * <p>
+     * -16 转码失败
+     * </p>
+     * <p>
+     * -20 创建未提交
+     * </p>
+     * <p>
+     * -30 创建已提交
+     * </p>
+     * <p>
+     * -40 定时发布
+     * </p>
+     * <p>
+     * -100 用户删除
+     * </p>
      */
     private Integer state;
 
@@ -109,7 +159,8 @@ public class Video implements BaseModel {
 
     /**
      * 视频属性
-     * <p>{@code "rights": {
+     * <p>
+     * {@code "rights": {
      * "bp": 0,
      * "elec": 0,
      * "download": 1,
@@ -124,7 +175,8 @@ public class Video implements BaseModel {
      * "no_background": 0,
      * "clean_mode": 0,
      * "is_stein_gate": 0
-     * }}</p>
+     * }}
+     * </p>
      */
     private Object rights;
     /**
@@ -151,7 +203,8 @@ public class Video implements BaseModel {
     private Dimension dimension;
     /**
      * 分P 信息
-     * <p>{@code  "pages": [
+     * <p>
+     * {@code  "pages": [
      * {
      * "cid": 237377194,
      * "page": 1,
@@ -166,16 +219,19 @@ public class Video implements BaseModel {
      * "rotate": 0
      * }
      * }
-     * ]}</p>
+     * ]}
+     * </p>
      */
     private List<VideoPage> pages;
 
     /**
      * 字幕信息
-     * <p>{@code "subtitle": {
+     * <p>
+     * {@code "subtitle": {
      * "allow_submit": false,
      * "list": []
-     * }}</p>
+     * }}
+     * </p>
      */
     private Object subtitle;
 
@@ -187,9 +243,11 @@ public class Video implements BaseModel {
 
     /**
      * 用户穿衣信息
-     * <p>{@code "user_garb": {
+     * <p>
+     * {@code "user_garb": {
      * "url_image_ani_cut": ""
-     * }}</p>
+     * }}
+     * </p>
      */
     private Object user_garb;
 

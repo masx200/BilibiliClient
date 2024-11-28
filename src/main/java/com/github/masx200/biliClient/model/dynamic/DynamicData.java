@@ -1,19 +1,21 @@
 package com.github.masx200.biliClient.model.dynamic;
 
+import java.util.Date;
+
 import com.github.masx200.biliClient.model.BaseModel;
 import com.github.masx200.biliClient.utils.TransDate;
-import lombok.Data;
 
-import java.util.Date;
+import lombok.Data;
 
 /**
  * 描述： 动态 数据
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-07-21:06
+ * @version 1.0 2021-02-07-21:06
  * @since 2021-02-07-21:06
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class DynamicData implements BaseModel {
     /**
      * 动态类型
@@ -29,7 +31,9 @@ public class DynamicData implements BaseModel {
     private Long dynamic_id;
     /**
      * 源ID
-     * <p>非转发为0 或 Null</p>
+     * <p>
+     * 非转发为0 或 Null
+     * </p>
      */
     private Long orig_dy_id;
 
@@ -57,14 +61,20 @@ public class DynamicData implements BaseModel {
     private long like;
     /**
      * 是否点赞
-     * <p>0  否/未登录</p>
-     * <p>1  是</p>
+     * <p>
+     * 0 否/未登录
+     * </p>
+     * <p>
+     * 1 是
+     * </p>
      */
     private Integer is_liked;
 
     /**
      * 视频 bvid
-     * <p>仅仅视频动态存在 其余为null or empty</p>
+     * <p>
+     * 仅仅视频动态存在 其余为null or empty
+     * </p>
      */
     private String bvid;
 

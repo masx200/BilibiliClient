@@ -1,19 +1,21 @@
 package com.github.masx200.biliClient.utils.dynamic;
 
-import com.github.masx200.biliClient.model.dynamic.Dynamic;
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.github.masx200.biliClient.model.dynamic.Dynamic;
+
+import lombok.Data;
 
 /**
  * 描述： 动态信息
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-08-15:14
+ * @version 1.0 2021-02-08-15:14
  * @since 2021-02-08-15:14
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class DynamicInfo {
     /**
      * 动态集合

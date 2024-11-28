@@ -6,10 +6,11 @@ import lombok.Data;
  * 描述： 系统通知信息
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-07-14:23
+ * @version 1.0 2021-02-07-14:23
  * @since 2021-02-07-14:23
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class SysNotice {
     /**
      * 通知id
@@ -28,7 +29,9 @@ public class SysNotice {
 
     /**
      * 通知类型
-     * <p> 2 纪念账号 </p>
+     * <p>
+     * 2 纪念账号
+     * </p>
      */
     private Integer notice_type;
 

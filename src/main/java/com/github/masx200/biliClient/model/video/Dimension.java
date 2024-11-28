@@ -6,10 +6,11 @@ import lombok.Data;
  * 描述： 分辨率
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-08-18:59
+ * @version 1.0 2021-02-08-18:59
  * @since 2021-02-08-18:59
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class Dimension {
     /**
      * 宽

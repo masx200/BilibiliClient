@@ -2,16 +2,18 @@ package com.github.masx200.biliClient.model.user;
 
 import com.github.masx200.biliClient.model.LiveRoom;
 import com.github.masx200.biliClient.model.SysNotice;
+
 import lombok.Data;
 
 /**
  * 描述： 哔哩哔哩用户对象
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-07-13:51
+ * @version 1.0 2021-02-07-13:51
  * @since 2021-02-07-13:51
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class User {
     /**
      * UID
@@ -44,20 +46,28 @@ public class User {
 
     /**
      * 封禁状态
-     * <p>0: 正常</p>
-     * <p>1: 封禁</p>
+     * <p>
+     * 0: 正常
+     * </p>
+     * <p>
+     * 1: 封禁
+     * </p>
      */
     private Integer silence;
 
     /**
      * 生日
-     * <p>格式 <b>MM-DD</b></p>
+     * <p>
+     * 格式 <b>MM-DD</b>
+     * </p>
      */
     private String birthday;
 
     /**
      * 硬币数目
-     * <p><b>需要登录后才能查看</b></p>
+     * <p>
+     * <b>需要登录后才能查看</b>
+     * </p>
      */
     private Long coins;
 
@@ -104,7 +114,9 @@ public class User {
 
     /**
      * 系统通知
-     * <p>纪念账号小黑屋等</p>
+     * <p>
+     * 纪念账号小黑屋等
+     * </p>
      * <p>
      * {@code "sys_notice": {
      * "id": 20,

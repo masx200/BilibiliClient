@@ -1,6 +1,7 @@
 package com.github.masx200.biliClient.model.dynamic;
 
 import com.github.masx200.biliClient.model.video.Video;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,10 +10,11 @@ import lombok.Setter;
  * 描述： 动态对象
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-07-20:54
+ * @version 1.0 2021-02-07-20:54
  * @since 2021-02-07-20:54
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 @Setter
 @Getter
 public class Dynamic {
@@ -43,10 +45,11 @@ public class Dynamic {
 
     /**
      * 动态详情
-     * <p>转发时为源 <b>若源违规被和谐将为null</b></p>
+     * <p>
+     * 转发时为源 <b>若源违规被和谐将为null</b>
+     * </p>
      */
     private DynamicDetail detail;
-
 
     /**
      * 转发内容 否则为null

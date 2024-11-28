@@ -6,13 +6,16 @@ import java.util.List;
 
 /**
  * 描述：动态详情
- * <p>data.card.desc.card.item</p>
+ * <p>
+ * data.card.desc.card.item
+ * </p>
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-07-20:17
+ * @version 1.0 2021-02-07-20:17
  * @since 2021-02-07-20:17
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class DynamicDetail {
     /**
      * 详情ID
@@ -66,16 +69,22 @@ public class DynamicDetail {
 
     /**
      * 设置
-     * <p>{@code {
+     * <p>
+     * {@code {
      * "copy_forbidden": "0"
-     * }}</p>
+     * }}
+     * </p>
      */
     private Object settings;
 
     /**
      * 是否喜欢
-     * <p>0  否</p>
-     * <p>1  是</p>
+     * <p>
+     * 0 否
+     * </p>
+     * <p>
+     * 1 是
+     * </p>
      */
     private Integer is_fav;
 }

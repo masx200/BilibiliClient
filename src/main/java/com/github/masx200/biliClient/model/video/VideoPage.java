@@ -6,10 +6,11 @@ import lombok.Data;
  * 描述： 稿件单P
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-08-19:01
+ * @version 1.0 2021-02-08-19:01
  * @since 2021-02-08-19:01
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class VideoPage {
     /**
      * cid
@@ -23,9 +24,15 @@ public class VideoPage {
 
     /**
      * 来源
-     * <p>	vupload 上传</p>
-     * <p> huan 芒果TV</p>
-     * <p> qq 腾讯视频</p>
+     * <p>
+     * vupload 上传
+     * </p>
+     * <p>
+     * huan 芒果TV
+     * </p>
+     * <p>
+     * qq 腾讯视频
+     * </p>
      */
     private String from;
 

@@ -2,19 +2,23 @@ package com.github.masx200.biliClient.model.dynamic;
 
 import com.alibaba.fastjson.JSONObject;
 import com.github.masx200.biliClient.model.video.Video;
+
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * 描述： 动态条目 card
- * <p>result.data.card</p>
+ * <p>
+ * result.data.card
+ * </p>
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-07-20:35
+ * @version 1.0 2021-02-07-20:35
  * @since 2021-02-07-20:35
  */
 @Slf4j
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class DynamicCard {
     /**
      * 动态数据
@@ -23,14 +27,20 @@ public class DynamicCard {
 
     /**
      * 动态实际内容
-     * <p>card.item为动态详情或转发详情</p>
-     * <p>根据desc 判断是否为转发</p>
+     * <p>
+     * card.item为动态详情或转发详情
+     * </p>
+     * <p>
+     * 根据desc 判断是否为转发
+     * </p>
      */
     private String card;
 
     /**
      * 将card 转换为 dynamic 对象
-     * <p><b>若解析异常将会传回null 对象</b></p>
+     * <p>
+     * <b>若解析异常将会传回null 对象</b>
+     * </p>
      *
      * @return dynamic
      */

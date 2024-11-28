@@ -6,10 +6,11 @@ import lombok.Data;
  * 描述： 图片
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-07-20:21
+ * @version 1.0 2021-02-07-20:21
  * @since 2021-02-07-20:21
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class Picture {
     /**
      * 图片地址
@@ -30,8 +31,11 @@ public class Picture {
 
     /**
      * 图片标签
-     * <p> 目前为 List 对象 </p>
-     * <p>{@code [
+     * <p>
+     * 目前为 List 对象
+     * </p>
+     * <p>
+     * {@code [
      * {
      * "item_id": 0,
      * "tid": 504355,
@@ -62,7 +66,8 @@ public class Picture {
      * "y": 95691,
      * "poi": ""
      * }
-     * ]}</p>
+     * ]}
+     * </p>
      */
     private Object img_tags;
 

@@ -1,22 +1,31 @@
 package com.github.masx200.biliClient;
 
 import com.alibaba.fastjson.JSONObject;
+
 import lombok.Data;
 
 /**
  * 描述： 哔哩哔哩 通用 响应
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-03-20:39
+ * @version 1.0 2021-02-03-20:39
  * @since 2021-02-03-20:39
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
+
 public class BiliResult {
     /**
      * 响应码
-     * <p>0     成功 </p>
-     * <p>-400  请求失败</p>
-     * <p>-101  未登录</p>
+     * <p>
+     * 0 成功
+     * </p>
+     * <p>
+     * -400 请求失败
+     * </p>
+     * <p>
+     * -101 未登录
+     * </p>
      */
     private Integer code;
     /**

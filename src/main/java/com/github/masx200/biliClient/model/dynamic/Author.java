@@ -13,6 +13,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class Author {
 
     private long mid;

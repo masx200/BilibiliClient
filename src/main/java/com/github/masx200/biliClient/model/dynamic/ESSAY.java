@@ -1,14 +1,14 @@
 package com.github.masx200.biliClient.model.dynamic;
 
-import com.github.masx200.biliClient.model.BaseModel;
-import com.github.masx200.biliClient.utils.TransDate;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.Date;
 import java.util.List;
 
+import com.github.masx200.biliClient.model.BaseModel;
+import com.github.masx200.biliClient.utils.TransDate;
+
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Auto-generated: 2024-11-27 13:23:3
@@ -19,6 +19,7 @@ import java.util.List;
 @Setter
 @Getter
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class ESSAY implements BaseModel {
 
     private long ctime;
@@ -28,7 +29,7 @@ public class ESSAY implements BaseModel {
     private Author author;
     private List<String> image_urls;
     private long publish_time;
-    //    private long ctime;
+    // private long ctime;
     private int mtime;
     private String stats;
     private List<String> origin_image_urls;
@@ -39,4 +40,3 @@ public class ESSAY implements BaseModel {
     }
 
 }
-

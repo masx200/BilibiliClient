@@ -6,10 +6,11 @@ import lombok.Data;
  * 描述： 勋章信息
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-07-14:20
+ * @version 1.0 2021-02-07-14:20
  * @since 2021-02-07-14:20
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class Nameplate {
     /**
      * 胸罩id

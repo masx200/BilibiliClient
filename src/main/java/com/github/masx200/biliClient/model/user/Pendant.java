@@ -6,10 +6,11 @@ import lombok.Data;
  * 描述： 头像框信息
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-07-14:17
+ * @version 1.0 2021-02-07-14:17
  * @since 2021-02-07-14:17
  */
 @Data
+@com.alibaba.fastjson2.annotation.JSONCompiled
 public class Pendant {
     /**
      * 头像框ID
