@@ -34,16 +34,16 @@
     </plugins>
   </build><!-- 依赖 -->
   <dependencies>
-   <!-- <dependency>
+    <dependency>
       <groupId>com.alibaba.fastjson2</groupId>
       <artifactId>fastjson2</artifactId>
       <version>${fastjson2.version}</version>
-    </dependency> -->
-    <dependency>
+    </dependency> 
+   <!-- <dependency>
       <groupId>com.alibaba.fastjson2</groupId>
       <artifactId>fastjson2-codegen</artifactId>
       <version>${fastjson2.version}</version>
-    </dependency>
+    </dependency>-->
     <!--
       <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-api</artifactId><version>5.7.0</version><scope>test</scope></dependency> -->
     <dependency>
