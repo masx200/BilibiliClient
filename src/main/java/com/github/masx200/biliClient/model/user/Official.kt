@@ -1,6 +1,4 @@
-package com.github.masx200.biliClient.model.user;
-
-import lombok.Data;
+package com.github.masx200.biliClient.model.user
 
 /**
  * 描述： 用户认证信息
@@ -9,41 +7,45 @@ import lombok.Data;
  * @version 1.0 2021-02-07-14:00
  * @since 2021-02-07-14:00
  */
-@Data
-@com.alibaba.fastjson2.annotation.JSONCompiled
-public class Official {
+data //@com.alibaba.fastjson2.annotation.JSONCompiled
+class Official {
     /**
      * 角色类型
-     * <p>
+     *
+     *
      * 0: 无认证
-     * </p>
-     * <p>
+     *
+     *
+     *
      * 1\2 个人认证 -- 知名\专栏
-     * </p>
-     * <p>
+     *
+     *
+     *
      * 3\4\5\6 机构认证认证 --- 企业\媒体\政府组织
-     * </p>
+     *
      */
-    private Integer role;
+    private val role: Int? = null
 
     /**
      * 认证信息
      */
-    private String title;
+    private val title: String? = null
 
     /**
      * 认证备注
      */
-    private String desc;
+    private val desc: String? = null
 
     /**
      * 是否认证
-     * <p>
+     *
+     *
      * 0 未认证
-     * </p>
-     * <p>
+     *
+     *
+     *
      * 1 认证
-     * </p>
+     *
      */
-    private Integer type;
+    private val type: Int? = null
 }

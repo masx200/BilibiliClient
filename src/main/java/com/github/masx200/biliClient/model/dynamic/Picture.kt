@@ -1,6 +1,4 @@
-package com.github.masx200.biliClient.model.dynamic;
-
-import lombok.Data;
+package com.github.masx200.biliClient.model.dynamic
 
 /**
  * 描述： 图片
@@ -9,33 +7,37 @@ import lombok.Data;
  * @version 1.0 2021-02-07-20:21
  * @since 2021-02-07-20:21
  */
-@Data
-@com.alibaba.fastjson2.annotation.JSONCompiled
-public class Picture {
+data //@com.alibaba.fastjson2.annotation.JSONCompiled
+class Picture {
     /**
      * 图片地址
      */
-    private String img_src;
+    private val img_src: String? = null
+
     /**
      * 图片大小
      */
-    private Double img_size;
+    private val img_size: Double? = null
+
     /**
      * 图片宽度
      */
-    private Integer img_width;
+    private val img_width: Int? = null
+
     /**
      * 图片高度
      */
-    private Integer img_height;
+    private val img_height: Int? = null
 
     /**
      * 图片标签
-     * <p>
+     *
+     *
      * 目前为 List 对象
-     * </p>
-     * <p>
-     * {@code [
+     *
+     *
+     *
+     * `[
      * {
      * "item_id": 0,
      * "tid": 504355,
@@ -66,9 +68,8 @@ public class Picture {
      * "y": 95691,
      * "poi": ""
      * }
-     * ]}
-     * </p>
+     * ]`
+     *
      */
-    private Object img_tags;
-
+    private val img_tags: Any? = null
 }

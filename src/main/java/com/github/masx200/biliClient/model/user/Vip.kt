@@ -1,6 +1,4 @@
-package com.github.masx200.biliClient.model.user;
-
-import lombok.Data;
+package com.github.masx200.biliClient.model.user
 
 /**
  * 描述： 哔哩哔哩会员信息
@@ -9,101 +7,110 @@ import lombok.Data;
  * @version 1.0 2021-02-07-14:07
  * @since 2021-02-07-14:07
  */
-@Data
-@com.alibaba.fastjson2.annotation.JSONCompiled
-public class Vip {
-
+data //@com.alibaba.fastjson2.annotation.JSONCompiled
+class Vip {
     /**
      * 会员类型
-     * <p>
+     *
+     *
      * 0 无会员
-     * </p>
-     * <p>
+     *
+     *
+     *
      * 1 包月会员
-     * </p>
-     * <p>
+     *
+     *
+     *
      * 2 年费会员
-     * </p>
+     *
      */
-    private Integer type;
+    private val type: Int? = null
 
     /**
      * 是否有会员
-     * <p>
+     *
+     *
      * 0 无
-     * </p>
-     * <p>
+     *
+     *
+     *
      * 1 有
-     * </p>
+     *
      */
-    private Integer status;
+    private val status: Int? = null
 
     /**
      * 主题类型 默认 ""
      */
-    private Integer theme_type;
+    private val theme_type: Int? = null
 
     /**
      * 标签
-     * <p>
-     * {@code
-     * "label": {
+     *
+     *
+     * `"label": {
      * "path": "",
      * "text": "",
      * "label_theme": ""
      * }
-     * }
-     * </p>
+    ` *
+     *
      */
-    private Label label;
+    private val label: Label? = null
 
     /**
      * 是否外显会员
-     * <p>
+     *
+     *
      * 0 不显示
-     * </p>
-     * <p>
+     *
+     *
+     *
      * 1 显示
-     * </p>
+     *
      */
-    private Integer avatar_subscript;
+    private val avatar_subscript: Int? = null
 
     /**
      * 活动昵称颜色代码 默认 ""
-     * <p>
+     *
+     *
      * 粉色或绿色(愚人节)
-     * </p>
+     *
      */
-    private String nickname_color;
+    private val nickname_color: String? = null
 
-    @Data
-    @com.alibaba.fastjson2.annotation.JSONCompiled
-    public static class Label {
+    data //    @com.alibaba.fastjson2.annotation.JSONCompiled
+    class Label {
         /**
          * 渠道路径
          */
-        private String path;
+        private val path: String? = null
 
         /**
          * 名称
          */
-        private String text;
+        private val text: String? = null
 
         /**
          * 标签
-         * <p>
+         *
+         *
          * vip：大会员
-         * </p>
-         * <p>
+         *
+         *
+         *
          * annual_vip：年度大会员
-         * </p>
-         * <p>
+         *
+         *
+         *
          * ten_annual_vip：十年大会员
-         * </p>
-         * <p>
+         *
+         *
+         *
          * hundred_annual_vip：百年大会员
-         * </p>
+         *
          */
-        private String label_theme;
+        private val label_theme: String? = null
     }
 }

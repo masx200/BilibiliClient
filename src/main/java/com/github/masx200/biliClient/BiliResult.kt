@@ -16,7 +16,7 @@ import kotlinx.serialization.json.Json
  * @version 1.0 2021-02-03-20:39
  * @since 2021-02-03-20:39
  */
-//@Data
+//data
 //@com.alibaba.fastjson2.annotation.JSONCompiled
 @Serializable
 data class BiliResult(
@@ -68,7 +68,7 @@ data class BiliResult(
     </T> */
     inline fun <reified T> toData(): T {
         return Json.decodeFromString<T>(data.toString())
-//        return JSONObject.parseObject(data.toString(), tClass)
+//        return Json.decodeFromString(data.toString(), tClass)
     }
 
     /**

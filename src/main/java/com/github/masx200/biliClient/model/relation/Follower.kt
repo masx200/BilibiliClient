@@ -19,7 +19,7 @@ import kotlinx.serialization.Serializable
  * @since 2021-02-08-16:34
  */
 //@EqualsAndHashCode(callSuper = true)
-//@Data
+//data
 //@com.alibaba.fastjson2.annotation.JSONCompiled
 @Serializable
 data class Follower(

@@ -9,7 +9,7 @@ import com.github.masx200.biliClient.model.dynamic.Dynamic
  * @version 1.0 2021-02-08-15:14
  * @since 2021-02-08-15:14
  */
-//@Data
+//data
 //@com.alibaba.fastjson2.annotation.JSONCompiled
 data class DynamicInfoClass
 /**

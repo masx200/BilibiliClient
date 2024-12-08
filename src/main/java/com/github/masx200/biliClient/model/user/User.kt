@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
  * @version 1.0 2021-02-07-13:51
  * @since 2021-02-07-13:51
  */
-//@Data
+//data
 //@com.alibaba.fastjson2.annotation.JSONCompiled
 @Serializable
 data class User(

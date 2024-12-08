@@ -36,7 +36,7 @@ data class Dynamic(
     /**
      * 数据
      */
-    , val data: DynamicData? = null
+    , var data: DynamicData? = null
 
     /**
      * 动态详情
@@ -61,6 +61,10 @@ data class Dynamic(
 
     fun setESSAY(essay: ESSAY?) {
         this.essay = essay
+    }
+
+    fun setData(data: DynamicData) {
+        this.data = data
     }
 
     /**

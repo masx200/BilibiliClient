@@ -12,7 +12,7 @@ import java.util.function.Consumer
  * @since 2021-02-08-15:20
  */
 //@EqualsAndHashCode(callSuper = true)
-//@Data
+//data
 //@com.alibaba.fastjson2.annotation.JSONCompiled
 data class DynamicSortInfo(
     val dynamics: MutableList<Dynamic?>? = ArrayList<Dynamic?>(), var viewAll: Long = 0,
