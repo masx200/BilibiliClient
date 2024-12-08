@@ -1,6 +1,4 @@
-package com.github.masx200.biliClient.model.video;
-
-import lombok.Data;
+package com.github.masx200.biliClient.model.video
 
 /**
  * 描述： 视频数据
@@ -9,67 +7,55 @@ import lombok.Data;
  * @version 1.0 2021-02-08-18:50
  * @since 2021-02-08-18:50
  */
-@Data
-@com.alibaba.fastjson2.annotation.JSONCompiled
-public class VideoData {
+data class VideoData(
     /**
      * av
      */
-    private long aid;
+    val aid: Long = 0,
 
     /**
      * 弹幕数量
      */
-    private long danmaku;
-
+    val danmaku: Long = 0,
     /**
      * 观看数
      */
-    private long view;
-
+    val view: Long = 0,
     /**
      * 评论数
      */
-    private long reply;
+    val reply: Long = 0,
 
     /**
      * 投币
      */
-    private long coin;
-
+    val coin: Long = 0,
     /**
      * 点赞
      */
-    private long like;
-
+    val like: Long = 0,
     /**
      * 收藏
      */
-    private long favorite;
-
+    val favorite: Long = 0,
     /**
      * 分享
      */
-    private long share;
-
+    val share: Long = 0,
     /**
      * 当前排名
      */
-    private long now_rank;
-
+    val now_rank: Long = 0,
     /**
      * 全站最高
      */
-    private long his_rank;
-
+    val his_rank: Long = 0,
     /**
      * 踩
      */
-    private long dislike;
-
+    val dislike: Long = 0,
     /**
      * 评分
      */
-    private String evaluation;
-
-}
+    val evaluation: String? = null
+)

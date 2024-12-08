@@ -69,7 +69,7 @@ data class DynamicInfoClass
      *
      * @return this
      */
-    override fun analyze(): DynamicInfoClass {
+    override fun analyze(): DynamicInfo {
         if (dynamics != null && !dynamics!!.isEmpty()) {
 
             for (dynamic in dynamics!!) {

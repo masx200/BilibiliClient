@@ -1,13 +1,9 @@
-package com.github.masx200.biliClient.model.video;
+package com.github.masx200.biliClient.model.video
 
-import java.util.Date;
-import java.util.List;
-
-import com.github.masx200.biliClient.model.BaseModel;
-import com.github.masx200.biliClient.model.user.User;
-import com.github.masx200.biliClient.utils.TransDate;
-
-import lombok.Data;
+import com.github.masx200.biliClient.model.BaseModel
+import com.github.masx200.biliClient.model.user.User
+import com.github.masx200.biliClient.utils.TransDate
+import java.util.Date
 
 /**
  * 描述： 视频稿件对象
@@ -16,151 +12,175 @@ import lombok.Data;
  * @version 1.0 2021-02-08-18:37
  * @since 2021-02-08-18:37
  */
-@Data
-@com.alibaba.fastjson2.annotation.JSONCompiled
-public class Video implements BaseModel {
-    /**
-     * bv
-     */
-    private String bvid;
+data class Video(
+    val bvid: String? = null,
 
     /**
      * av
      */
-    private long aid;
+    val aid: Long = 0,
 
     /**
      * p 数
      */
-    private long videos;
+    val videos: Long = 0,
+
     /**
      * 分区 id
      */
-    private long tid;
+    val tid: Long = 0,
 
     /**
      * 小区名
      */
-    private String tname;
+    val tname: String? = null,
 
     /**
      * 视频类型
-     * <p>
+     *
+     *
      * 1 自制
-     * </p>
-     * <p>
+     *
+     *
+     *
      * 2 转载
-     * </p>
+     *
      */
-    private Integer copyright;
+    val copyright: Int? = null,
 
     /**
      * 封面图片
      */
-    private String pic;
+    val pic: String? = null,
+
     /**
      * 标题
      */
-    private String title;
+    val title: String? = null,
+
     /**
      * 发布时间
      */
-    private long pubdate;
+    val pubdate: Long = 0,
+
     /**
      * 上传时间
      */
-    private long ctime;
+    val ctime: Long = 0,
 
     /**
      * 视频简介
      */
-    private String desc;
+    val desc: String? = null,
 
     /**
      * 稿件状态
-     * <p>
+     *
+     *
      * 1 橙色通过
-     * </p>
-     * <p>
+     *
+     *
+     *
      * 0 开放浏览
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -1 待审
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -2 被打回
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -3 网警锁定
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -4 被锁定 视频撞车了
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -5 管理员锁定
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -6 修复待审
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -7 暂缓审核
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -8 补档待审
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -9 等待转码
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -10 延迟审核
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -11 视频源待修
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -12 转储失败
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -13 允许评论待审
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -14 临时回收站
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -15 分发中
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -16 转码失败
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -20 创建未提交
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -30 创建已提交
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -40 定时发布
-     * </p>
-     * <p>
+     *
+     *
+     *
      * -100 用户删除
-     * </p>
+     *
      */
-    private Integer state;
+    val state: Int? = null,
 
     /**
      * 关闭缓存
      */
-    private Boolean no_cache;
+    val no_cache: Boolean? = null,
 
     /**
      * 总时长 秒
      */
-    private Long duration;
+    val duration: Long? = null,
 
     /**
      * 视频属性
-     * <p>
-     * {@code "rights": {
+     *
+     *
+     * `"rights": {
      * "bp": 0,
      * "elec": 0,
      * "download": 1,
@@ -175,36 +195,41 @@ public class Video implements BaseModel {
      * "no_background": 0,
      * "clean_mode": 0,
      * "is_stein_gate": 0
-     * }}
-     * </p>
+     * }`
+     *
      */
-    private Object rights;
+    val rights: Any? = null,
+
     /**
      * 视频所有者
      */
-    private User owner;
+    val owner: User? = null,
 
     /**
      * 视频数据
      */
-    private VideoData stat;
+    val stat: VideoData? = null,
 
     /**
      * 动态内容
      */
-    private String dynamic;
+    val dynamic: String? = null,
+
     /**
      * 尚不明确
      */
-    private long cid;
+    val cid: Long = 0,
+
     /**
      * 分辨率
      */
-    private Dimension dimension;
+    val dimension: Dimension? = null,
+
     /**
      * 分P 信息
-     * <p>
-     * {@code  "pages": [
+     *
+     *
+     * `"pages": [
      * {
      * "cid": 237377194,
      * "page": 1,
@@ -219,40 +244,45 @@ public class Video implements BaseModel {
      * "rotate": 0
      * }
      * }
-     * ]}
-     * </p>
+     * ]`
+     *
      */
-    private List<VideoPage> pages;
+    val pages: MutableList<VideoPage?>? = null,
 
     /**
      * 字幕信息
-     * <p>
-     * {@code "subtitle": {
+     *
+     *
+     * `"subtitle": {
      * "allow_submit": false,
      * "list": []
-     * }}
-     * </p>
+     * }`
+     *
      */
-    private Object subtitle;
+    val subtitle: Any? = null,
 
     /**
      * 合作者信息
-     * <b>List </b>
+     * **List **
      */
-    private List<User> staff;
+    val staff: MutableList<User?>? = null,
 
     /**
      * 用户穿衣信息
-     * <p>
-     * {@code "user_garb": {
+     *
+     *
+     * `"user_garb": {
      * "url_image_ani_cut": ""
-     * }}
-     * </p>
+     * }`
+     *
      */
-    private Object user_garb;
+    val user_garb: Any? = null
+) : BaseModel {
+    /**
+     * bv
+     */
 
-    @Override
-    public Date createTime() {
-        return TransDate.timestampToDate(this.ctime);
+    override fun createTime(): Date {
+        return TransDate.timestampToDate(this.ctime)
     }
 }
