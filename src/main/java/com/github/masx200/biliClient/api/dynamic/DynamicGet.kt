@@ -6,7 +6,7 @@ import com.github.masx200.biliClient.able.Gettable
 import com.github.masx200.biliClient.model.dynamic.Dynamic
 import com.github.masx200.biliClient.model.dynamic.DynamicCard
 import java.util.function.Consumer
-import kotlinx.serialization.json.Json
+import kotlinx.serialization.Serializable
 import org.apache.http.client.methods.HttpRequestBase
 
 //import com.alibaba.fastjson.JSONObject;
@@ -23,9 +23,15 @@ class DynamicGet // 带参数的构造函数
     private val request: BiliRequest,
     private val beforeRequest: Consumer<HttpRequestBase?>? = null
 ) : Gettable<Dynamic?> {
-    override fun get(): Dynamic {
-        val data = BiliCall.doCall(request, beforeRequest).data
-        return Json.decodeFromString(data.toString()).getJSONObject("card")
-            .toJavaObject(DynamicCard::class.java).toDynamic()
+    override fun get(): Dynamic? {
+        val result = BiliCall.doCall(request, beforeRequest)
+//        val data = result.data
+        return result.toData<GetDynamicDetailRoot>().card
+            .toDynamic()
     }
 }
+
+@Serializable
+data class GetDynamicDetailRoot(
+    val card: DynamicCard,
+)

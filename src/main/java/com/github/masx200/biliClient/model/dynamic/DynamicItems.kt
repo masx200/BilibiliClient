@@ -1,11 +1,13 @@
 package com.github.masx200.biliClient.model.dynamic
 
+//import kotlinx.serialization.json.Json
+//import lombok.extern.slf4j.Slf4j
 import com.github.masx200.biliClient.BiliResult
+import com.github.masx200.biliClient.model.dynamic.Slf4j.Companion.log
 import java.util.Objects
 import java.util.stream.Collectors
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import lombok.extern.slf4j.Slf4j
+
 
 //import com.alibaba.fastjson.JSONArray;
 //import com.alibaba.fastjson.JSONObject;
@@ -74,13 +76,12 @@ class DynamicItems(
                 // }
 
                 // 否则进行遍历 并过滤空对象
-                val cardsarray: JSONArray = Json.decodeFromString(result.data.toString()).getJSONArray("cards")
+                val cardsarray = result.toData<SpaceHistoryRoot>().cards
                 if (cardsarray == null) {
                     throw Exception("cardsarray为null,可能未登录")
                 }
-                val cards: MutableList<Dynamic?> = cardsarray
-                    .toJavaList(DynamicCard::class.java).stream().map({ obj: DynamicCard? -> obj!!.toDynamic() })
-                    .filter({ obj: Any? -> Objects.nonNull(obj) })
+                val cards: MutableList<Dynamic?> = cardsarray.stream().map { obj: DynamicCard? -> obj!!.toDynamic() }
+                    .filter { obj: Any? -> Objects.nonNull(obj) }
                     .collect(Collectors.toList())
                 dynamicItems.setItems(cards)
 
@@ -88,7 +89,7 @@ class DynamicItems(
                 return dynamicItems
             } catch (e: Exception) {
                 e.printStackTrace()
-                DynamicItems.log.error("当前请求解析异常!原始请求数据为\n {}", result)
+                this.log.error("当前请求解析异常!原始请求数据为\n {}", result)
                 throw e
             }
         }
@@ -98,3 +99,10 @@ class DynamicItems(
         items = dynamics
     }
 }
+
+@Serializable
+data class SpaceHistoryRoot(
+    val has_more: Long = 0,
+    val next_offset: Long = 0,
+    val cards: MutableList<DynamicCard>?,
+)

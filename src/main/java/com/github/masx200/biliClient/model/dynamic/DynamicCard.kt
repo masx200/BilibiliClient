@@ -3,9 +3,13 @@ package com.github.masx200.biliClient.model.dynamic
 //import com.github.masx200.biliClient.model.dynamic.DynamicData.bvid
 //import com.github.masx200.biliClient.model.dynamic.DynamicData.orig_dy_id
 //import com.github.masx200.biliClient.model.dynamic.DynamicData.type
+import com.github.masx200.biliClient.model.dynamic.Slf4j.Companion.log
 import com.github.masx200.biliClient.model.video.Video
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import lombok.extern.slf4j.Slf4j
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
 
 //import com.alibaba.fastjson.JSONObject;
 
@@ -20,6 +24,7 @@ import lombok.extern.slf4j.Slf4j
  * @version 1.0 2021-02-07-20:35
  * @since 2021-02-07-20:35
  */
+@Serializable
 @Slf4j
 data //@com.alibaba.fastjson2.annotation.JSONCompiled
 class DynamicCard (
@@ -39,8 +44,10 @@ class DynamicCard (
      * 根据desc 判断是否为转发
      *
      */
-    val card: String? = null
+    val card: String? = null,
+//    val origin: JsonElement?,
 ){
+//     val log = KotlinLogging.logger {}
     /**
      * 动态数据
      */
@@ -78,53 +85,69 @@ class DynamicCard (
             // 设置数据
             dynamic.setData(this.getDesc())
             // 解析动态详情
-            val dynamicCard: JSONObject = Json.decodeFromString(this.getCard())
-            if (this.getDesc().orig_dy_id != null && this.getDesc().orig_dy_id != 0L) {
-                // 转发
-                dynamic.setType(Dynamic.DType.REPOST)
-                // 转发内容
-                dynamic.setRepost(Json.decodeFromString(dynamicCard.getString("item"), DynamicRepost::class.java))
-                // 源内容
-                val origin: JSONObject? = dynamicCard.getJSONObject("origin")
-                // 若源内容违规被屏蔽 避免转换失败
-                if (origin != null && !origin.isEmpty()) {
-                    dynamic.setDetail(Json.decodeFromString(origin.getString("item"), DynamicDetail::class.java))
+            val dynamicCard: JsonElement = Json.decodeFromString<JsonElement>(this.getCard())
+            if (dynamicCard is JsonObject) {
+                if (this.getDesc().orig_dy_id != null && this.getDesc().orig_dy_id != 0L) {
+                    // 转发
+                    dynamic.setType(Dynamic.DType.REPOST)
+                    // 转发内容
+                    val string = dynamicCard["item"]
+                    if (string is JsonPrimitive && string.isString) {
+                        dynamic.setRepost(Json.decodeFromString<DynamicRepost>(string.content))
+                    }
+                    // 源内容
+                    val origin = dynamicCard["origin"]
+                    // 若源内容违规被屏蔽 避免转换失败
+                    if (origin != null && origin is JsonObject && !origin.isEmpty()) {
+                        val string1 = origin["item"]
+                        if (string1 is JsonPrimitive && string1.isString) {
+                            dynamic.setDetail(Json.decodeFromString<DynamicDetail>(string1.content))
+                        }
+                    }
+                } else if (this.getDesc().bvid != null && !this.getDesc().bvid!!.isEmpty()) {
+                    // 视频
+                    dynamic.setType(Dynamic.DType.VIDEO)
+                    // 视频内容
+                    dynamic.setVideo(Json.decodeFromString<Video>(this.getCard()))
+                } else if (this.getDesc().type == 64) {
+                    // 专栏动态
+                    dynamic.setType(Dynamic.DType.ESSAY)
+                    // 写入详情
+                    dynamic.setESSAY(Json.decodeFromString<ESSAY>(this.getCard()))
+                } else {
+                    // 普通动态
+                    dynamic.setType(Dynamic.DType.COMMON)
+                    // 写入详情
+                    val string = dynamicCard["item"]
+                    if (string is JsonPrimitive && string.isString) {
+                        dynamic.setDetail(Json.decodeFromString<DynamicDetail>(string.content))
+                    }
                 }
-            } else if (this.getDesc().bvid != null && !this.getDesc().bvid.isEmpty()) {
-                // 视频
-                dynamic.setType(Dynamic.DType.VIDEO)
-                // 视频内容
-                dynamic.setVideo(Json.decodeFromString(dynamicCard.toString(), Video::class.java))
-            } else if (this.getDesc().type == 64) {
-                // 专栏动态
-                dynamic.setType(Dynamic.DType.ESSAY)
-                // 写入详情
-                dynamic.setESSAY(Json.decodeFromString(dynamicCard.toString(), ESSAY::class.java))
-            } else {
-                // 普通动态
-                dynamic.setType(Dynamic.DType.COMMON)
-                // 写入详情
-                dynamic.setDetail(Json.decodeFromString(dynamicCard.getString("item"), DynamicDetail::class.java))
             }
+
 
             // 解析作者信息
-            var user: JSONObject? = null
-            try {
-                user = dynamicCard.getJSONObject("user")
-                if (user != null && !user.isEmpty()) {
-                    dynamic.setUid(Long.valueOf(user.getString("uid")))
-                    dynamic.setName(user.getString("name"))
+            var user: JsonObject? = null
+            if (dynamicCard is JsonObject) {
+                try {
+                    val get = dynamicCard.get("user")
+                    if (get is JsonObject) {
+                        user = get
+                    }
+                    if (user != null && !user.isEmpty()) {
+                        dynamic.setUid(Long.valueOf(user.getString("uid")))
+                        dynamic.setName(user.getString("name"))
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    this.log.error("解析作者信息时发生异常！ 原始数据为{}", user)
                 }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                DynamicCard.log.error("解析作者信息时发生异常！ 原始数据为{}", user)
             }
-
             // 返回动态
             return dynamic
         } catch (e: Exception) {
             e.printStackTrace()
-            DynamicCard.log.error(
+            this.log.error(
                 "动态解析遇到错误！可能遇到了格式不支持的动态或该类型为新型动态,原始内容如下\n {}",
                 this
             )
@@ -132,8 +155,27 @@ class DynamicCard (
         }
     }
 
+    private fun getCard(): String {
+        return card!!
+    }
+
     private fun getDesc(): DynamicData {
 
         return desc!!
     }
+}
+
+fun Long.Companion.valueOf(string: String?): Long? {
+    return try {
+        string!!.toLong()
+    } catch (_: Exception) {
+        null
+    }
+}
+
+private fun JsonObject.getString(string: String): String? {
+    if (this.get(string) is JsonPrimitive && (this.get(string) as JsonPrimitive).isString) {
+        return (this.get(string) as JsonPrimitive).content
+    }
+    return null
 }

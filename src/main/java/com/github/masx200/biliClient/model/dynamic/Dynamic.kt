@@ -1,6 +1,7 @@
 package com.github.masx200.biliClient.model.dynamic
 
 import com.github.masx200.biliClient.model.video.Video
+import kotlinx.serialization.Serializable
 
 /**
  * 描述： 动态对象
@@ -8,24 +9,24 @@ import com.github.masx200.biliClient.model.video.Video
  * @author lpc lpc@hll520.cn
  * @version 1.0 2021-02-07-20:54
  * @since 2021-02-07-20:54
- */
+ */@Serializable
 data class Dynamic(
-    val video: Video? = null,
+    var video: Video? = null,
 
     /**
      * 作者ID
      */
-    val uid: Long? = null
+    var uid: Long? = null
 
     /**
      * 作者姓名
      */
-    , val name: String? = null
+    , var name: String? = null
 
     /**
      * 是否转发
      */
-    , val type: DType? = null
+    , var type: DType? = null
 
     /**
      * 源ID
@@ -45,12 +46,12 @@ data class Dynamic(
      * 转发时为源 **若源违规被和谐将为null**
      *
      */
-    , val detail: DynamicDetail? = null
+    , var detail: DynamicDetail? = null
 
     /**
      * 转发内容 否则为null
      */
-    , val repost: DynamicRepost? = null
+    , var repost: DynamicRepost? = null
 
     /**
      * 当DType 为 video 时
@@ -67,9 +68,34 @@ data class Dynamic(
         this.data = data
     }
 
+    fun setType(type: DType) {
+        this.type = type
+    }
+
+    fun setRepost(value: DynamicRepost) {
+        this.repost = value
+    }
+
+    fun setDetail(value: DynamicDetail) {
+        this.detail = value
+    }
+
+    fun setVideo(value: Video) {
+        this.video = value
+    }
+
+    fun setUid(value: Long?) {
+        this.uid = value
+    }
+
+    fun setName(value: String?) {
+        this.name = value.toString()
+    }
+
     /**
      * 动态类型枚举
      */
+
     enum class DType {
         /**
          * 普通动态
