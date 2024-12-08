@@ -11,8 +11,8 @@
   <description>Bilibili Java API Interface</description><!-- 属性管理 -->
   <properties>
     <fastjson2.version>2.0.53</fastjson2.version>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
   </properties>
   <build>
     <plugins>
@@ -38,14 +38,14 @@
       <groupId>com.alibaba.fastjson2</groupId>
       <artifactId>fastjson2</artifactId>
       <version>${fastjson2.version}</version>
-    </dependency> 
-   <!-- <dependency>
+    </dependency>
+    <dependency>
       <groupId>com.alibaba.fastjson2</groupId>
       <artifactId>fastjson2-codegen</artifactId>
       <version>${fastjson2.version}</version>
-    </dependency>-->
+    </dependency>
     <!--
-      <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-api</artifactId><version>5.7.0</version><scope>test</scope></dependency> -->
+    <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-api</artifactId><version>5.7.0</version><scope>test</scope></dependency> -->
     <dependency>
 
       <groupId>junit</groupId>
@@ -78,6 +78,6 @@
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
       <version>${fastjson2.version}</version>
-    </dependency> 
+    </dependency>
   </dependencies>
 </project>
