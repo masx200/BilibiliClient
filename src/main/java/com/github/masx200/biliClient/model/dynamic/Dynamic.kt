@@ -76,15 +76,15 @@ data class Dynamic(
         this.repost = value
     }
 
-    fun setDetail(value: DynamicDetail) {
+    fun SETDETAIL(value: DynamicDetail) {
         this.detail = value
     }
 
-    fun setVideo(value: Video) {
+    fun SETVIDEO(value: Video) {
         this.video = value
     }
 
-    fun setUid(value: Long?) {
+    fun SETUID(value: Long?) {
         this.uid = value
     }
 

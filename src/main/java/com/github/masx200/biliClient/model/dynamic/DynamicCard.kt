@@ -108,7 +108,7 @@ class DynamicCard (
                     // 视频
                     dynamic.SETTYPE(Dynamic.DType.VIDEO)
                     // 视频内容
-                    dynamic.setVideo(Json.decodeFromString<Video>(this.GETCARD()))
+                    dynamic.SETVIDEO(Json.decodeFromString<Video>(this.GETCARD()))
                 } else if (this.GETDESC().type == 64) {
                     // 专栏动态
                     dynamic.SETTYPE(Dynamic.DType.ESSAY)
@@ -135,7 +135,7 @@ class DynamicCard (
                         user = get
                     }
                     if (user != null && !user.isEmpty()) {
-                        dynamic.setUid(Long.valueOf(user.getString("uid")))
+                        dynamic.uid=Long.valueOf(user.getString("uid"))
                         dynamic.SETNAME(user.getString("name"))
                     }
                 } catch (e: Exception) {
