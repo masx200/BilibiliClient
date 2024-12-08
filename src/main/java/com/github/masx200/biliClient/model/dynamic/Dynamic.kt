@@ -64,15 +64,15 @@ data class Dynamic(
         this.essay = essay
     }
 
-    fun setData(data: DynamicData) {
-        this.data = data
+    fun SETDATA(data: DynamicData) {
+        this.data= data
     }
 
-    fun setType(type: DType) {
+    fun SETTYPE(type: DType) {
         this.type = type
     }
 
-    fun setRepost(value: DynamicRepost) {
+    fun setrepost(value: DynamicRepost) {
         this.repost = value
     }
 

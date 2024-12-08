@@ -83,17 +83,17 @@ class DynamicCard (
         try {
             val dynamic = Dynamic()
             // 设置数据
-            dynamic.setData(this.GETDESC())
+            dynamic.SETDATA(this.GETDESC())
             // 解析动态详情
             val dynamicCard: JsonElement = Json.decodeFromString<JsonElement>(this.GETCARD())
             if (dynamicCard is JsonObject) {
                 if (this.GETDESC().orig_dy_id != null && this.GETDESC().orig_dy_id != 0L) {
                     // 转发
-                    dynamic.setType(Dynamic.DType.REPOST)
+                    dynamic.SETTYPE(Dynamic.DType.REPOST)
                     // 转发内容
                     val string = dynamicCard["item"]
                     if (string is JsonPrimitive && string.isString) {
-                        dynamic.setRepost(Json.decodeFromString<DynamicRepost>(string.content))
+                        dynamic.setrepost(Json.decodeFromString<DynamicRepost>(string.content))
                     }
                     // 源内容
                     val origin = dynamicCard["origin"]
@@ -101,26 +101,26 @@ class DynamicCard (
                     if (origin != null && origin is JsonObject && !origin.isEmpty()) {
                         val string1 = origin["item"]
                         if (string1 is JsonPrimitive && string1.isString) {
-                            dynamic.setDetail(Json.decodeFromString<DynamicDetail>(string1.content))
+                            dynamic.detail=Json.decodeFromString<DynamicDetail>(string1.content)
                         }
                     }
                 } else if (this.GETDESC().bvid != null && !this.GETDESC().bvid!!.isEmpty()) {
                     // 视频
-                    dynamic.setType(Dynamic.DType.VIDEO)
+                    dynamic.SETTYPE(Dynamic.DType.VIDEO)
                     // 视频内容
                     dynamic.setVideo(Json.decodeFromString<Video>(this.GETCARD()))
                 } else if (this.GETDESC().type == 64) {
                     // 专栏动态
-                    dynamic.setType(Dynamic.DType.ESSAY)
+                    dynamic.SETTYPE(Dynamic.DType.ESSAY)
                     // 写入详情
                     dynamic.setESSAY(Json.decodeFromString<ESSAY>(this.GETCARD()))
                 } else {
                     // 普通动态
-                    dynamic.setType(Dynamic.DType.COMMON)
+                    dynamic.SETTYPE(Dynamic.DType.COMMON)
                     // 写入详情
                     val string = dynamicCard["item"]
                     if (string is JsonPrimitive && string.isString) {
-                        dynamic.setDetail(Json.decodeFromString<DynamicDetail>(string.content))
+                        dynamic.detail=Json.decodeFromString<DynamicDetail>(string.content)
                     }
                 }
             }
