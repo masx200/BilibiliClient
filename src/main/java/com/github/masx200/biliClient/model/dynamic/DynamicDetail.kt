@@ -1,5 +1,7 @@
 package com.github.masx200.biliClient.model.dynamic
 
+import kotlinx.serialization.Serializable
+
 /**
  * 描述：动态详情
  *
@@ -10,58 +12,57 @@ package com.github.masx200.biliClient.model.dynamic
  * @author lpc lpc@hll520.cn
  * @version 1.0 2021-02-07-20:17
  * @since 2021-02-07-20:17
- */
-data //@com.alibaba.fastjson2.annotation.JSONCompiled
-class DynamicDetail {
+ */@Serializable
+data class DynamicDetail(
     /**
      * 详情ID
      */
-    private val id: Long? = null
+    val id: Long? = null,
 
     /**
      * 标题
      */
-    private val title: String? = null
+    val title: String? = null,
 
     /**
      * 动态详情
      */
-    private val description: String? = null
+    val description: String? = null,
 
     /**
      * 分类类型
      */
-    private val category: String? = null
+    val category: String? = null,
 
     /**
      * 角色 List
      */
-    private val role: Any? = null
+    val role: Any? = null,
 
     /**
      * 来源 List
      */
-    private val source: Any? = null
+    val source: Any? = null,
 
     /**
      * 图片
      */
-    private val pictures: MutableList<Picture?>? = null
+    val pictures: MutableList<Picture?>? = null,
 
     /**
      * 图片数量
      */
-    private val pictures_count: Int? = null
+    val pictures_count: Int? = null,
 
     /**
      * 更新时间
      */
-    private val upload_time: Long? = null
+    val upload_time: Long? = null,
 
     /**
      * 回复数量
      */
-    private val reply: Long? = null
+    val reply: Long? = null,
 
     /**
      * 设置
@@ -72,7 +73,7 @@ class DynamicDetail {
      * }`
      *
      */
-    private val settings: Any? = null
+    val settings: Any? = null,
 
     /**
      * 是否喜欢
@@ -85,5 +86,5 @@ class DynamicDetail {
      * 1 是
      *
      */
-    private val is_fav: Int? = null
-}
+    val is_fav: Int? = null
+)
