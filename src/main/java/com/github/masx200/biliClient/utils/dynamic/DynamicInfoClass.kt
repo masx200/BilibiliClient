@@ -2,6 +2,9 @@ package com.github.masx200.biliClient.utils.dynamic
 
 import com.github.masx200.biliClient.model.dynamic.Dynamic
 
+interface DynamicInfo {
+    fun analyze(): DynamicInfo
+}
 /**
  * 描述： 动态信息
  *
@@ -11,7 +14,7 @@ import com.github.masx200.biliClient.model.dynamic.Dynamic
  */
 //@Data
 //@com.alibaba.fastjson2.annotation.JSONCompiled
-data class DynamicInfo
+data class DynamicInfoClass
 /**
  * 无参构造
  */
@@ -47,7 +50,7 @@ data class DynamicInfo
      * 动态总数
      */
     var count: Long = 0
-) {
+) : DynamicInfo {
     /**
      * 动态集合
      */
@@ -66,16 +69,16 @@ data class DynamicInfo
      *
      * @return this
      */
-    fun analyze(): DynamicInfo {
+    override fun analyze(): DynamicInfoClass {
         if (dynamics != null && !dynamics!!.isEmpty()) {
 
             for (dynamic in dynamics!!) {
-                viewAll += dynamic!!.getData().getView()
-                likeAll += dynamic.getData().getLike()
-                repostAll += dynamic.getData().getRepost()
-                commentAll += dynamic.getData().getComment()
-                if (dynamic.getType() == Dynamic.DType.VIDEO) {
-                    coinAll += dynamic.getVideo().getStat().getCoin()
+                viewAll += dynamic!!.data!!.view
+                likeAll += dynamic.data.like
+                repostAll += dynamic.data.repost
+                commentAll += dynamic.data.comment
+                if (dynamic.type == Dynamic.DType.VIDEO) {
+                    coinAll += dynamic.video!!.stat.coin
                 }
             }
 

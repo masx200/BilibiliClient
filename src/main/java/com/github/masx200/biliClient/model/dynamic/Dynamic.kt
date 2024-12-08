@@ -1,10 +1,6 @@
-package com.github.masx200.biliClient.model.dynamic;
+package com.github.masx200.biliClient.model.dynamic
 
-import com.github.masx200.biliClient.model.video.Video;
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import com.github.masx200.biliClient.model.video.Video
 
 /**
  * 描述： 动态对象
@@ -13,82 +9,89 @@ import lombok.Setter;
  * @version 1.0 2021-02-07-20:54
  * @since 2021-02-07-20:54
  */
-@Data
-@com.alibaba.fastjson2.annotation.JSONCompiled
-@Setter
-@Getter
-public class Dynamic {
-    private Video video;
+data class Dynamic(
+    val video: Video? = null,
+
     /**
      * 作者ID
      */
-    private Long uid;
+    val uid: Long? = null
+
     /**
      * 作者姓名
      */
-    private String name;
+    , val name: String? = null
+
     /**
      * 是否转发
      */
-    private DType type;
+    , val type: DType? = null
 
     /**
      * 源ID
-     * <b>仅当是转发时存在</b>
+     * **仅当是转发时存在**
      */
-    private Long origId;
+    , val origId: Long? = null
 
     /**
      * 数据
      */
-    private DynamicData data;
+    , val data: DynamicData? = null
 
     /**
      * 动态详情
-     * <p>
-     * 转发时为源 <b>若源违规被和谐将为null</b>
-     * </p>
+     *
+     *
+     * 转发时为源 **若源违规被和谐将为null**
+     *
      */
-    private DynamicDetail detail;
+    , val detail: DynamicDetail? = null
 
     /**
      * 转发内容 否则为null
      */
-    private DynamicRepost repost;
+    , val repost: DynamicRepost? = null
 
     /**
      * 当DType 为 video 时
      */
-    private ESSAY essay;
+    , var essay: ESSAY? = null
+) {
 
-    public void setESSAY(ESSAY essay) {
-        this.essay = essay;
+
+    fun setESSAY(essay: ESSAY?) {
+        this.essay = essay
     }
 
     /**
      * 动态类型枚举
      */
-    public enum DType {
+    enum class DType {
         /**
          * 普通动态
          */
         COMMON,
+
         /**
          * 转发动态
          */
         REPOST,
+
         /**
          * 视频动态
          */
         VIDEO,
+
         /**
          * 音频动态
          */
         AUDIO,
+
         /**
          * 专栏文章
          */
         ESSAY,
+
         /**
          * 直播动态
          */

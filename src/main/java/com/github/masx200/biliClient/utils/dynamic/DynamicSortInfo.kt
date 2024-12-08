@@ -40,18 +40,18 @@ data class DynamicSortInfo(
     /**
      * 动态总数
      */
-    var count: Long = 0, val sortInfo: MutableMap<DType?, DynamicInfo?> = HashMap<DType?, DynamicInfo?>()
-) {
+    var count: Long = 0, val sortInfo: MutableMap<DType?, DynamicInfoClass?> = HashMap<DType?, DynamicInfoClass?>()
+) : DynamicInfo {
 
 
-    fun analyze(): DynamicInfo {
+    override fun analyze(): DynamicInfo {
         if (dynamics != null && !dynamics.isEmpty()) {
             // 分类
             dynamics.forEach(Consumer { dynamic: Dynamic? ->
-                toInfo(dynamic!!.getType()).dynamics?.add(dynamic)
+                toInfo(dynamic!!.type).dynamics?.add(dynamic)
             })
             // 分析
-            sortInfo.forEach { (_: DType?, dynamicInfo: DynamicInfo?) ->
+            sortInfo.forEach { (_: DType?, dynamicInfo: DynamicInfoClass?) ->
                 dynamicInfo!!.analyze()
                 viewAll = viewAll + dynamicInfo.viewAll
                 likeAll = (likeAll + dynamicInfo.likeAll)
@@ -70,10 +70,10 @@ data class DynamicSortInfo(
      * @param type 类别
      * @return 总类
      */
-    fun toInfo(type: DType?): DynamicInfo {
-        var dynamicInfo = sortInfo.get(type)
+    fun toInfo(type: DType?): DynamicInfoClass {
+        var dynamicInfo = sortInfo[type]
         if (dynamicInfo == null) {
-            dynamicInfo = DynamicInfo()
+            dynamicInfo = DynamicInfoClass()
             sortInfo.put(type, dynamicInfo)
         }
         return dynamicInfo
