@@ -1,5 +1,7 @@
 package com.github.masx200.biliClient.model.user
 
+import kotlinx.serialization.Serializable
+
 /**
  * 描述： 勋章信息
  *
@@ -7,35 +9,35 @@ package com.github.masx200.biliClient.model.user
  * @version 1.0 2021-02-07-14:20
  * @since 2021-02-07-14:20
  */
-data //@com.alibaba.fastjson2.annotation.JSONCompiled
-class Nameplate {
+@Serializable
+data class Nameplate(
     /**
      * 胸罩id
      */
-    private val nid: Long? = null
+    val nid: Long? = null,
 
     /**
      * 胸罩名称
      */
-    private val name: String? = null
+    val name: String? = null,
 
     /**
      * 胸罩url 标准画质
      */
-    private val image: String? = null
+    val image: String? = null,
 
     /**
      * 胸章url 略缩图
      */
-    private val image_small: String? = null
+    val image_small: String? = null,
 
     /**
      * 勋章等级
      */
-    private val level: String? = null
+    val level: String? = null,
 
     /**
      * 获取条件
      */
-    private val condition: String? = null
-}
+    val condition: String? = null
+)
