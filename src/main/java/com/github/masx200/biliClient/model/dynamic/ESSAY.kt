@@ -3,8 +3,7 @@ package com.github.masx200.biliClient.model.dynamic
 import com.github.masx200.biliClient.model.BaseModel
 import com.github.masx200.biliClient.utils.TransDate
 import java.util.Date
-import lombok.Getter
-import lombok.Setter
+import kotlinx.serialization.Serializable
 
 /**
  * Auto-generated: 2024-11-27 13:23:3
@@ -12,23 +11,19 @@ import lombok.Setter
  * @author json.cn (i@json.cn)
  * @website [...](http://www.json.cn/)
  */
-@Setter
-@Getter
-data //@com.alibaba.fastjson2.annotation.JSONCompiled
-class ESSAY : BaseModel {
-    private val ctime: Long = 0
-    private val id: Long = 0
-    private val title: String? = null
-    private val summary: String? = null
-    private val author: Author? = null
-    private val image_urls: MutableList<String?>? = null
-    private val publish_time: Long = 0
-
-    // private long ctime;
-    private val mtime = 0
-    private val stats: String? = null
-    private val origin_image_urls: MutableList<String?>? = null
-
+@Serializable
+data class ESSAYl(
+    val ctime: Long = 0,
+    val id: Long = 0,
+    val title: String? = null,
+    val summary: String? = null,
+    val author: Author? = null,
+    val image_urls: MutableList<String?>? = null,
+    val publish_time: Long = 0,
+    val mtime: Int = 0,
+    val stats: String? = null,
+    val origin_image_urls: MutableList<String?>? = null
+) : BaseModel {
     override fun createTime(): Date {
         return TransDate.timestampToDate(this.ctime)
     }
