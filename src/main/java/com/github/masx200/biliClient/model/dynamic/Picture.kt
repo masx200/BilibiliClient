@@ -73,5 +73,5 @@ data class Picture(
      * ]`
      *
      */
-    val img_tags: List<Map<String, Any?>>? = null
+    val img_tags: List<Any>? = null
 )
