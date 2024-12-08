@@ -71,9 +71,9 @@ data class DynamicInfoClass
 
             for (dynamic in dynamics!!) {
                 viewAll += dynamic!!.data!!.view
-                likeAll += dynamic.data.like
-                repostAll += dynamic.data.repost
-                commentAll += dynamic.data.comment
+                likeAll += dynamic.data!!.like
+                repostAll += dynamic.data!!.repost
+                commentAll += dynamic.data!!.comment
                 if (dynamic.type == Dynamic.DType.VIDEO) {
                     coinAll += dynamic.video!!.stat!!.coin
                 }
