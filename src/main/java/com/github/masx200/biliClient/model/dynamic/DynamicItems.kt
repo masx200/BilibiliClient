@@ -83,7 +83,7 @@ class DynamicItems(
                 val cards: MutableList<Dynamic?> = cardsarray.stream().map { obj: DynamicCard? -> obj!!.toDynamic() }
                     .filter { obj: Any? -> Objects.nonNull(obj) }
                     .collect(Collectors.toList())
-                dynamicItems.setItems(cards)
+                dynamicItems.SETITEMS(cards)
 
                 // 返回
                 return dynamicItems
@@ -95,7 +95,7 @@ class DynamicItems(
         }
     }
 
-    fun setItems(dynamics: MutableList<Dynamic?>) {
+    fun SETITEMS(dynamics: MutableList<Dynamic?>) {
         items = dynamics
     }
 }

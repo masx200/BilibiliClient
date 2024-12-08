@@ -88,8 +88,8 @@ data class Dynamic(
         this.uid = value
     }
 
-    fun setName(value: String?) {
-        this.name = value.toString()
+    fun SETNAME(value: String?) {
+        this.name= value.toString()
     }
 
     /**
