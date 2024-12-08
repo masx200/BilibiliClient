@@ -1,10 +1,10 @@
-package com.github.masx200.biliClient.model.user;
+package com.github.masx200.biliClient.model.user
 
-import com.github.masx200.biliClient.model.LiveRoom;
-import com.github.masx200.biliClient.model.SysNotice;
+import com.github.masx200.biliClient.model.LiveRoom
+import com.github.masx200.biliClient.model.SysNotice
+import kotlinx.serialization.Serializable
 
-import lombok.Data;
-
+//import lombok.Data;
 /**
  * 描述： 哔哩哔哩用户对象
  *
@@ -12,113 +12,123 @@ import lombok.Data;
  * @version 1.0 2021-02-07-13:51
  * @since 2021-02-07-13:51
  */
-@Data
-@com.alibaba.fastjson2.annotation.JSONCompiled
-public class User {
-    /**
-     * UID
-     */
-    private Long mid;
+//@Data
+//@com.alibaba.fastjson2.annotation.JSONCompiled
+@Serializable
+data class User(
+    val mid: Long? = null,
+
     /**
      * 名称
      */
-    private String name;
+    val name: String? = null,
+
     /**
      * 性别
      */
-    private String sex;
+    val sex: String? = null,
+
     /**
      * 头像连接
      */
-    private String face;
+    val face: String? = null,
+
     /**
      * 签名
      */
-    private String sign;
+    val sign: String? = null,
+
     /**
      * rank
      */
-    private Long rank = 1000L;
+    val rank: Long = 1000L,
+
     /**
      * 等级
      */
-    private Integer level;
+    val level: Int? = null,
 
     /**
      * 封禁状态
-     * <p>
+     *
+     *
      * 0: 正常
-     * </p>
-     * <p>
+     *
+     *
+     *
      * 1: 封禁
-     * </p>
+     *
      */
-    private Integer silence;
+    val silence: Int? = null,
 
     /**
      * 生日
-     * <p>
-     * 格式 <b>MM-DD</b>
-     * </p>
+     *
+     *
+     * 格式 **MM-DD**
+     *
      */
-    private String birthday;
+    val birthday: String? = null,
 
     /**
      * 硬币数目
-     * <p>
-     * <b>需要登录后才能查看</b>
-     * </p>
+     *
+     *
+     * **需要登录后才能查看**
+     *
      */
-    private Long coins;
+    val coins: Long? = null,
 
     /**
      * 是否具有粉丝胸罩
      */
-    private Boolean fans_badge;
+    val fans_badge: Boolean? = null,
 
     /**
      * 认证信息
      */
-    private Official official;
+    val official: Official? = null,
 
     /**
      * 会员信息
      */
-    private Vip vip;
+    val vip: Vip? = null,
 
     /**
      * 头像框信息
      */
-    private Pendant pendant;
+    val pendant: Pendant? = null,
 
     /**
      * 勋章信息
      */
-    private Nameplate nameplate;
+    val nameplate: Nameplate? = null,
 
     /**
      * 是否关注
-     * <b>需要登录，否则为 false</b>
+     * **需要登录，否则为 false**
      */
-    private Boolean is_followed;
+    val is_followed: Boolean? = null,
 
     /**
      * 头图连接
      */
-    private String top_photo;
+    val top_photo: String? = null,
 
     /**
      * 主题信息
      */
-    private Object theme;
+    val theme: Any? = null,
 
     /**
      * 系统通知
-     * <p>
+     *
+     *
      * 纪念账号小黑屋等
-     * </p>
-     * <p>
-     * {@code "sys_notice": {
+     *
+     *
+     *
+     * `"sys_notice": {
      * "id": 20,
      * "content": "请允许我们在此献上最后的告别，以此纪念其在哔哩哔哩留下的回忆与足迹。请点此查看纪念账号相关说明\u003e",
      * "url": "https://www.bilibili.com/blackboard/help.html#/?qid=fb37c62ca61f4f10b8d17f3dc9051603",
@@ -126,14 +136,16 @@ public class User {
      * "icon": "https://i0.hdslb.com/bfs/space/ca6d0ed2edae23cf348db19cd2c293f2121c1b59.png",
      * "text_color": "#999999",
      * "bg_color": "#e7e7e7"
-     * }}
-     * </p>
+     * }`
+     *
      */
-    private SysNotice sys_notice;
+    val sys_notice: SysNotice? = null,
 
     /**
      * 直播间信息
      */
-    private LiveRoom live_room;
-
-}
+    val live_room: LiveRoom? = null
+)
+/**
+ * UID
+ */
