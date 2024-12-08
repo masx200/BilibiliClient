@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
  * @website [...](http://www.json.cn/)
  */
 @Serializable
-data class ESSAYl(
+data class ESSAY(
     val ctime: Long = 0,
     val id: Long = 0,
     val title: String? = null,
