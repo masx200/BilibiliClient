@@ -2,9 +2,6 @@ package com.github.masx200.biliClient.utils.dynamic
 
 import com.github.masx200.biliClient.model.dynamic.Dynamic
 
-interface DynamicInfo {
-    fun analyze(): DynamicInfo
-}
 /**
  * 描述： 动态信息
  *
