@@ -1,5 +1,7 @@
 package com.github.masx200.biliClient.model.dynamic
 
+import kotlinx.serialization.Serializable
+
 /**
  * 描述： 图片
  *
@@ -7,27 +9,27 @@ package com.github.masx200.biliClient.model.dynamic
  * @version 1.0 2021-02-07-20:21
  * @since 2021-02-07-20:21
  */
-data //@com.alibaba.fastjson2.annotation.JSONCompiled
-class Picture {
+@Serializable
+data class Picture(
     /**
      * 图片地址
      */
-    private val img_src: String? = null
+    val img_src: String? = null,
 
     /**
      * 图片大小
      */
-    private val img_size: Double? = null
+    val img_size: Double? = null,
 
     /**
      * 图片宽度
      */
-    private val img_width: Int? = null
+    val img_width: Int? = null,
 
     /**
      * 图片高度
      */
-    private val img_height: Int? = null
+    val img_height: Int? = null,
 
     /**
      * 图片标签
@@ -71,5 +73,5 @@ class Picture {
      * ]`
      *
      */
-    private val img_tags: Any? = null
-}
+    val img_tags: List<Map<String, Any?>>? = null
+)
