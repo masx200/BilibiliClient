@@ -15,7 +15,8 @@ import java.util.function.Consumer
 //data
 //@com.alibaba.fastjson2.annotation.JSONCompiled
 data class DynamicSortInfo(
-    val dynamics: MutableList<Dynamic?>? = ArrayList<Dynamic?>(), var viewAll: Long = 0,
+    val dynamics: MutableList<Dynamic?>? = ArrayList<Dynamic?>(),
+    var viewAll: Long = 0,
 
     /**
      * 点赞总数
