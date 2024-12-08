@@ -1,5 +1,7 @@
 package com.github.masx200.biliClient.model.user
 
+import kotlinx.serialization.Serializable
+
 /**
  * 描述： 哔哩哔哩会员信息
  *
@@ -7,8 +9,64 @@ package com.github.masx200.biliClient.model.user
  * @version 1.0 2021-02-07-14:07
  * @since 2021-02-07-14:07
  */
+@Serializable
 data //@com.alibaba.fastjson2.annotation.JSONCompiled
-class Vip {
+class Vip(
+    val type: Int? = null,
+
+    /**
+     * 是否有会员
+     *
+     *
+     * 0 无
+     *
+     *
+     *
+     * 1 有
+     *
+     */
+    val status: Int? = null,
+
+    /**
+     * 主题类型 默认 ""
+     */
+    val theme_type: Int? = null,
+    /**
+     * 标签
+     *
+     *
+     * `"label": {
+     * "path": "",
+     * "text": "",
+     * "label_theme": ""
+     * }
+    ` *
+     *
+     */
+    val label: Label? = null,
+
+    /**
+     * 是否外显会员
+     *
+     *
+     * 0 不显示
+     *
+     *
+     *
+     * 1 显示
+     *
+     */
+    val avatar_subscript: Int? = null,
+
+    /**
+     * 活动昵称颜色代码 默认 ""
+     *
+     *
+     * 粉色或绿色(愚人节)
+     *
+     */
+    val nickname_color: String? = null
+) {
     /**
      * 会员类型
      *
@@ -24,73 +82,14 @@ class Vip {
      * 2 年费会员
      *
      */
-    private val type: Int? = null
-
-    /**
-     * 是否有会员
-     *
-     *
-     * 0 无
-     *
-     *
-     *
-     * 1 有
-     *
-     */
-    private val status: Int? = null
-
-    /**
-     * 主题类型 默认 ""
-     */
-    private val theme_type: Int? = null
-
-    /**
-     * 标签
-     *
-     *
-     * `"label": {
-     * "path": "",
-     * "text": "",
-     * "label_theme": ""
-     * }
-    ` *
-     *
-     */
-    private val label: Label? = null
-
-    /**
-     * 是否外显会员
-     *
-     *
-     * 0 不显示
-     *
-     *
-     *
-     * 1 显示
-     *
-     */
-    private val avatar_subscript: Int? = null
-
-    /**
-     * 活动昵称颜色代码 默认 ""
-     *
-     *
-     * 粉色或绿色(愚人节)
-     *
-     */
-    private val nickname_color: String? = null
-
+    @Serializable
     data //    @com.alibaba.fastjson2.annotation.JSONCompiled
-    class Label {
-        /**
-         * 渠道路径
-         */
-        private val path: String? = null
-
+    class Label(
+        val path: String? = null,
         /**
          * 名称
          */
-        private val text: String? = null
+        val text: String? = null
 
         /**
          * 标签
@@ -111,6 +110,11 @@ class Vip {
          * hundred_annual_vip：百年大会员
          *
          */
-        private val label_theme: String? = null
+        , val label_theme: String? = null
+    ) {
+        /**
+         * 渠道路径
+         */
+
     }
 }

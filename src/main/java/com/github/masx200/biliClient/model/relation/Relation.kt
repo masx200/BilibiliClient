@@ -1,7 +1,9 @@
 package com.github.masx200.biliClient.model.relation
 
 import com.github.masx200.biliClient.BiliResult
-import kotlinx.serialization.json.Json
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonNames
 
 //import com.alibaba.fastjson.JSONObject;
 /**
@@ -11,6 +13,7 @@ import kotlinx.serialization.json.Json
  * @version 1.0 2021-02-08-16:32
  * @since 2021-02-08-16:32
  */
+@Serializable
 data //@com.alibaba.fastjson2.annotation.JSONCompiled
 class Relation(
     /**
@@ -38,10 +41,19 @@ class Relation(
         @JvmStatic
         fun build(result: BiliResult): Relation {
             val relation: Relation = result.toData<Relation>()
-            val list: MutableList<Follower?>? = Json.decodeFromString(result.data.toString())
-                .getJSONArray("list").toJavaList(Follower::class.java)
+            val list: MutableList<Follower?>? = result.toData<DataFollowersRoot>()
+                .list
             relation.items=(list)
             return relation
         }
     }
 }
+
+@Serializable
+@OptIn(ExperimentalSerializationApi::class)
+data class DataFollowersRoot(
+    val list: MutableList<Follower?>?,
+    @JsonNames("re_version")
+    val reVersion: Long,
+    val total: Long,
+)

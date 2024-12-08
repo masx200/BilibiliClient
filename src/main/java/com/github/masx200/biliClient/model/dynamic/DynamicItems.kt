@@ -3,6 +3,7 @@ package com.github.masx200.biliClient.model.dynamic
 import com.github.masx200.biliClient.BiliResult
 import java.util.Objects
 import java.util.stream.Collectors
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import lombok.extern.slf4j.Slf4j
 
@@ -15,9 +16,28 @@ import lombok.extern.slf4j.Slf4j
  * @version 1.0 2021-02-07-22:14
  * @since 2021-02-07-22:14
  */
+@Serializable
 @Slf4j
 data //@com.alibaba.fastjson2.annotation.JSONCompiled
-class DynamicItems {
+class DynamicItems(
+    val hasMore: Int? = null,
+    /**
+     * dynamic 集合
+     *
+     *
+     * 为避免空指针,默认为null集合
+     *
+     */
+    var items: MutableList<Dynamic?> = ArrayList<Dynamic?>(),
+    /**
+     * 下一次请求偏移量
+     *
+     *
+     * 第一次为0
+     *
+     */
+    val nextOffset: Long = 0L
+) {
     /**
      * 是否还有更多
      *
@@ -29,25 +49,7 @@ class DynamicItems {
      * 0 否
      *
      */
-    private val hasMore: Int? = null
 
-    /**
-     * dynamic 集合
-     *
-     *
-     * 为避免空指针,默认为null集合
-     *
-     */
-    private val items: MutableList<Dynamic?> = ArrayList<Dynamic?>()
-
-    /**
-     * 下一次请求偏移量
-     *
-     *
-     * 第一次为0
-     *
-     */
-    private val nextOffset = 0L
 
     companion object {
         /**
@@ -64,7 +66,7 @@ class DynamicItems {
         @Throws(Exception::class)
         fun build(result: BiliResult): DynamicItems {
             try {
-                val dynamicItems: DynamicItems = result.toData(DynamicItems::class.java)
+                val dynamicItems: DynamicItems = result.toData<DynamicItems>()
 
                 // 没有更多就返回包含源数据的对象
                 // if (dynamicItems.hasMore != 1) {
@@ -90,5 +92,9 @@ class DynamicItems {
                 throw e
             }
         }
+    }
+
+    fun setItems(dynamics: MutableList<Dynamic?>) {
+        items = dynamics
     }
 }
