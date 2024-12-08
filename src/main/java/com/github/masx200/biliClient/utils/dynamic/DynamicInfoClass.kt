@@ -78,7 +78,7 @@ data class DynamicInfoClass
                 repostAll += dynamic.data.repost
                 commentAll += dynamic.data.comment
                 if (dynamic.type == Dynamic.DType.VIDEO) {
-                    coinAll += dynamic.video!!.stat.coin
+                    coinAll += dynamic.video!!.stat!!.coin
                 }
             }
 
