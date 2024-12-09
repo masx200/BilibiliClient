@@ -11,7 +11,7 @@
                 GitHub Packages
             </name>
             <url>
-                https://maven.pkg.github.com/masx200/BilibiliClient
+                https://maven.pkg.github.com/masx200/bilibiliclient
             </url>
         </repository>
     </distributionManagement>
@@ -26,13 +26,13 @@
     </groupId>
     <!-- 项目坐标 -->
     <artifactId>
-        BilibiliClient
+        bilibiliclient
     </artifactId>
     <version>
         1.3.2
     </version>
     <name>
-        BilibiliClient
+        bilibiliclient
     </name>
     <description>
         Bilibili Java API Interface
