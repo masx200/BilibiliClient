@@ -6,7 +6,7 @@
   <parent><groupId>com.github.masx200</groupId><artifactId>LinlingClient</artifactId><version>1.0.6</version></parent> -->
   <groupId>com.github.masx200</groupId><!-- 项目坐标 -->
   <artifactId>BilibiliClient</artifactId>
-  <version>1.2.1</version>
+  <version>1.3.0</version>
   <name>BilibiliClient</name>
   <description>Bilibili Java API Interface</description><!-- 属性管理 -->
   <properties>
@@ -186,24 +186,26 @@
         </executions>
       </plugin>
     </plugins>
-  </build><!-- 依赖 -->
+  </build><!--
+  依赖 -->
   <dependencies>
     <!--    <dependency>-->
     <!--      <groupId>com.alibaba.fastjson2</groupId>-->
     <!--      <artifactId>fastjson2</artifactId>-->
     <!--      <version>${fastjson2.version}</version>-->
     <!--    </dependency> -->
-   <!-- <dependency>
+    <!-- <dependency>
       <groupId>com.alibaba.fastjson2</groupId>
       <artifactId>fastjson2-codegen</artifactId>
       <version>${fastjson2.version}</version>
     </dependency>-->
     <!--
-      <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-api</artifactId><version>5.7.0</version><scope>test</scope></dependency> -->
+    <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-api</artifactId><version>5.7.0</version><scope>test</scope></dependency> -->
     <!--    <dependency>-->
 
     <!--      <groupId>junit</groupId>-->
-    <!--      <artifactId>junit</artifactId>&lt;!&ndash; 默认的版本为3.8.1，修改为4.x,因为3.x使用的为编程的方式，4.x为注解的形式。 &ndash;&gt;-->
+    <!--      <artifactId>junit</artifactId>&lt;!&ndash; 默认的版本为3.8.1，修改为4.x,因为3.x使用的为编程的方式，4.x为注解的形式。
+    &ndash;&gt;-->
     <!--      <version>4.13.1</version>-->
     <!--      <scope>test</scope>-->
     <!--    </dependency>-->
@@ -242,7 +244,7 @@
       <groupId>org.jetbrains.kotlinx</groupId>
       <artifactId>kotlinx-serialization-json</artifactId>
       <version>1.6.0</version> <!-- 确认这是最新版本 -->
-<!--      <scope>compile</scope>-->
+      <!--      <scope>compile</scope>-->
     </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
