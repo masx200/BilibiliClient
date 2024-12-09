@@ -94,20 +94,30 @@ class DynamicCard (
                     // 转发
                     dynamic.SETTYPE(Dynamic.DType.REPOST)
                     // 转发内容
-                    val string = dynamicCard["item"]
-                    if (string is JsonPrimitive && string.isString) {
+                    val stringcontent = if (dynamicCard["item"] != null) Json.encodeToString<JsonElement>(
+                        JsonElement.serializer(),
+                        dynamicCard["item"]!!
+                    ) else {
+                        null
+                    }
+                    if (stringcontent is String) {
                         dynamic.setrepost(Json {
                             ignoreUnknownKeys = true
-                        }.decodeFromString<DynamicRepost>(string.content))
+                        }.decodeFromString<DynamicRepost>(stringcontent))
                     }
                     // 源内容
                     val origin = dynamicCard["origin"]
                     // 若源内容违规被屏蔽 避免转换失败
                     if (origin != null && origin is JsonObject && !origin.isEmpty()) {
-                        val string1 = origin["item"]
-                        if (string1 is JsonPrimitive && string1.isString) {
+                        val stringcontent = if (dynamicCard["item"] != null) Json.encodeToString<JsonElement>(
+                            JsonElement.serializer(),
+                            dynamicCard["item"]!!
+                        ) else {
+                            null
+                        }
+                        if (stringcontent is String) {
                             dynamic.detail =
-                                Json { ignoreUnknownKeys = true }.decodeFromString<DynamicDetail>(string1.content)
+                                Json { ignoreUnknownKeys = true }.decodeFromString<DynamicDetail>(stringcontent)
                         }
                     }
                 } else if (this.GETDESC().bvid != null && !this.GETDESC().bvid!!.isEmpty()) {
@@ -124,10 +134,15 @@ class DynamicCard (
                     // 普通动态
                     dynamic.SETTYPE(Dynamic.DType.COMMON)
                     // 写入详情
-                    val string = dynamicCard["item"]
-                    if (string is JsonPrimitive && string.isString) {
+                    val stringcontent = if (dynamicCard["item"] != null) Json.encodeToString<JsonElement>(
+                        JsonElement.serializer(),
+                        dynamicCard["item"]!!
+                    ) else {
+                        null
+                    }
+                    if (stringcontent is String) {
                         dynamic.detail =
-                            Json { ignoreUnknownKeys = true }.decodeFromString<DynamicDetail>(string.content)
+                            Json { ignoreUnknownKeys = true }.decodeFromString<DynamicDetail>(stringcontent)
                     }
                 }
             }
