@@ -45,6 +45,8 @@ class DynamicCard (
      *
      */
     val card: String? = null,
+    val extend_json: String? = null,
+    val display : JsonElement?=null
 //    val origin: JsonElement?,
 ){
 //     val log = KotlinLogging.logger {}
@@ -155,11 +157,11 @@ class DynamicCard (
         }
     }
 
-     fun GETCARD(): String {
+    fun GETCARD(): String {
         return card!!
     }
 
-     fun GETDESC(): DynamicData {
+    fun GETDESC(): DynamicData {
 
         return desc!!
     }

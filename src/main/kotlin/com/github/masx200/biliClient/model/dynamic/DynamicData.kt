@@ -4,6 +4,7 @@ import com.github.masx200.biliClient.model.BaseModel
 import com.github.masx200.biliClient.utils.TransDate
 import java.util.Date
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 /**
  * 描述： 动态 数据
@@ -13,6 +14,9 @@ import kotlinx.serialization.Serializable
  * @since 2021-02-07-21:06
  */@Serializable
 data class DynamicData(
+    val origin: JsonElement?=null,
+    val orig_dy_id_str: String? = null,
+    val rid_str: String? = null,
     /**
      * 动态类型
      */
@@ -22,7 +26,7 @@ data class DynamicData(
      * 作者ID
      */
     val uid: Long? = null,
-
+    val rid: Long? = null,
     /**
      * 动态 id
      */
@@ -36,7 +40,17 @@ data class DynamicData(
      *
      */
     val orig_dy_id: Long? = null,
-
+    val pre_dy_id: Long? = null,
+    val orig_type: Long? = null,
+    val uid_type: Long? = null,
+    val stype: Long? = null,
+    val dynamic_id_str: String? = null,
+    val pre_dy_id_str: String? = null,
+    val inner_id: Long? = null,
+    val status: Long? = null,
+    val r_type: Long? = null,
+    val spec_type: Long? = null,
+    val user_profile: JsonElement? = null,
     /**
      * 时间
      */
@@ -61,6 +75,7 @@ data class DynamicData(
      * 点赞
      */
     val like: Long = 0,
+    val acl: Long = 0,
 
     /**
      * 是否点赞
@@ -82,7 +97,8 @@ data class DynamicData(
      * 仅仅视频动态存在 其余为null or empty
      *
      */
-    val bvid: String? = null
+    val bvid: String? = null,
+    val previous: JsonElement?=null,
 ) : BaseModel {
 
     override fun createTime(): Date {
