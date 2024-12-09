@@ -4,6 +4,8 @@ import com.github.masx200.biliClient.model.BaseModel
 import com.github.masx200.biliClient.model.user.User
 import com.github.masx200.biliClient.utils.TransDate
 import java.util.Date
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 /**
  * 描述： 视频稿件对象
@@ -11,7 +13,7 @@ import java.util.Date
  * @author lpc lpc@hll520.cn
  * @version 1.0 2021-02-08-18:37
  * @since 2021-02-08-18:37
- */
+ */@Serializable
 data class Video(
     val bvid: String? = null,
 
@@ -198,7 +200,7 @@ data class Video(
      * }`
      *
      */
-    val rights: Any? = null,
+    val rights: JsonElement? = null,
 
     /**
      * 视频所有者
@@ -259,7 +261,7 @@ data class Video(
      * }`
      *
      */
-    val subtitle: Any? = null,
+    val subtitle: JsonElement? = null,
 
     /**
      * 合作者信息
@@ -276,7 +278,7 @@ data class Video(
      * }`
      *
      */
-    val user_garb: Any? = null
+    val user_garb: JsonElement? = null
 ) : BaseModel {
     /**
      * bv

@@ -1,6 +1,7 @@
 package com.github.masx200.biliClient.model.dynamic
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 /**
  * 描述： 图片
@@ -73,5 +74,5 @@ data class Picture(
      * ]`
      *
      */
-    val img_tags: List<Any>? = null
+    val img_tags: List<JsonElement>? = null
 )

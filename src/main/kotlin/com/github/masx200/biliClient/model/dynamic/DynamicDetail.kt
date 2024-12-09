@@ -1,5 +1,5 @@
 package com.github.masx200.biliClient.model.dynamic
-
+import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.Serializable
 
 /**
@@ -37,12 +37,12 @@ data class DynamicDetail(
     /**
      * 角色 List
      */
-    val role: Any? = null,
+    val role: JsonElement? = null,
 
     /**
      * 来源 List
      */
-    val source: Any? = null,
+    val source: JsonElement? = null,
 
     /**
      * 图片
@@ -73,7 +73,7 @@ data class DynamicDetail(
      * }`
      *
      */
-    val settings: Any? = null,
+    val settings: JsonElement? = null,
 
     /**
      * 是否喜欢

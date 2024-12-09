@@ -10,6 +10,7 @@ import com.github.masx200.biliClient.model.user.Vip
 import com.github.masx200.biliClient.utils.TransDate
 import java.util.Date
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 /**
  * 描述： 关注者
@@ -126,7 +127,7 @@ data class Follower(
     /**
      * 主题信息
      */
-    val theme: Any? = null,
+    val theme: JsonElement? = null,
 
     /**
      * 系统通知

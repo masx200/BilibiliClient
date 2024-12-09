@@ -3,6 +3,7 @@ package com.github.masx200.biliClient.model.dynamic
 import com.github.masx200.biliClient.model.BaseModel
 import com.github.masx200.biliClient.utils.TransDate
 import java.util.Date
+import kotlinx.serialization.Serializable
 
 /**
  * 描述： 动态 数据
@@ -10,7 +11,7 @@ import java.util.Date
  * @author lpc lpc@hll520.cn
  * @version 1.0 2021-02-07-21:06
  * @since 2021-02-07-21:06
- */
+ */@Serializable
 data class DynamicData(
     /**
      * 动态类型

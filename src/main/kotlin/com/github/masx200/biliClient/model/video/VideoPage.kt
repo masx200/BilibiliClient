@@ -1,12 +1,14 @@
 package com.github.masx200.biliClient.model.video
 
+import kotlinx.serialization.Serializable
+
 /**
  * 描述： 稿件单P
  *
  * @author lpc lpc@hll520.cn
  * @version 1.0 2021-02-08-19:01
  * @since 2021-02-08-19:01
- */
+ */@Serializable
 data class VideoPage(
     /**
      * cid

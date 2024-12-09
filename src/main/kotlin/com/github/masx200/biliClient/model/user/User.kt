@@ -3,6 +3,7 @@ package com.github.masx200.biliClient.model.user
 import com.github.masx200.biliClient.model.LiveRoom
 import com.github.masx200.biliClient.model.SysNotice
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 //import lombok.Data;
 /**
@@ -118,7 +119,7 @@ data class User(
     /**
      * 主题信息
      */
-    val theme: Any? = null,
+    val theme: JsonElement? = null,
 
     /**
      * 系统通知
