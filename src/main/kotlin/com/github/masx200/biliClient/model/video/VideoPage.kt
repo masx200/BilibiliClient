@@ -45,7 +45,7 @@ data class VideoPage(
     /**
      * 当前P 时长 秒
      */
-    val duration: String? = null,
+    val duration: Long? = null,
 
     /**
      * vid
