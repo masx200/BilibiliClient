@@ -31,7 +31,7 @@ jobs:
       - name: Upload binary
         uses: actions/upload-artifact@v4
         with:
-          name: bilibili-dynamic-image-downloader-all.jar
+          name: BilibiliClient-lib.jar
           path: target/BilibiliClient-*.jar
       - name: Release
         uses: softprops/action-gh-release@v2
