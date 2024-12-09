@@ -5,8 +5,8 @@ import com.github.masx200.biliClient.BiliClientFactor
 import com.github.masx200.biliClient.exception.BiliRequestException
 import com.github.masx200.biliClient.model.dynamic.Dynamic
 import java.util.function.Consumer
-import org.apache.http.client.methods.HttpRequestBase
 import kotlin.test.Test
+import org.apache.http.client.methods.HttpRequestBase
 
 /**
  * 描述： 动态测试
@@ -25,42 +25,42 @@ class IDynamicConditionTest {
 
     @Test
     fun withDynamicIdForward() {
-        val dynamic = biliClient.dynamic().withDynamicId(484920426409631452L).get()
+        val dynamic = biliClient.dynamic()!!.withDynamicId(484920426409631452L)!!.get()
         println(dynamic)
-        println(dynamic.data!!.createTime())
+        println(dynamic?.let { it.data!! }?.createTime())
     }
 
     @Test
     fun withDynamicId() {
-        val dynamic = biliClient.dynamic().withDynamicId(485425544628969967L).get()
+        val dynamic = biliClient.dynamic()!!.withDynamicId(485425544628969967L)!!.get()
         println(dynamic)
-        println(dynamic.data!!.createTime())
+        println(dynamic!!.data!!.createTime())
         println(dynamic.data!!.updateTime())
     }
 
     @Test
     @Throws(Exception::class)
     fun withHostUid() {
-        val list = biliClient.dynamic().withHostUid(392819792L).list()
+        val list = biliClient.dynamic().withHostUid(392819792L)!!.list()
         println(list)
-        list.items.forEach(Consumer { x: Dynamic? -> println(x) })
-        println(list.items.get(0)!!.data)
-        println(list.items.get(0)!!.data!!.view)
-        if (list.items.get(0)!!.detail != null) {
-            println(list.items.get(0)!!.detail!!.description)
+        list!!.items.forEach(Consumer { x: Dynamic? -> println(x) })
+        println(list.items[0]!!.data)
+        println(list.items[0]!!.data!!.view)
+        if (list.items[0]!!.detail != null) {
+            println(list.items[0]!!.detail!!.description)
         }
 
-        println(list.items.get(0)!!.uid)
-        println(list.items.get(0)!!.name)
+        println(list.items[0]!!.uid)
+        println(list.items[0]!!.name)
     }
 
     @Test
     @Throws(Exception::class)
     fun withHostUidOffset() {
-        val list = biliClient.dynamic().withHostUid(392819792L).list()
+        val list = biliClient.dynamic().withHostUid(392819792L)!!.list()
         println(list)
         println("__________________")
-        val list1 = biliClient.dynamic().withHostUid(392819792L).list(list.nextOffset)
+        val list1 = biliClient.dynamic().withHostUid(392819792L)!!.list(list!!.nextOffset)
         println(list1)
     }
 
@@ -68,7 +68,7 @@ class IDynamicConditionTest {
     @Test
     fun withHostUidOffsetLimit() {
         try {
-            biliClient.dynamic().withHostUid(392819792L).list(20L, 30L)
+            biliClient.dynamic().withHostUid(392819792L)!!.list(20L, 30L)
         } catch (e: BiliRequestException) {
             e.printStackTrace()
         }

@@ -20,7 +20,7 @@ interface IDynamicCondition : BiliCondition {
      * @param dynamicId 动态id
      * @return 动态
      */
-    fun withDynamicId(dynamicId: Long?): Gettable<Dynamic?>?
+    fun withDynamicId(dynamicId: Long?): Gettable<Dynamic?>
 
     /**
      * 根据用户获取动态列表
@@ -28,5 +28,5 @@ interface IDynamicCondition : BiliCondition {
      * @param uid 用户id
      * @return list
      */
-    fun withHostUid(uid: Long?): Listable<DynamicItems?>?
+    fun withHostUid(uid: Long?): Listable<DynamicItems?>
 }

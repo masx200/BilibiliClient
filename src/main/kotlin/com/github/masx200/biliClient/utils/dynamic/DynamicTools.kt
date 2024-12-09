@@ -21,10 +21,10 @@ object DynamicTools {
     @Throws(Exception::class)
     fun queryAll(biliClient: BiliClient, uid: Long?): MutableList<Dynamic?> {
         val dynamics: MutableList<Dynamic?> = ArrayList<Dynamic?>()
-        var items = biliClient.dynamic().withHostUid(uid).list(0L)
+        var items = biliClient.dynamic()!!.withHostUid(uid)!!.list(0L)
         do {
             dynamics.addAll(items!!.items)
-            items = biliClient.dynamic().withHostUid(uid).list(items.nextOffset)
+            items = biliClient.dynamic()!!.withHostUid(uid)!!.list(items.nextOffset)
         } while (items != null && items.hasMore == 1L)
         return dynamics
     }

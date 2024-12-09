@@ -26,14 +26,14 @@ class UserConditionImpl : IUserCondition {
         this.beforeRequest = beforeRequest
     }
 
-    override fun withUID(uid: Long?): Gettable<User?>? {
+    override fun withUID(uid: Long?): Gettable<User> {
         return UserGet(
             BiliRequestFactor.getBiliRequest().setPath(UserPath.USER_INFO)
                 .setParams("mid", uid.toString()), beforeRequest
         )
     }
 
-    override fun withMe(): Gettable<User?>? {
+    override fun withMe(): Gettable<User> {
         return UserGet(BiliRequestFactor.getBiliRequest().setPath(UserPath.USER_MY_INFO), beforeRequest)
     }
 }

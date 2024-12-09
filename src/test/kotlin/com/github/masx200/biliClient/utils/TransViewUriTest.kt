@@ -4,8 +4,8 @@ import com.github.masx200.biliClient.BiliClient
 import com.github.masx200.biliClient.BiliClientFactor.getClient
 import com.github.masx200.biliClient.model.dynamic.Dynamic
 import java.util.function.Consumer
-import org.apache.http.client.methods.HttpRequestBase
 import kotlin.test.Test
+import org.apache.http.client.methods.HttpRequestBase
 
 /**
  * 描述： View转换工具
@@ -24,7 +24,7 @@ class TransViewUriTest {
 
     @Test
     fun transUser() {
-        val user = biliClient.user().withUID(5548903L).get()
+        val user = biliClient.user().withUID(5548903L)!!.get()
         println(user)
         println(TransViewUri.trans(user))
     }
@@ -32,12 +32,12 @@ class TransViewUriTest {
     @Test
     @Throws(Exception::class)
     fun transDynamic() {
-        val dynamic = biliClient.dynamic().withDynamicId(464864767376633630L).get()
+        val dynamic = biliClient.dynamic().withDynamicId(464864767376633630L)!!.get()
         println(dynamic)
         println(TransViewUri.trans(dynamic))
         println("############")
-        val list = biliClient.dynamic().withHostUid(392819792L).list()
-        list.items.stream().map<String?> { dynamic: Dynamic? -> TransViewUri.trans(dynamic) }
+        val list = biliClient.dynamic().withHostUid(392819792L)!!.list()
+        list!!.items.stream().map<String?> { dynamic: Dynamic? -> TransViewUri.trans(dynamic) }
             .forEach { x: String? -> println(x) }
     }
 

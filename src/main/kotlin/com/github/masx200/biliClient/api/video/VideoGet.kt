@@ -19,7 +19,7 @@ class VideoGet // 带参数的构造函数
 @JvmOverloads constructor(
     private val request: BiliRequest,
     private val beforeRequest: Consumer<HttpRequestBase?>? = null
-) : Gettable<Video?> {
+) : Gettable<Video> {
     override fun get(): Video {
         return doCall(request, beforeRequest).toData<Video>()
     }

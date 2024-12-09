@@ -2,8 +2,8 @@ package com.github.masx200.biliClient.api.user
 
 import com.github.masx200.biliClient.BiliClientFactor.getClient
 import java.util.function.Consumer
-import org.apache.http.client.methods.HttpRequestBase
 import kotlin.test.Test
+import org.apache.http.client.methods.HttpRequestBase
 
 /**
  * 描述： 用户测试
@@ -22,7 +22,7 @@ class IUserConditionTest {
 
     @Test
     fun withUID() {
-        val user = biliClient.user().withUID(392819792L).get()
+        val user = biliClient.user().withUID(392819792L).get()!!
         println(user)
         println(user.birthday)
         println(user.name)
@@ -33,7 +33,7 @@ class IUserConditionTest {
     fun withMe() {
         val user = biliClient.user().withMe().get()
         println(user)
-        println(user.birthday)
+        println(user!!.birthday)
         println(user.name)
         println(user.official)
     }

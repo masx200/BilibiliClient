@@ -1966,6 +1966,8 @@ class BiliResultTest {
 
         for (dynamic in items.items) {
             println(dynamic)
+            assert(dynamic?.detail!=null)
+            assert(dynamic?.detail?.pictures!=null)
         }
     }
 }

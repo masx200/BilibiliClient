@@ -18,12 +18,12 @@ interface IUserCondition : BiliCondition {
      * @param uid uid
      * @return get
      */
-    fun withUID(uid: Long?): Gettable<User?>?
+    fun withUID(uid: Long?): Gettable<User>
 
     /**
      * 获取当前登录用户信息
      *
      * @return get
      */
-    fun withMe(): Gettable<User?>?
+    fun withMe(): Gettable<User>
 }

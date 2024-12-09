@@ -18,26 +18,26 @@ interface BiliClient {
      *
      * @return 用户条件
      */
-    fun user(): IUserCondition?
+    fun user(): IUserCondition
 
     /**
      * 动态相关
      *
      * @return 动态条件
      */
-    fun dynamic(): IDynamicCondition?
+    fun dynamic(): IDynamicCondition
 
     /**
      * 关系相关
      *
      * @return 关系条件
      */
-    fun relation(): IRelationCondition?
+    fun relation(): IRelationCondition
 
     /**
      * 视频相关
      *
      * @return 视频条件
      */
-    fun video(): IVideoCondition?
+    fun video(): IVideoCondition
 }

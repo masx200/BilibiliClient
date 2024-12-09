@@ -26,14 +26,14 @@ class VideoConditionImpl : IVideoCondition {
         this.beforeRequest = beforeRequest
     }
 
-    override fun withAvid(av: Long): Gettable<Video?>? {
+    override fun withAvid(av: Long): Gettable<Video> {
         return VideoGet(
             BiliRequestFactor.getBiliRequest().setPath(VideoPath.VIDEO_INFO).setParams("aid", av),
             beforeRequest
         )
     }
 
-    override fun withBvid(bvid: String?): Gettable<Video?>? {
+    override fun withBvid(bvid: String?): Gettable<Video> {
         return VideoGet(
             BiliRequestFactor.getBiliRequest().setPath(VideoPath.VIDEO_INFO).setParams("bvid", bvid),
             beforeRequest

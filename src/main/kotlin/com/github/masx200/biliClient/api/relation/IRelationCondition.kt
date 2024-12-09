@@ -18,7 +18,7 @@ interface IRelationCondition : BiliCondition {
      * @param uid uid
      * @return relation
      */
-    fun toFollowers(uid: Long): Listable<Relation?>?
+    fun toFollowers(uid: Long): Listable<Relation?>
 
     /**
      * 关注
@@ -26,5 +26,5 @@ interface IRelationCondition : BiliCondition {
      * @param uid uid
      * @return relation
      */
-    fun toFollowings(uid: Long): Listable<Relation?>?
+    fun toFollowings(uid: Long): Listable<Relation?>
 }

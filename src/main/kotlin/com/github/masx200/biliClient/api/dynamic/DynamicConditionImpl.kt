@@ -28,14 +28,14 @@ class DynamicConditionImpl : IDynamicCondition {
         this.beforeRequest = beforeRequest
     }
 
-    override fun withDynamicId(dynamicId: Long?): Gettable<Dynamic?>? {
+    override fun withDynamicId(dynamicId: Long?): Gettable<Dynamic?> {
         return DynamicGet(
             BiliRequestFactor.getBiliRequest().useHostVC().setPath(DynamicPath.DYNAMIC_DETAIL)
                 .setParams("dynamic_id", dynamicId), beforeRequest
         )
     }
 
-    override fun withHostUid(uid: Long?): Listable<DynamicItems?>? {
+    override fun withHostUid(uid: Long?): Listable<DynamicItems?> {
         return DynamicList(
             BiliRequestFactor.getBiliRequest().useHostVC().setPath(DynamicPath.DYNAMIC_USER_LIST)
                 .setParams("host_uid", uid), beforeRequest

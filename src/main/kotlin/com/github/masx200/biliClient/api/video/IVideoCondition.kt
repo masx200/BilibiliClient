@@ -18,7 +18,7 @@ interface IVideoCondition : BiliCondition {
      * @param av av
      * @return get
      */
-    fun withAvid(av: Long): Gettable<Video?>?
+    fun withAvid(av: Long): Gettable<Video>
 
     /**
      * 根据bvid 查
@@ -26,5 +26,5 @@ interface IVideoCondition : BiliCondition {
      * @param bvid bv
      * @return get
      */
-    fun withBvid(bvid: String?): Gettable<Video?>?
+    fun withBvid(bvid: String?): Gettable<Video>
 }

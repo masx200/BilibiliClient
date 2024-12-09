@@ -1,10 +1,11 @@
 package com.github.masx200.biliClient.api.relation
 
+//import kotlin.test.Test
 import com.github.masx200.biliClient.BiliClientFactor.getClient
 import java.util.function.Consumer
-import org.apache.http.client.methods.HttpRequestBase
-//import kotlin.test.Test
 import kotlin.test.Test
+import org.apache.http.client.methods.HttpRequestBase
+
 /**
  * 描述：
  *
@@ -24,7 +25,7 @@ class IRelationConditionTest {
     @Throws(Exception::class)
     fun toFollowers() {
         val list = biliClient.relation().toFollowers(392819792L).list()
-        println(list.total)
+        println(list!!.total)
         println(list.items!!.get(0)!!.uname)
         println(list.items!!.get(0)!!.createTime())
     }
@@ -32,7 +33,7 @@ class IRelationConditionTest {
     @Test
     fun toFollowings() {
         val list = biliClient.relation().toFollowings(392819792L).listPage(25L, 2L)
-        println(list.total)
+        println(list!!.total)
         println(list.items!!.size)
         println(list.items!!.get(0)!!.uname)
         println(list.items!!.get(0)!!.createTime())

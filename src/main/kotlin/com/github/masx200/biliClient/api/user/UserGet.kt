@@ -21,7 +21,7 @@ class UserGet // 带参数的构造函数
 @JvmOverloads constructor(
     private val request: BiliRequest,
     private val beforeRequest: Consumer<HttpRequestBase?>? = null
-) : Gettable<User?> {
+) : Gettable<User> {
     override fun get(): User {
         try {
             return BiliCall.doCall(request, beforeRequest).toData<User>()
