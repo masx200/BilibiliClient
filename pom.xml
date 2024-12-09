@@ -43,8 +43,8 @@
           <skip>false</skip>
 
           <includes>
-            <include>src/test/**/*.java</include>
-            <include>src/test/**/*.kt</include>
+            <include>src/test/java</include>
+
           </includes>
 
         </configuration>
@@ -122,6 +122,46 @@
           <skip>false</skip>
         </configuration><!--        <configuration>--><!--          <compilerArgs>--><!--
         <arg>&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>--><!--          </compilerArgs>--><!--        </configuration>-->
+
+
+      </plugin><!-- 设置多个源文件夹 -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <!-- 添加主资源文件目录 -->
+
+          <!-- 添加主源码目录 -->
+          <execution>
+            <id>add-source</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${basedir}/src/main/java</source>
+
+              </sources>
+            </configuration>
+          </execution>
+
+          <!-- 添加测试源码目录 -->
+          <execution>
+            <id>add-test-source</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>add-test-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${basedir}/src/test/java</source>
+
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build><!-- 依赖 -->
