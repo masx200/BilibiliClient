@@ -61,6 +61,9 @@
               <goal>compile</goal>
             </goals>
             <configuration>
+              <compilerPlugins>
+                <plugin>kotlinx-serialization</plugin>
+              </compilerPlugins>
               <sourceDirs>
 
                 <!--                <testSource>src/test/kotlin</testSource>-->
