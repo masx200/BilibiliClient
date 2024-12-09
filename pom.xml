@@ -43,8 +43,8 @@
           <skip>false</skip>
 
           <includes>
-            <include>src/test/**/*Test*.java</include>
-            <include>src/test/**/*Test*.kt</include>
+            <include>src/test/**/*.java</include>
+            <include>src/test/**/*.kt</include>
           </includes>
 
         </configuration>
