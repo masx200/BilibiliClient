@@ -16,8 +16,8 @@
     <kotlin.version>2.1.0</kotlin.version>
   </properties>
   <build>
-    <testSourceDirectory>src/test/java</testSourceDirectory>
-    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/kotlin</testSourceDirectory>
+    <sourceDirectory>src/main/kotlin</sourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
@@ -40,12 +40,12 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.2</version>
         <configuration>
-          <skip>false</skip>
+          <!--          <skip>false</skip>-->
 
-          <includes>
-            <include>src/test/java</include>
+          <!--          <includes>-->
+          <!--            <include>src/test/kotlin</include>-->
 
-          </includes>
+          <!--          </includes>-->
 
         </configuration>
       </plugin>
@@ -63,9 +63,9 @@
             <configuration>
               <sourceDirs>
 
-                <!--                <testSource>src/test/java</testSource>-->
+                <!--                <testSource>src/test/kotlin</testSource>-->
 
-                <source>src/main/java</source>
+                <source>src/main/kotlin</source>
                 <source>target/generated-sources/annotations</source>
               </sourceDirs>
             </configuration>
@@ -78,9 +78,9 @@
             </goals>
             <configuration>
               <sourceDirs>
-<!--                <source>src/main/java</source>-->
-                <!--                <testSource>src/test/java</testSource>-->
-                <source>src/test/java</source>
+                <source>src/main/kotlin</source>
+                <!--                <testSource>src/test/kotlin</testSource>-->
+                <source>src/test/kotlin</source>
                 <source>target/generated-sources/annotations</source>
               </sourceDirs>
             </configuration>
@@ -119,7 +119,7 @@
           </execution>
         </executions>
         <configuration>
-          <skip>false</skip>
+          <!--          <skip>false</skip>-->
         </configuration><!--        <configuration>--><!--          <compilerArgs>--><!--
         <arg>&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>--><!--          </compilerArgs>--><!--        </configuration>-->
 
@@ -141,7 +141,7 @@
             </goals>
             <configuration>
               <sources>
-                <source>${basedir}/src/main/java</source>
+                <source>${basedir}/src/main/kotlin</source>
 
               </sources>
             </configuration>
@@ -156,7 +156,8 @@
             </goals>
             <configuration>
               <sources>
-                <source>${basedir}/src/test/java</source>
+                <source>${basedir}/src/main/kotlin</source>
+                <source>${basedir}/src/test/kotlin</source>
 
               </sources>
             </configuration>
