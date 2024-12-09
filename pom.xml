@@ -2,266 +2,459 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion><!-- 父项目 --><!--
-  <parent><groupId>com.github.masx200</groupId><artifactId>LinlingClient</artifactId><version>1.0.6</version></parent> -->
-  <groupId>com.github.masx200</groupId><!-- 项目坐标 -->
-  <artifactId>BilibiliClient</artifactId>
-  <version>1.3.0</version>
-  <name>BilibiliClient</name>
-  <description>Bilibili Java API Interface</description><!-- 属性管理 -->
+    <distributionManagement>
+        <repository>
+            <id>
+                github
+            </id>
+            <name>
+                GitHub Packages
+            </name>
+            <url>
+                https://maven.pkg.github.com/masx200/BilibiliClient
+            </url>
+        </repository>
+    </distributionManagement>
+    <modelVersion>
+        4.0.0
+    </modelVersion>
+    <!-- 父项目 -->
+    <!--
+    <parent><groupId>com.github.masx200</groupId><artifactId>LinlingClient</artifactId><version>1.0.6</version></parent> -->
+    <groupId>
+        com.github.masx200
+    </groupId>
+    <!-- 项目坐标 -->
+    <artifactId>
+        BilibiliClient
+    </artifactId>
+    <version>
+        1.3.0
+    </version>
+    <name>
+        BilibiliClient
+    </name>
+    <description>
+        Bilibili Java API Interface
+    </description>
+    <!-- 属性管理 -->
   <properties>
-    <!--    <fastjson2.version>2.0.53</fastjson2.version>-->
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
-    <kotlin.version>2.1.0</kotlin.version>
+      <!-- <fastjson2.version>2.0.53</fastjson2.version> -->
+      <maven.compiler.source>
+          21
+      </maven.compiler.source>
+      <maven.compiler.target>
+          21
+      </maven.compiler.target>
+      <kotlin.version>
+          2.1.0
+      </kotlin.version>
   </properties>
   <build>
-    <testSourceDirectory>src/test/kotlin</testSourceDirectory>
-    <sourceDirectory>src/main/kotlin</sourceDirectory>
+      <testSourceDirectory>
+          src/test/kotlin
+      </testSourceDirectory>
+      <sourceDirectory>
+          src/main/kotlin
+      </sourceDirectory>
     <plugins>
-      <!--      <plugin>-->
-      <!--        <groupId>org.jetbrains.kotlin</groupId>-->
-      <!--        <artifactId>kotlin-maven-allopen</artifactId>-->
-      <!--        <version>${kotlin.version}</version>-->
-      <!--      </plugin>-->
-      <!--      <plugin>-->
-      <!--        <groupId>org.jetbrains.kotlin</groupId>-->
-      <!--        <artifactId>kotlin-maven-noarg</artifactId>-->
-      <!--        <version>${kotlin.version}</version>-->
-      <!--      </plugin>-->
-      <!--      <plugin>-->
-      <!--        <groupId>org.jetbrains.kotlin</groupId>-->
-      <!--        <artifactId>kotlin-maven-serialization</artifactId>-->
-      <!--        <version>${kotlin.version}</version>-->
-
-      <!--      </plugin>-->
+        <!-- <plugin> -->
+        <!-- <groupId>org.jetbrains.kotlin</groupId> -->
+        <!-- <artifactId>kotlin-maven-allopen</artifactId> -->
+        <!-- <version>${kotlin.version}</version> -->
+        <!-- </plugin> -->
+        <!-- <plugin> -->
+        <!-- <groupId>org.jetbrains.kotlin</groupId> -->
+        <!-- <artifactId>kotlin-maven-noarg</artifactId> -->
+        <!-- <version>${kotlin.version}</version> -->
+        <!-- </plugin> -->
+        <!-- <plugin> -->
+        <!-- <groupId>org.jetbrains.kotlin</groupId> -->
+        <!-- <artifactId>kotlin-maven-serialization</artifactId> -->
+        <!-- <version>${kotlin.version}</version> -->
+        <!-- </plugin> -->
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.3.1</version>
+          <groupId>
+              org.apache.maven.plugins
+          </groupId>
+          <artifactId>
+              maven-surefire-plugin
+          </artifactId>
+          <version>
+              3.3.1
+          </version>
         <configuration>
-          <!--          <skip>false</skip>-->
-
-          <!--          <includes>-->
-          <!--            <include>src/test/kotlin</include>-->
-
-          <!--          </includes>-->
-
+            <!-- <skip>false</skip> -->
+            <!-- <includes> -->
+            <!-- <include>src/test/kotlin</include> -->
+            <!-- </includes> -->
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-maven-plugin</artifactId>
-        <version>${kotlin.version}</version>
+          <groupId>
+              org.jetbrains.kotlin
+          </groupId>
+          <artifactId>
+              kotlin-maven-plugin
+          </artifactId>
+          <version>
+              ${kotlin.version}
+          </version>
         <configuration>
-          <jvmTarget>${maven.compiler.target}</jvmTarget>
+            <jvmTarget>
+                ${maven.compiler.target}
+            </jvmTarget>
           <compilerPlugins>
-            <plugin>kotlinx-serialization</plugin>
+              <plugin>
+                  kotlinx-serialization
+              </plugin>
           </compilerPlugins>
           <sourceDirs>
-
-            <!--                <testSource>src/test/kotlin</testSource>-->
-
-            <source>src/main/kotlin</source>
-            <source>target/generated-sources/annotations</source>
+              <!-- <testSource>src/test/kotlin</testSource> -->
+              <source>
+                  src/main/kotlin
+              </source>
+              <source>
+                  target/generated-sources/annotations
+              </source>
           </sourceDirs>
         </configuration>
         <dependencies>
           <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-maven-serialization</artifactId>
-            <version>${kotlin.version}</version>
+              <groupId>
+                  org.jetbrains.kotlin
+              </groupId>
+              <artifactId>
+                  kotlin-maven-serialization
+              </artifactId>
+              <version>
+                  ${kotlin.version}
+              </version>
           </dependency>
         </dependencies>
         <executions>
           <execution>
-            <id>compile</id>
-            <phase>compile</phase>
+              <id>
+                  compile
+              </id>
+              <phase>
+                  compile
+              </phase>
             <goals>
-              <goal>compile</goal>
+                <goal>
+                    compile
+                </goal>
             </goals>
             <configuration>
               <compilerPlugins>
-                <plugin>kotlinx-serialization</plugin>
+                  <plugin>
+                      kotlinx-serialization
+                  </plugin>
               </compilerPlugins>
               <sourceDirs>
-
-                <!--                <testSource>src/test/kotlin</testSource>-->
-
-                <source>src/main/kotlin</source>
-                <source>target/generated-sources/annotations</source>
+                  <!-- <testSource>src/test/kotlin</testSource> -->
+                  <source>
+                      src/main/kotlin
+                  </source>
+                  <source>
+                      target/generated-sources/annotations
+                  </source>
               </sourceDirs>
             </configuration>
           </execution>
           <execution>
-            <id>test-compile</id>
-            <phase>test-compile</phase>
+              <id>
+                  test-compile
+              </id>
+              <phase>
+                  test-compile
+              </phase>
             <goals>
-              <goal>test-compile</goal>
+                <goal>
+                    test-compile
+                </goal>
             </goals>
             <configuration>
               <sourceDirs>
-                <source>src/main/kotlin</source>
-                <!--                <testSource>src/test/kotlin</testSource>-->
-                <source>src/test/kotlin</source>
-                <source>target/generated-sources/annotations</source>
+                  <source>
+                      src/main/kotlin
+                  </source>
+                  <!-- <testSource>src/test/kotlin</testSource> -->
+                  <source>
+                      src/test/kotlin
+                  </source>
+                  <source>
+                      target/generated-sources/annotations
+                  </source>
               </sourceDirs>
             </configuration>
           </execution>
         </executions>
-
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.12.1</version>
+          <groupId>
+              org.apache.maven.plugins
+          </groupId>
+          <artifactId>
+              maven-compiler-plugin
+          </artifactId>
+          <version>
+              3.12.1
+          </version>
         <executions>
           <execution>
-            <id>default-compile</id>
-            <phase>none</phase>
+              <id>
+                  default-compile
+              </id>
+              <phase>
+                  none
+              </phase>
           </execution>
           <execution>
-            <id>default-testCompile</id>
-            <phase>none</phase>
+              <id>
+                  default-testCompile
+              </id>
+              <phase>
+                  none
+              </phase>
           </execution>
           <execution>
-            <id>compile</id>
-            <phase>compile</phase>
+              <id>
+                  compile
+              </id>
+              <phase>
+                  compile
+              </phase>
             <goals>
-              <goal>compile</goal>
+                <goal>
+                    compile
+                </goal>
             </goals>
           </execution>
           <execution>
-            <id>testCompile</id>
-            <phase>test-compile</phase>
+              <id>
+                  testCompile
+              </id>
+              <phase>
+                  test-compile
+              </phase>
             <goals>
-              <goal>testCompile</goal>
+                <goal>
+                    testCompile
+                </goal>
             </goals>
           </execution>
         </executions>
         <configuration>
-          <!--          <skip>false</skip>-->
-        </configuration><!--        <configuration>--><!--          <compilerArgs>--><!--
-        <arg>&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>--><!--          </compilerArgs>--><!--        </configuration>-->
-
-
-      </plugin><!-- 设置多个源文件夹 -->
+            <!-- <skip>false</skip> -->
+        </configuration>
+          <!-- <configuration> -->
+          <!-- <compilerArgs> -->
+          <!-- <arg>&#45;&#45;add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg> -->
+          <!-- </compilerArgs> -->
+          <!-- </configuration> -->
+      </plugin>
+        <!-- 设置多个源文件夹 -->
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>3.0.0</version>
+          <groupId>
+              org.codehaus.mojo
+          </groupId>
+          <artifactId>
+              build-helper-maven-plugin
+          </artifactId>
+          <version>
+              3.0.0
+          </version>
         <executions>
           <!-- 添加主资源文件目录 -->
-
           <!-- 添加主源码目录 -->
           <execution>
-            <id>add-source</id>
-            <phase>initialize</phase>
+              <id>
+                  add-source
+              </id>
+              <phase>
+                  initialize
+              </phase>
             <goals>
-              <goal>add-source</goal>
+                <goal>
+                    add-source
+                </goal>
             </goals>
             <configuration>
               <sources>
-                <source>${basedir}/src/main/kotlin</source>
-
+                  <source>
+                      ${basedir}/src/main/kotlin
+                  </source>
               </sources>
             </configuration>
           </execution>
-
           <!-- 添加测试源码目录 -->
           <execution>
-            <id>add-test-source</id>
-            <phase>initialize</phase>
+              <id>
+                  add-test-source
+              </id>
+              <phase>
+                  initialize
+              </phase>
             <goals>
-              <goal>add-test-source</goal>
+                <goal>
+                    add-test-source
+                </goal>
             </goals>
             <configuration>
               <sources>
-                <source>${basedir}/src/main/kotlin</source>
-                <source>${basedir}/src/test/kotlin</source>
-
+                  <source>
+                      ${basedir}/src/main/kotlin
+                  </source>
+                  <source>
+                      ${basedir}/src/test/kotlin
+                  </source>
               </sources>
             </configuration>
           </execution>
         </executions>
       </plugin>
     </plugins>
-  </build><!--
-  依赖 -->
+  </build>
+    <!-- 依赖 -->
   <dependencies>
-    <!--    <dependency>-->
-    <!--      <groupId>com.alibaba.fastjson2</groupId>-->
-    <!--      <artifactId>fastjson2</artifactId>-->
-    <!--      <version>${fastjson2.version}</version>-->
-    <!--    </dependency> -->
-    <!-- <dependency>
-      <groupId>com.alibaba.fastjson2</groupId>
-      <artifactId>fastjson2-codegen</artifactId>
-      <version>${fastjson2.version}</version>
-    </dependency>-->
+      <!-- <dependency> -->
+      <!-- <groupId>com.alibaba.fastjson2</groupId> -->
+      <!-- <artifactId>fastjson2</artifactId> -->
+      <!-- <version>${fastjson2.version}</version> -->
+      <!-- </dependency> -->
+      <!--
+          <dependency>
+          <groupId>com.alibaba.fastjson2</groupId>
+          <artifactId>fastjson2-codegen</artifactId>
+          <version>${fastjson2.version}</version>
+          </dependency>
+          -->
     <!--
     <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-api</artifactId><version>5.7.0</version><scope>test</scope></dependency> -->
-    <!--    <dependency>-->
-
-    <!--      <groupId>junit</groupId>-->
-    <!--      <artifactId>junit</artifactId>&lt;!&ndash; 默认的版本为3.8.1，修改为4.x,因为3.x使用的为编程的方式，4.x为注解的形式。
-    &ndash;&gt;-->
-    <!--      <version>4.13.1</version>-->
-    <!--      <scope>test</scope>-->
-    <!--    </dependency>-->
+      <!-- <dependency> -->
+      <!-- <groupId>junit</groupId> -->
+      <!--
+          <artifactId>junit</artifactId>&lt;!&ndash; 默认的版本为3.8.1，修改为4.x,因为3.x使用的为编程的方式，4.x为注解的形式。
+          &ndash;&gt;
+          -->
+      <!-- <version>4.13.1</version> -->
+      <!-- <scope>test</scope> -->
+      <!-- </dependency> -->
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.30</version>
+        <groupId>
+            org.slf4j
+        </groupId>
+        <artifactId>
+            slf4j-api
+        </artifactId>
+        <version>
+            1.7.30
+        </version>
     </dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <version>1.7.25</version>
-      <scope>test</scope>
+        <groupId>
+            org.slf4j
+        </groupId>
+        <artifactId>
+            slf4j-simple
+        </artifactId>
+        <version>
+            1.7.25
+        </version>
+        <scope>
+            test
+        </scope>
     </dependency>
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.18.30</version>
+        <groupId>
+            org.projectlombok
+        </groupId>
+        <artifactId>
+            lombok
+        </artifactId>
+        <version>
+            1.18.30
+        </version>
     </dependency>
     <dependency>
-      <groupId>org.apache.httpcomponents</groupId>
-      <artifactId>httpclient</artifactId>
-      <version>4.5.14</version>
+        <groupId>
+            org.apache.httpcomponents
+        </groupId>
+        <artifactId>
+            httpclient
+        </artifactId>
+        <version>
+            4.5.14
+        </version>
     </dependency>
     <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib-jdk8</artifactId>
-      <version>${kotlin.version}</version>
+        <groupId>
+            org.jetbrains.kotlin
+        </groupId>
+        <artifactId>
+            kotlin-stdlib-jdk8
+        </artifactId>
+        <version>
+            ${kotlin.version}
+        </version>
     </dependency>
     <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib</artifactId>
-      <version>${kotlin.version}</version>
+        <groupId>
+            org.jetbrains.kotlin
+        </groupId>
+        <artifactId>
+            kotlin-stdlib
+        </artifactId>
+        <version>
+            ${kotlin.version}
+        </version>
     </dependency>
     <dependency>
-      <groupId>org.jetbrains.kotlinx</groupId>
-      <artifactId>kotlinx-serialization-json</artifactId>
-      <version>1.6.0</version> <!-- 确认这是最新版本 -->
-      <!--      <scope>compile</scope>-->
+        <groupId>
+            org.jetbrains.kotlinx
+        </groupId>
+        <artifactId>
+            kotlinx-serialization-json
+        </artifactId>
+        <version>
+            1.6.0
+        </version>
+        <!-- 确认这是最新版本 -->
+        <!-- <scope>compile</scope> -->
     </dependency>
     <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-test-junit</artifactId>
-      <version>${kotlin.version}</version>
-      <scope>test</scope>
+        <groupId>
+            org.jetbrains.kotlin
+        </groupId>
+        <artifactId>
+            kotlin-test-junit
+        </artifactId>
+        <version>
+            ${kotlin.version}
+        </version>
+        <scope>
+            test
+        </scope>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.2</version>
-      <scope>test</scope>
+        <groupId>
+            junit
+        </groupId>
+        <artifactId>
+            junit
+        </artifactId>
+        <version>
+            4.13.2
+        </version>
+        <scope>
+            test
+        </scope>
     </dependency>
-    <!--    <dependency>-->
-    <!--      <groupId>com.alibaba</groupId>-->
-    <!--      <artifactId>fastjson</artifactId>-->
-    <!--      <version>${fastjson2.version}</version>-->
-    <!--    </dependency> -->
+      <!-- <dependency> -->
+      <!-- <groupId>com.alibaba</groupId> -->
+      <!-- <artifactId>fastjson</artifactId> -->
+      <!-- <version>${fastjson2.version}</version> -->
+      <!-- </dependency> -->
   </dependencies>
 </project>
