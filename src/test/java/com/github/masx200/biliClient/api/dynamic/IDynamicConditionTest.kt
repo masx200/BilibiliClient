@@ -6,7 +6,7 @@ import com.github.masx200.biliClient.exception.BiliRequestException
 import com.github.masx200.biliClient.model.dynamic.Dynamic
 import java.util.function.Consumer
 import org.apache.http.client.methods.HttpRequestBase
-import org.junit.Test
+import kotlin.test.Test
 
 /**
  * 描述： 动态测试
