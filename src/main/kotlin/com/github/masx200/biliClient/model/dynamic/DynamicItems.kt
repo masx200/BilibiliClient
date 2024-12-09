@@ -22,7 +22,8 @@ import kotlinx.serialization.Serializable
 @Slf4j
 data //@com.alibaba.fastjson2.annotation.JSONCompiled
 class DynamicItems(
-    val hasMore: Int? = null,
+    var hasMore: Long? = null,
+    var has_more: Long? = null, val cards: MutableList<DynamicCard>?,
     /**
      * dynamic 集合
      *
@@ -38,7 +39,8 @@ class DynamicItems(
      * 第一次为0
      *
      */
-    val nextOffset: Long = 0L
+    var nextOffset: Long = 0L,
+    val next_offset: Long = 0,
 ) {
     /**
      * 是否还有更多
@@ -76,7 +78,8 @@ class DynamicItems(
                 // }
 
                 // 否则进行遍历 并过滤空对象
-                val cardsarray = result.toData<SpaceHistoryRoot>().cards
+                val toDataRoot = result.toData<SpaceHistoryRoot>()
+                val cardsarray = toDataRoot.cards
                 if (cardsarray == null) {
                     throw Exception("cardsarray为null,可能未登录")
                 }
@@ -84,7 +87,8 @@ class DynamicItems(
                     .filter { obj: Any? -> Objects.nonNull(obj) }
                     .collect(Collectors.toList())
                 dynamicItems.SETITEMS(cards)
-
+                dynamicItems.hasMore = toDataRoot.has_more
+                dynamicItems.nextOffset = toDataRoot.next_offset
                 // 返回
                 return dynamicItems
             } catch (e: Exception) {

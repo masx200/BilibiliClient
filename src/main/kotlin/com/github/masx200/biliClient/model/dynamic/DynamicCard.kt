@@ -87,7 +87,8 @@ class DynamicCard (
             // 设置数据
             dynamic.SETDATA(this.GETDESC())
             // 解析动态详情
-            val dynamicCard: JsonElement = Json.decodeFromString<JsonElement>(this.GETCARD())
+            val dynamicCard: JsonElement =
+                Json { ignoreUnknownKeys = true }.decodeFromString<JsonElement>(this.GETCARD())
             if (dynamicCard is JsonObject) {
                 if (this.GETDESC().orig_dy_id != null && this.GETDESC().orig_dy_id != 0L) {
                     // 转发
@@ -95,7 +96,9 @@ class DynamicCard (
                     // 转发内容
                     val string = dynamicCard["item"]
                     if (string is JsonPrimitive && string.isString) {
-                        dynamic.setrepost(Json.decodeFromString<DynamicRepost>(string.content))
+                        dynamic.setrepost(Json {
+                            ignoreUnknownKeys = true
+                        }.decodeFromString<DynamicRepost>(string.content))
                     }
                     // 源内容
                     val origin = dynamicCard["origin"]
@@ -103,26 +106,28 @@ class DynamicCard (
                     if (origin != null && origin is JsonObject && !origin.isEmpty()) {
                         val string1 = origin["item"]
                         if (string1 is JsonPrimitive && string1.isString) {
-                            dynamic.detail=Json.decodeFromString<DynamicDetail>(string1.content)
+                            dynamic.detail =
+                                Json { ignoreUnknownKeys = true }.decodeFromString<DynamicDetail>(string1.content)
                         }
                     }
                 } else if (this.GETDESC().bvid != null && !this.GETDESC().bvid!!.isEmpty()) {
                     // 视频
                     dynamic.SETTYPE(Dynamic.DType.VIDEO)
                     // 视频内容
-                    dynamic.SETVIDEO(Json.decodeFromString<Video>(this.GETCARD()))
+                    dynamic.SETVIDEO(Json { ignoreUnknownKeys = true }.decodeFromString<Video>(this.GETCARD()))
                 } else if (this.GETDESC().type == 64) {
                     // 专栏动态
                     dynamic.SETTYPE(Dynamic.DType.ESSAY)
                     // 写入详情
-                    dynamic.setESSAY(Json.decodeFromString<ESSAY>(this.GETCARD()))
+                    dynamic.setESSAY(Json { ignoreUnknownKeys = true }.decodeFromString<ESSAY>(this.GETCARD()))
                 } else {
                     // 普通动态
                     dynamic.SETTYPE(Dynamic.DType.COMMON)
                     // 写入详情
                     val string = dynamicCard["item"]
                     if (string is JsonPrimitive && string.isString) {
-                        dynamic.detail=Json.decodeFromString<DynamicDetail>(string.content)
+                        dynamic.detail =
+                            Json { ignoreUnknownKeys = true }.decodeFromString<DynamicDetail>(string.content)
                     }
                 }
             }

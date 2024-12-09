@@ -113,7 +113,7 @@ object BiliCall {
             }
             rawbody = body
             // 转换
-            return Json.decodeFromString<BiliResult>(body)
+            return Json { ignoreUnknownKeys = true }.decodeFromString<BiliResult>(body)
                 .check()
         } catch (e: BiliRequestException) {
             System.err.println(e.message)
@@ -122,7 +122,7 @@ object BiliCall {
         } catch (e: Exception) {
             System.err.println(e.message)
             e.printStackTrace()
-            rawbody?.let { System.err.println(Json.decodeFromString<BiliResult>(it)) }
+            rawbody?.let { System.err.println(Json { ignoreUnknownKeys = true }.decodeFromString<BiliResult>(it)) }
             throw BiliRequestException(httpRequest.getURI(), e.message)
         }
     }

@@ -19,22 +19,22 @@
     <testSourceDirectory>src/test/kotlin</testSourceDirectory>
     <sourceDirectory>src/main/kotlin</sourceDirectory>
     <plugins>
-      <plugin>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-maven-allopen</artifactId>
-        <version>${kotlin.version}</version>
-      </plugin>
-      <plugin>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-maven-noarg</artifactId>
-        <version>${kotlin.version}</version>
-      </plugin>
-      <plugin>
-        <groupId>org.jetbrains.kotlin</groupId>
-        <artifactId>kotlin-maven-serialization</artifactId>
-        <version>${kotlin.version}</version>
+      <!--      <plugin>-->
+      <!--        <groupId>org.jetbrains.kotlin</groupId>-->
+      <!--        <artifactId>kotlin-maven-allopen</artifactId>-->
+      <!--        <version>${kotlin.version}</version>-->
+      <!--      </plugin>-->
+      <!--      <plugin>-->
+      <!--        <groupId>org.jetbrains.kotlin</groupId>-->
+      <!--        <artifactId>kotlin-maven-noarg</artifactId>-->
+      <!--        <version>${kotlin.version}</version>-->
+      <!--      </plugin>-->
+      <!--      <plugin>-->
+      <!--        <groupId>org.jetbrains.kotlin</groupId>-->
+      <!--        <artifactId>kotlin-maven-serialization</artifactId>-->
+      <!--        <version>${kotlin.version}</version>-->
 
-      </plugin>
+      <!--      </plugin>-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>

@@ -2,8 +2,10 @@ package com.github.masx200.biliClient
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+//import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 
+//import  kotlinx.serialization.json.Json.decodeFromJsonElement
 
 //import lombok.Data
 
@@ -68,9 +70,11 @@ data class BiliResult(
      * @return t
     </T> */
     inline fun <reified T> toData(): T {
-
+//        val element = data!!
+//        return  kotlinx.serialization.json.Json.decodeFromJsonElement<T>( element)
+//
         val string = Json.encodeToString<JsonElement>(JsonElement.serializer(), data!!)
-        return Json.decodeFromString<T>(string)
+        return Json { ignoreUnknownKeys = true }.decodeFromString<T>(string)
     }
 
     /**
