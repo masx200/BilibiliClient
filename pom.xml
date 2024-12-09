@@ -158,7 +158,9 @@
       <groupId>org.jetbrains.kotlinx</groupId>
       <artifactId>kotlinx-serialization-json</artifactId>
       <version>1.6.0</version> <!-- 确认这是最新版本 -->
+<!--      <scope>compile</scope>-->
     </dependency>
+
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-test-junit</artifactId>
