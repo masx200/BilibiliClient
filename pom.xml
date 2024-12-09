@@ -72,7 +72,7 @@
             </goals>
             <configuration>
               <sourceDirs>
-                <source>src/main/java</source>
+<!--                <source>src/main/java</source>-->
                 <!--                <testSource>src/test/java</testSource>-->
                 <source>src/test/java</source>
                 <source>target/generated-sources/annotations</source>
