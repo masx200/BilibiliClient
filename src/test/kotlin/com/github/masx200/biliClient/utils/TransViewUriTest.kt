@@ -23,29 +23,29 @@ class TransViewUriTest {
     })
 
     @Test
-    fun transUser() {
-        val user = biliClient.user().withUID(5548903L)!!.get()
+    fun transVideoDynamicUserUser() {
+        val user = biliClient.user().withUID(5548903L).get()
         println(user)
-        println(TransViewUri.trans(user))
+        println(TransViewUri.transUser(user))
     }
 
     @Test
     @Throws(Exception::class)
-    fun transDynamic() {
-        val dynamic = biliClient.dynamic().withDynamicId(464864767376633630L)!!.get()
+    fun transVideoDynamicUserDynamic() {
+        val dynamic = biliClient.dynamic().withDynamicId(464864767376633630L).get()
         println(dynamic)
-        println(TransViewUri.trans(dynamic))
+        println(TransViewUri.transDynamic(dynamic))
         println("############")
-        val list = biliClient.dynamic().withHostUid(392819792L)!!.list()
-        list!!.items.stream().map<String?> { dynamic: Dynamic? -> TransViewUri.trans(dynamic) }
+        val list = biliClient.dynamic().withHostUid(392819792L).list()
+        list!!.items.stream().map<String?> { dynamic: Dynamic? -> TransViewUri.transDynamic(dynamic) }
             .forEach { x: String? -> println(x) }
     }
 
     @Test
-    fun transVideo() {
+    fun transVideoDynamicUserVideo() {
         val video = biliClient.video().withBvid("BV1nz4y1r7TW").get()
         println(video)
-        println(TransViewUri.trans(video))
+        println(TransViewUri.transVideo(video))
     }
 
     @Test

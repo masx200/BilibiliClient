@@ -100,26 +100,47 @@ class DynamicCard (
                     ) else {
                         null
                     }
+                    val cardorigin = dynamicCard.getString("origin")
+
+                    if (cardorigin != null && cardorigin.isNotEmpty()) {
+                        //println("cardorigin:"+cardorigin)
+                        val cardoriginobj = Json.decodeFromString<JsonObject>(cardorigin.toString())
+                        try {
+                            dynamic.detail =
+                                Json {
+                                    ignoreUnknownKeys = true
+                                }.decodeFromString<DynamicDetail>(cardoriginobj["item"].toString())
+                        } catch (e: Throwable) {
+//                            e.printStackTrace()
+                            println(e)
+                        }
+                    }
+
+
                     if (stringcontent is String) {
                         dynamic.setrepost(Json {
                             ignoreUnknownKeys = true
                         }.decodeFromString<DynamicRepost>(stringcontent))
                     }
                     // 源内容
-                    val origin = dynamicCard["origin"]
-                    // 若源内容违规被屏蔽 避免转换失败
-                    if (origin != null && origin is JsonObject && !origin.isEmpty()) {
-                        val stringcontent = if (dynamicCard["item"] != null) Json.encodeToString<JsonElement>(
-                            JsonElement.serializer(),
-                            dynamicCard["item"]!!
-                        ) else {
-                            null
-                        }
-                        if (stringcontent is String) {
-                            dynamic.detail =
-                                Json { ignoreUnknownKeys = true }.decodeFromString<DynamicDetail>(stringcontent)
-                        }
-                    }
+//                    val cardorigin2 = dynamicCard.getString("origin")
+//                    if (cardorigin2 != null&& cardorigin2.isNotEmpty()) {
+//
+//                        val cardoriginobj = Json.decodeFromString<JsonObject>(cardorigin2.toString())
+//                    // 若源内容违规被屏蔽 避免转换失败
+//                        if (cardoriginobj != null && cardoriginobj is JsonObject && !cardoriginobj.isEmpty()) {
+//                        val stringcontent = if (dynamicCard["item"] != null) Json.encodeToString<JsonElement>(
+//                            JsonElement.serializer(),
+//                            dynamicCard["item"]!!
+//                        ) else {
+//                            null
+//                        }
+//                        if (stringcontent is String) {
+//                            dynamic.detail =
+//                                Json { ignoreUnknownKeys = true }.decodeFromString<DynamicDetail>(stringcontent)
+//                        }
+//                        }
+//                    }
                 } else if (this.GETDESC().bvid != null && !this.GETDESC().bvid!!.isEmpty()) {
                     // 视频
                     dynamic.SETTYPE(Dynamic.DType.VIDEO)
@@ -199,5 +220,13 @@ fun Long.Companion.valueOf(string: String?): Long? {
     if (this[string] is JsonPrimitive && (this[string] as JsonPrimitive).isString) {
         return (this[string] as JsonPrimitive).content
     }
+    return null
+}
+
+fun JsonElement.getString(string: String): String? {
+    if (this is JsonObject)
+        if (this[string] is JsonPrimitive && (this[string] as JsonPrimitive).isString) {
+            return (this[string] as JsonPrimitive).content
+        }
     return null
 }
