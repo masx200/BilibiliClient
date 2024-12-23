@@ -264,7 +264,7 @@
               build-helper-maven-plugin
           </artifactId>
                 <version>
-              3.0.0
+              3.6.0
           </version>
                 <executions>
                     <!-- 添加主资源文件目录 -->
