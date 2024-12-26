@@ -156,7 +156,7 @@ class DynamicVideoTest {
             }
             
         ],
-        "next_offset": 1009514036959641673
+        "next_offset":  1015262674586435602
     }
 }
 """.trimIndent()
