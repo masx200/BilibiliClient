@@ -118,6 +118,7 @@ class DynamicCard (
                         try {
                             val string = JsonElementgetString(cardoriginobj, "item".toString())
                             if (string != null) {
+//                                println(string)
                                 dynamic.detail =
                                     Json.decodeFromString<DynamicDetail>(string)
                             }
