@@ -2,6 +2,7 @@ package com.github.masx200.biliClient.model.dynamic
 
 import com.github.masx200.biliClient.model.video.Video
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 /**
  * 描述： 动态对象
@@ -11,6 +12,10 @@ import kotlinx.serialization.Serializable
  * @since 2021-02-07-20:54
  */@Serializable
 data class Dynamic(
+    var desc: DynamicData? = null,
+    var card: JsonElement? = null,
+    var extend_json: JsonElement? = null,
+    var display: JsonElement? = null,
     var video: Video? = null,
 
     /**
@@ -95,7 +100,7 @@ data class Dynamic(
     /**
      * 动态类型枚举
      */
-
+    @Serializable
     enum class DType {
         /**
          * 普通动态

@@ -36,7 +36,7 @@ object BiliCall {
             // 获取请求客户端
             val httpClient = baseClient.getHttpClient()
             val requestConfig = baseClient.getRequestConfig()
-            httpRequest.setConfig(requestConfig)
+            httpRequest.config = requestConfig
             val headershashMap: MutableMap<String?, String?> = object : HashMap<String?, String?>() {
                 init {
                     put(
@@ -99,21 +99,21 @@ object BiliCall {
             //            System.out.println(httpRequest.getMethod());
 //            System.out.println(httpRequest.getURI());
 //            System.out.println(response.getStatusLine());
-            val statusCode = response.getStatusLine().getStatusCode()
+            val statusCode = response.statusLine.statusCode
             if (statusCode != 200) {
                 throw BiliRequestException(
-                    httpRequest.getURI(),
-                    "请求地址：" + httpRequest.getURI() + "，请求方法：" + httpRequest.getMethod() + "，请求失败，状态码: " + statusCode
+                    httpRequest.uri,
+                    "请求地址：" + httpRequest.uri + "，请求方法：" + httpRequest.method + "，请求失败，状态码: " + statusCode
                 )
             }
             // 判空
-            val body = EntityUtils.toString(response.getEntity())
+            val body = EntityUtils.toString(response.entity)
             if (body == null || body.isEmpty()) {
                 throw Exception("响应体为空")
             }
             rawbody = body
             // 转换
-            return Json { ignoreUnknownKeys = true }.decodeFromString<BiliResult>(body)
+            return Json /* { ignoreUnknownKeys = true } */.decodeFromString<BiliResult>(body)
                 .check()
         } catch (e: BiliRequestException) {
             System.err.println(e.message)
@@ -122,8 +122,8 @@ object BiliCall {
         } catch (e: Exception) {
             System.err.println(e.message)
             e.printStackTrace()
-            rawbody?.let { System.err.println(Json { ignoreUnknownKeys = true }.decodeFromString<BiliResult>(it)) }
-            throw BiliRequestException(httpRequest.getURI(), e.message)
+            rawbody?.let { System.err.println(Json /* { ignoreUnknownKeys = true } */.decodeFromString<BiliResult>(it)) }
+            throw BiliRequestException(httpRequest.uri, e.message)
         }
     }
 
@@ -134,10 +134,10 @@ object BiliCall {
      * @return 响应结果
      */
     fun doCall(request: BiliRequest): BiliResult {
-        return doCall(HttpGet(request.getURI()), request.getBaseClient(), null)
+        return doCall(HttpGet(request.uri), request.baseClient, null)
     }
 
     fun doCall(request: BiliRequest, beforeRequest: Consumer<HttpRequestBase?>?): BiliResult {
-        return doCall(HttpGet(request.getURI()), request.getBaseClient(), beforeRequest)
+        return doCall(HttpGet(request.uri), request.baseClient, beforeRequest)
     }
 }
