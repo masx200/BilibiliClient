@@ -110,24 +110,24 @@ class DynamicCard (
                     ) else {
                         null
                     }
-                    val cardorigin = JsonElementgetString(dynamicCard, ("origin"))
-
-                    if (cardorigin != null && cardorigin.isNotEmpty()) {
-                        //println("cardorigin:"+cardorigin)
-                        val cardoriginobj = Json.decodeFromString<JsonObject>(cardorigin.toString())
-                        try {
-                            val string = JsonElementgetString(cardoriginobj, "item".toString())
-                            if (string != null) {
-//                                println(string)
-                                dynamic.detail =
-                                    Json.decodeFromString<DynamicDetail>(string)
-                            }
-
-                        } catch (e: Throwable) {
-//                            e.printStackTrace()
-                            println(e)
-                        }
-                    }
+//                    val cardorigin = JsonElementgetString(dynamicCard, ("origin"))
+//
+//                    if (cardorigin != null && cardorigin.isNotEmpty()) {
+//                        //println("cardorigin:"+cardorigin)
+////                        val cardoriginobj = Json.decodeFromString<JsonObject>(cardorigin.toString())
+//                        try {
+////                            val string = JsonElementgetString(cardoriginobj, "item".toString())
+//                            if (cardorigin != null) {
+////                                println(string)
+//                                dynamic.detail =
+//                                    Json.decodeFromString<DynamicDetail>(cardorigin)
+//                            }
+//
+//                        } catch (e: Throwable) {
+////                            e.printStackTrace()
+//                            println(e)
+//                        }
+//                    }
 
 
                     if (stringcontent is String) {
