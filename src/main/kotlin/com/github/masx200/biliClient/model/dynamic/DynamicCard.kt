@@ -116,8 +116,12 @@ class DynamicCard (
                         //println("cardorigin:"+cardorigin)
                         val cardoriginobj = Json.decodeFromString<JsonObject>(cardorigin.toString())
                         try {
-                            dynamic.detail =
-                                Json.decodeFromString<DynamicDetail>(cardoriginobj["item"].toString())
+                            val string = JsonElementgetString(cardoriginobj, "item".toString())
+                            if (string != null) {
+                                dynamic.detail =
+                                    Json.decodeFromString<DynamicDetail>(string)
+                            }
+
                         } catch (e: Throwable) {
 //                            e.printStackTrace()
                             println(e)

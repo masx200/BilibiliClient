@@ -176,9 +176,9 @@
                         </goals>
                         <configuration>
                             <sourceDirs>
-                                <source>
-                                    src/main/kotlin
-                                </source>
+<!--                                <source>-->
+<!--                                    src/main/kotlin-->
+<!--                                </source>-->
                                 <!-- <testSource>src/test/kotlin</testSource> -->
                                 <source>
                                     src/test/kotlin
