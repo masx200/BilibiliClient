@@ -88,9 +88,19 @@ class DynamicCard (
 //            把原始数据保留下来
             dynamic.desc = desc
 //            if (card != null) {
-            dynamic.card = decodecardtoelement(card)
+            val decodecardtoelement = decodecardtoelement(card)
+            dynamic.card = decodecardtoelement
 
+            dynamic.origin = when (decodecardtoelement) {
+                is JsonObject -> {
+                    val item = decodecardtoelement["origin"]
+                    item
 
+                }
+
+                else -> null
+
+            }
             dynamic.extend_json = extend_json?.let { decodecardtoelement(it) }
             dynamic.display = display
 //            }

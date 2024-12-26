@@ -168,6 +168,8 @@ class DynamicVideoTest {
             assert(dynamic != null)
             if (dynamic != null) {
                 assert(dynamic.type == DType.REPOST)
+                assert(dynamic.repost != null)
+                assert(dynamic.origin != null)
                 println(dynamic)
                 val encodedstring = Json.encodeToString<Dynamic>(Dynamic.serializer(), dynamic)
 
