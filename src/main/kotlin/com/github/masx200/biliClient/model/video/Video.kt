@@ -316,41 +316,41 @@ data class Video(
 
     val premiere: JsonElement? = null,
     @SerialName("teenage_mode")
-    val teenageMode: Long,
+    val teenageMode: Long? = null,
     @SerialName("is_chargeable_season")
-    val isChargeableSeason: Boolean,
+    val isChargeableSeason: Boolean? = null,
     @SerialName("is_story")
-    val isStory: Boolean,
+    val isStory: Boolean? = null,
     @SerialName("is_upower_exclusive")
-    val isUpowerExclusive: Boolean,
+    val isUpowerExclusive: Boolean? = null,
     @SerialName("is_upower_play")
-    val isUpowerPlay: Boolean,
+    val isUpowerPlay: Boolean? = null,
     @SerialName("is_upower_preview")
-    val isUpowerPreview: Boolean,
+    val isUpowerPreview: Boolean? = null,
     @SerialName("enable_vt")
-    val enableVt: Long,
+    val enableVt: Long? = null,
     @SerialName("vt_display")
-    val vtDisplay: String,
+    val vtDisplay: String? = null,
 //    @SerialName("no_cache")
 //    val noCache: Boolean,
 //    val pages: List<Page>,
 //    val subtitle: Subtitle,
     @SerialName("is_season_display")
-    val isSeasonDisplay: Boolean,
+    val isSeasonDisplay: Boolean? = null,
 //    @SerialName("user_garb")
 //    val userGarb: UserGarb,
     @SerialName("honor_reply")
     val honorReply: JsonElement? = null,
     @SerialName("like_icon")
-    val likeIcon: String,
+    val likeIcon: String? = null,
     @SerialName("need_jump_bv")
-    val needJumpBv: Boolean,
+    val needJumpBv: Boolean? = null,
     @SerialName("disable_show_up_info")
-    val disableShowUpInfo: Boolean,
+    val disableShowUpInfo: Boolean? = null,
     @SerialName("is_story_play")
-    val isStoryPlay: Long,
+    val isStoryPlay: Long? = null,
     @SerialName("is_view_self")
-    val isViewSelf: Boolean,
+    val isViewSelf: Boolean? = null,
 ) : BaseModel {
     /**
      * bv
