@@ -177,7 +177,7 @@ class DynamicVideoTest {
                 assert(dynamic.desc != null)
                 assert(dynamic.origin != null)
                 assert(dynamic.origin?.video != null)
-                assert(dynamic.origin?.desc != null);
+                assert(dynamic.origin?.desc != null)
                 assert(dynamic.origin?.data != null)
                 assert(dynamic.origin?.data?.dynamic_id_str == dynamic.origin?.data?.dynamic_id.toString())
                 println(dynamic)

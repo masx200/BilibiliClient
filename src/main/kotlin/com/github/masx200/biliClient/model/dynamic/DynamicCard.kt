@@ -117,6 +117,13 @@ class DynamicCard (
 
                     else -> null
                 }
+                if (desc.orig_type == 64L && element != null) {
+                    dynamic1origin.type = Dynamic.DType.ESSAY
+                    dynamic1origin.essay = Json.decodeFromString<ESSAY>(
+                        ESSAY.serializer(),
+                        Json.encodeToString(JsonElement.serializer(), element)
+                    )
+                } else
                 if (desc.orig_type == 8L && element != null) {
                     dynamic1origin.type = Dynamic.DType.VIDEO
                     dynamic1origin.video = Json.decodeFromString<Video>(
