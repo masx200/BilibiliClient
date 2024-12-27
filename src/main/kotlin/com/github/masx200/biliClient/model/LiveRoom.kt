@@ -10,6 +10,7 @@ package com.github.masx200.biliClient.model
 //package com.github.masx200.biliClient.model
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 /**
  * 描述：直播间信息
@@ -87,5 +88,6 @@ data class LiveRoom(
     /**
      * 类型 默认0
      */
-    val broadcast_type: Int? = null
+    val broadcast_type: Int? = null,
+    var watched_show: JsonElement? = null,
 )

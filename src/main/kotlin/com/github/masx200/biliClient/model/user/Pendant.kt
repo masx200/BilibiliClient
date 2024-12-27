@@ -24,7 +24,7 @@ data class Pendant(
      * 头像框ID
      */
     val pid: Long? = null,
-
+    val n_pid: Long? = null,
     /**
      * 头像框名称
      */

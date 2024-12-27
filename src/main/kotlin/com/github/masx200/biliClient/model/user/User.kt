@@ -2,7 +2,9 @@ package com.github.masx200.biliClient.model.user
 
 import com.github.masx200.biliClient.model.LiveRoom
 import com.github.masx200.biliClient.model.SysNotice
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 
 //import lombok.Data;
@@ -17,8 +19,13 @@ import kotlinx.serialization.json.JsonElement
 //@com.alibaba.fastjson2.annotation.JSONCompiled
 @Serializable
 data class User(
+    var series: JsonElement? = null,
+    var fans_badge: Boolean? = null,
+    var face_nft_new: Int? = null,
+    var face_nft_type: Int? = null,
+    var face_nft: Int? = null,
     val mid: Long? = null,
-
+    var jointime: Int? = null,
     /**
      * 名称
      */
@@ -60,7 +67,7 @@ data class User(
      * 1: 封禁
      *
      */
-    val silence: Int? = null,
+//    val silence: Int? = null,
 
     /**
      * 生日
@@ -69,7 +76,7 @@ data class User(
      * 格式 **MM-DD**
      *
      */
-    val birthday: String? = null,
+//    val birthday: String? = null,
 
     /**
      * 硬币数目
@@ -78,13 +85,13 @@ data class User(
      * **需要登录后才能查看**
      *
      */
-    val coins: Long? = null,
+//    val coins: Long? = null,
 
     /**
      * 是否具有粉丝胸罩
      */
-    val fans_badge: Boolean? = null,
-
+    val fans_medal: JsonElement? = null,
+    val school: JsonElement? = null,
     /**
      * 认证信息
      */
@@ -99,7 +106,7 @@ data class User(
      * 头像框信息
      */
     val pendant: Pendant? = null,
-
+    var user_honour_info: JsonElement? = null,
     /**
      * 勋章信息
      */
@@ -145,7 +152,78 @@ data class User(
     /**
      * 直播间信息
      */
-    val live_room: LiveRoom? = null
+    val live_room: LiveRoom? = null,
+//    val mid: Long,
+//    val name: String,
+//    val sex: String,
+//    val face: String,
+//    val sign: String,
+//    val rank: Long,
+//    val level: Long,
+//    val jointime: Long,
+    val moral: Long,
+    val silence: Long,
+    @SerialName("email_status")
+    val emailStatus: Long? = null,
+    @SerialName("tel_status")
+    val telStatus: Long? = null,
+    val identification: Long? = null,
+//    val vip: Map<String, JsonElement>,
+//    val pendant: Map<String, JsonElement>,
+//    val nameplate: Map<String, JsonElement>,
+//    val official: Map<String, JsonElement>,
+    val birthday: String? = null,
+    @SerialName("is_tourist")
+    val isTourist: Long? = null,
+    @SerialName("is_fake_account")
+    val isFakeAccount: Long? = null,
+    @SerialName("pin_prompting")
+    val pinPrompting: Long? = null,
+    @SerialName("is_deleted")
+    val isDeleted: Long? = null,
+    @SerialName("in_reg_audit")
+    val inRegAudit: Long? = null,
+    @SerialName("is_rip_user")
+    val isRipUser: Boolean? = null,
+    val profession: JsonElement? = null,
+//    @SerialName("face_nft")
+//    val faceNft: Long,
+//    @SerialName("face_nft_new")
+//    val faceNftNew: Long,
+    @SerialName("is_senior_member")
+    val isSeniorMember: Long? = null,
+//    val honours: Map<String, JsonElement>,
+    @SerialName("digital_id")
+    val digitalId: String? = null,
+    @SerialName("digital_type")
+    val digitalType: Long? = null,
+//    val attestation: Map<String, JsonElement>,
+//    @SerialName("expert_info")
+//    val expertInfo: Map<String, JsonElement>,
+//    @SerialName("name_render")
+//    val nameRender: JsonElement?,
+    @SerialName("country_code")
+    val countryCode: String? = null,
+//    @SerialName("level_exp")
+//    val levelExp: Map<String, JsonElement>,
+    val coins: Double,
+    val following: Long? = null,
+    val follower: Long? = null,
+    var tags: JsonArray? = null,
+    @SerialName("mcn_info")
+    val mcnInfo: JsonElement? = null,
+    @SerialName("gaia_res_type")
+    val gaiaResType: Long,
+    @SerialName("gaia_data")
+    val gaiaData: JsonElement? = null,
+    @SerialName("is_risk")
+    val isRisk: Boolean,
+    val elec: JsonElement? = null,
+    val contract: JsonElement? = null,
+    @SerialName("certificate_show")
+    val certificateShow: Boolean,
+    @SerialName("name_render")
+    val nameRender: JsonElement? = null
 )
 /**
  * UID
