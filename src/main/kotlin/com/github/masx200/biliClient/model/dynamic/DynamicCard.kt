@@ -103,26 +103,29 @@ class DynamicCard (
 
 
             }
-            val dynamic1origin = Dynamic()
-            dynamic1origin.data = desc.origin
-            dynamic1origin.desc = desc.origin
-            dynamic1origin.extend_json = when (decodecardtoelement) {
-                is JsonObject -> {
-//                    println(decodecardtoelement["origin_extend_json"])
-                    val item = decodecardtoelement["origin_extend_json"]
-                    item
-                }
 
-                else -> null
+            if (desc.type == 1) {
+                val dynamic1origin = Dynamic()
+                dynamic1origin.data = desc.origin
+                dynamic1origin.desc = desc.origin
+                dynamic1origin.extend_json = when (decodecardtoelement) {
+                    is JsonObject -> {
+//                    println(decodecardtoelement["origin_extend_json"])
+                        val item = decodecardtoelement["origin_extend_json"]
+                        item
+                    }
+
+                    else -> null
+                }
+                if (desc.orig_type == 8L && element != null) {
+                    dynamic1origin.type = Dynamic.DType.VIDEO
+                    dynamic1origin.video = Json.decodeFromString<Video>(
+                        Video.serializer(),
+                        Json.encodeToString(JsonElement.serializer(), element)
+                    )
+                }
+                dynamic.origin = dynamic1origin
             }
-            if (desc.orig_type == 8L && element != null) {
-                dynamic1origin.type = Dynamic.DType.VIDEO
-                dynamic1origin.video = Json.decodeFromString<Video>(
-                    Video.serializer(),
-                    Json.encodeToString(JsonElement.serializer(), element)
-                )
-            }
-            dynamic.origin = dynamic1origin
             dynamic.extend_json = extend_json?.let { decodecardtoelement(it) }
 //                if (decodecardtoelement is JsonObject) decodecardtoelement["extend_json"] else null
             dynamic.display = display

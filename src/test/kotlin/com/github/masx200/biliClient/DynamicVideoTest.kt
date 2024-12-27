@@ -182,6 +182,141 @@ class DynamicVideoTest {
                 println(encodedstring)
             }
         }
+    }
 
+    @Test
+    fun test_common_video() {
+        val body = """
+{
+    "code": 0,
+    "message": "0",
+    "ttl": 1,
+    "data": {
+        "has_more": 1,
+        "cards": [
+            {
+                "desc": {
+                    "uid": 11336264,
+                    "type": 8,
+                    "rid": 113717983318927,
+                    "acl": 0,
+                    "view": 168701,
+                    "repost": 9,
+                    "comment": 222,
+                    "like": 3437,
+                    "is_liked": 1,
+                    "dynamic_id": 1015443660247924788,
+                    "timestamp": 1735264801,
+                    "pre_dy_id": 0,
+                    "orig_dy_id": 0,
+                    "orig_type": 0,
+                    "user_profile": {
+                        "info": {
+                            "uid": 11336264,
+                            "uname": "TESTV官方频道",
+                            "face": "https://i2.hdslb.com/bfs/face/34ccaf9461c67482e3164675c0036e94df18b7a7.jpg"
+                        },
+                        "card": {
+                            "official_verify": {
+                                "type": -1
+                            }
+                        },
+                        "vip": {
+                            "vipType": 2,
+                            "vipDueDate": 1758038400000,
+                            "dueRemark": "",
+                            "accessStatus": 0,
+                            "vipStatus": 1,
+                            "vipStatusWarn": "",
+                            "themeType": 0,
+                            "label": {
+                                "path": "",
+                                "text": "年度大会员",
+                                "label_theme": "annual_vip",
+                                "text_color": "#FFFFFF",
+                                "bg_style": 1,
+                                "bg_color": "#FB7299",
+                                "border_color": ""
+                            },
+                            "avatar_subscript": 1,
+                            "nickname_color": "#FB7299",
+                            "role": 3,
+                            "avatar_subscript_url": ""
+                        },
+                        "pendant": {
+                            "pid": 0,
+                            "name": "",
+                            "image": "",
+                            "expire": 0,
+                            "image_enhance": "",
+                            "image_enhance_frame": ""
+                        },
+                        "rank": "10000",
+                        "sign": "我们不做评测，是体验！愉快的体验！tb店铺：TESTV值不值得买 | 官网：testv.cn",
+                        "level_info": {
+                            "current_level": 6,
+                            "current_min": 0,
+                            "current_exp": 0,
+                            "next_exp": ""
+                        }
+                    },
+                    "spec_type": 0,
+                    "uid_type": 1,
+                    "stype": 0,
+                    "r_type": 0,
+                    "inner_id": 0,
+                    "status": 1,
+                    "dynamic_id_str": "1015443660247924788",
+                    "pre_dy_id_str": "0",
+                    "orig_dy_id_str": "0",
+                    "rid_str": "113717983318927",
+                    "origin": null,
+                    "bvid": "BV1J4C6YfEDz",
+                    "previous": null
+                },
+                "card": "{\"aid\":113717983318927,\"cid\":27537181343,\"ctime\":1735264801,\"desc\":\"买了电竞耳机但是不玩游戏是种什么体验？只能说低延迟确实增色不少。\\n投票链接：https://testv.cn/portfolio/hongmibuds6prodianjingban/\",\"dimension\":{\"height\":2160,\"rotate\":0,\"width\":3840},\"duration\":784,\"dynamic\":\"男后期喜当爹\",\"first_frame\":\"http://i0.hdslb.com/bfs/storyff/n241226sa39jzr5pgk9s76leow210q85_firsti.jpg\",\"jump_url\":\"bilibili://video/113717983318927/?page=1\\u0026player_width=3840\\u0026player_height=2160\\u0026player_rotate=0\",\"owner\":{\"face\":\"https://i2.hdslb.com/bfs/face/34ccaf9461c67482e3164675c0036e94df18b7a7.jpg\",\"mid\":11336264,\"name\":\"TESTV官方频道\"},\"pic\":\"http://i2.hdslb.com/bfs/archive/e6da0b5f90e8fe6b76705b1a71903e196fc2738d.jpg\",\"pubdate\":1735264800,\"short_link_v2\":\"\",\"stat\":{\"aid\":113717983318927,\"coin\":1188,\"danmaku\":316,\"dislike\":0,\"favorite\":519,\"like\":3437,\"reply\":222,\"share\":76,\"view\":45020},\"state\":0,\"tid\":95,\"title\":\"有病！电竞耳机不玩游戏-红米Buds6 Pro电竞版【值不值得买第679期】\",\"tname\":\"数码\",\"videos\":1}",
+                "extend_json": "{\"from\":{\"from\":\"\",\"emoji_type\":1},\"ctrl\":null,\"lott\":null}",
+                "display": {
+                    "origin": null,
+                    "usr_action_txt": "投稿了视频",
+                    "relation": {
+                        "status": 2,
+                        "is_follow": 1,
+                        "is_followed": 0
+                    },
+                    "live_info": null,
+                    "emoji_info": null,
+                    "highlight": null
+                }
+            }
+        ],
+        "next_offset": 1015443660247924788
+    }
+}
+
+""".trimIndent()
+        val result = Json.decodeFromString<BiliResult>(body)
+            .check()
+        val items = DynamicItems.build(result)
+
+        for (dynamic in items.items) {
+            assert(dynamic != null)
+            if (dynamic != null) {
+                assert(dynamic.extend_json != null)
+                assert(dynamic.origin?.extend_json == null)
+                assert(dynamic.origin?.type != DType.VIDEO)
+                assert(dynamic.type == DType.VIDEO)
+                assert(dynamic.repost == null)
+                assert(dynamic.desc != null)
+                assert(dynamic.video != null)
+                assert(dynamic.origin == null)
+                assert(dynamic.origin?.video == null)
+                assert(dynamic.origin?.desc == null)
+                println(dynamic)
+                val encodedstring = Json.encodeToString<Dynamic>(Dynamic.serializer(), dynamic)
+
+                println(encodedstring)
+            }
+        }
     }
 }
