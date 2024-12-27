@@ -13,8 +13,8 @@ data class VideoData(
     /**
      * av
      */
-    val aid: Long = 0,
-
+    val aid: Long? = 0,
+    var vt: Long? = 0,
     /**
      * 弹幕数量
      */

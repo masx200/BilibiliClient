@@ -4,8 +4,12 @@ import com.github.masx200.biliClient.model.BaseModel
 import com.github.masx200.biliClient.model.user.User
 import com.github.masx200.biliClient.utils.TransDate
 import java.util.Date
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
+
+//import sun.jvm.hotspot.debugger.Page
 
 /**
  * 描述： 视频稿件对象
@@ -15,7 +19,11 @@ import kotlinx.serialization.json.JsonElement
  * @since 2021-02-08-18:37
  */@Serializable
 data class Video(
-
+    var argue_info: JsonElement? = null,
+    var mission_id: Long? = null,
+    var desc_v2: JsonArray? = null,
+    var tname_v2: String? = null,
+    var tid_v2: Long? = 0,
     val bvid: String? = null,
 
     /**
@@ -288,18 +296,61 @@ data class Video(
 //    val dimension: Dimension,
 //    val duration: Long,
 //    val dynamic: String,
-    val first_frame: String,
-    val jump_url: String,
+    val first_frame: String? = null,
+    val jump_url: String? = null,
 //    val owner: Owner,
 //    val pic: String,
 //    val pubdate: Long,
-    val short_link_v2: String,
+    val short_link_v2: String? = null,
+    
+    
+    
+    
 //    val stat: Stat,
 //    val state: Long,
 //    val tid: Long,
 //    val title: String,
 //    val tname: String,
 //    val videos: Long
+
+
+    val premiere: JsonElement? = null,
+    @SerialName("teenage_mode")
+    val teenageMode: Long,
+    @SerialName("is_chargeable_season")
+    val isChargeableSeason: Boolean,
+    @SerialName("is_story")
+    val isStory: Boolean,
+    @SerialName("is_upower_exclusive")
+    val isUpowerExclusive: Boolean,
+    @SerialName("is_upower_play")
+    val isUpowerPlay: Boolean,
+    @SerialName("is_upower_preview")
+    val isUpowerPreview: Boolean,
+    @SerialName("enable_vt")
+    val enableVt: Long,
+    @SerialName("vt_display")
+    val vtDisplay: String,
+//    @SerialName("no_cache")
+//    val noCache: Boolean,
+//    val pages: List<Page>,
+//    val subtitle: Subtitle,
+    @SerialName("is_season_display")
+    val isSeasonDisplay: Boolean,
+//    @SerialName("user_garb")
+//    val userGarb: UserGarb,
+    @SerialName("honor_reply")
+    val honorReply: JsonElement? = null,
+    @SerialName("like_icon")
+    val likeIcon: String,
+    @SerialName("need_jump_bv")
+    val needJumpBv: Boolean,
+    @SerialName("disable_show_up_info")
+    val disableShowUpInfo: Boolean,
+    @SerialName("is_story_play")
+    val isStoryPlay: Long,
+    @SerialName("is_view_self")
+    val isViewSelf: Boolean,
 ) : BaseModel {
     /**
      * bv
