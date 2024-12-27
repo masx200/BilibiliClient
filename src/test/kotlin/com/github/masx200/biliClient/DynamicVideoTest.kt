@@ -167,6 +167,8 @@ class DynamicVideoTest {
         for (dynamic in items.items) {
             assert(dynamic != null)
             if (dynamic != null) {
+                assert(dynamic.data != null)
+                assert(dynamic.data?.dynamic_id_str == dynamic.data?.dynamic_id.toString())
                 assert(dynamic.extend_json != null)
                 assert(dynamic.origin?.extend_json != null)
                 assert(dynamic.origin?.type == DType.VIDEO)
@@ -175,7 +177,9 @@ class DynamicVideoTest {
                 assert(dynamic.desc != null)
                 assert(dynamic.origin != null)
                 assert(dynamic.origin?.video != null)
-                assert(dynamic.origin?.desc != null)
+                assert(dynamic.origin?.desc != null);
+                assert(dynamic.origin?.data != null)
+                assert(dynamic.origin?.data?.dynamic_id_str == dynamic.origin?.data?.dynamic_id.toString())
                 println(dynamic)
                 val encodedstring = Json.encodeToString<Dynamic>(Dynamic.serializer(), dynamic)
 
@@ -302,6 +306,8 @@ class DynamicVideoTest {
         for (dynamic in items.items) {
             assert(dynamic != null)
             if (dynamic != null) {
+                assert(dynamic.data != null)
+                assert(dynamic.data?.dynamic_id_str == dynamic.data?.dynamic_id.toString())
                 assert(dynamic.extend_json != null)
                 assert(dynamic.origin?.extend_json == null)
                 assert(dynamic.origin?.type != DType.VIDEO)
