@@ -18,7 +18,7 @@ data class Dynamic(
     var extend_json: JsonElement? = null,
     var display: JsonElement? = null,
     var video: Video? = null,
-
+    var user: JsonElement? = null,
     /**
      * 作者ID
      */

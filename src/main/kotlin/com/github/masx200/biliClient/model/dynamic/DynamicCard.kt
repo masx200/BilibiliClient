@@ -11,6 +11,7 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.jsonObject
 
 //import com.alibaba.fastjson.JSONObject;
 
@@ -85,11 +86,12 @@ class DynamicCard (
         }
         try {
             val dynamic = Dynamic()
+
 //            把原始数据保留下来
             dynamic.desc = desc
 //            if (card != null) {
             val decodecardtoelement = decodecardtoelement(card)
-
+            dynamic.user = decodecardtoelement.jsonObject["user"]
             dynamic.card = decodecardtoelement
 
             val element = when (decodecardtoelement) {
@@ -106,6 +108,7 @@ class DynamicCard (
 
             if (desc.type == 1) {
                 val dynamic1origin = Dynamic()
+                dynamic1origin.user = decodecardtoelement.jsonObject["origin_user"]
                 dynamic1origin.data = desc.origin
                 dynamic1origin.desc = desc.origin
                 dynamic1origin.extend_json = when (decodecardtoelement) {
