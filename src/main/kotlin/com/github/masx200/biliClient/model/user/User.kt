@@ -161,8 +161,8 @@ data class User(
 //    val rank: Long,
 //    val level: Long,
 //    val jointime: Long,
-    val moral: Long,
-    val silence: Long,
+    val moral: Long? = null,
+    val silence: Long? = null,
     @SerialName("email_status")
     val emailStatus: Long? = null,
     @SerialName("tel_status")
@@ -206,22 +206,22 @@ data class User(
     val countryCode: String? = null,
 //    @SerialName("level_exp")
 //    val levelExp: Map<String, JsonElement>,
-    val coins: Double,
+    val coins: Double? = null,
     val following: Long? = null,
     val follower: Long? = null,
     var tags: JsonArray? = null,
     @SerialName("mcn_info")
     val mcnInfo: JsonElement? = null,
     @SerialName("gaia_res_type")
-    val gaiaResType: Long,
+    val gaiaResType: Long? = null,
     @SerialName("gaia_data")
     val gaiaData: JsonElement? = null,
     @SerialName("is_risk")
-    val isRisk: Boolean,
+    val isRisk: Boolean? = null,
     val elec: JsonElement? = null,
     val contract: JsonElement? = null,
     @SerialName("certificate_show")
-    val certificateShow: Boolean,
+    val certificateShow: Boolean? = null,
     @SerialName("name_render")
     val nameRender: JsonElement? = null
 )
