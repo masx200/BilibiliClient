@@ -123,6 +123,29 @@ class DynamicCard (
                         Video.serializer(),
                         Json.encodeToString(JsonElement.serializer(), element)
                     )
+                } else {
+                    if (desc.orig_type == 2L && element != null) {
+
+                        val element2 = when (element) {
+                            is JsonObject -> {
+                                val item = element["item"]
+                                item
+
+                            }
+
+                            else -> null
+
+
+                        }
+                        dynamic1origin.type = Dynamic.DType.COMMON
+                        if (element2 != null) {
+//                            println(element2)
+                            dynamic1origin.detail = Json.decodeFromString<DynamicDetail>(
+                                DynamicDetail.serializer(),
+                                Json.encodeToString(JsonElement.serializer(), element2)
+                            )
+                        }
+                    }
                 }
                 dynamic.origin = dynamic1origin
             }
