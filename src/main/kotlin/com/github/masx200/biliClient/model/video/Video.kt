@@ -15,6 +15,7 @@ import kotlinx.serialization.json.JsonElement
  * @since 2021-02-08-18:37
  */@Serializable
 data class Video(
+
     val bvid: String? = null,
 
     /**
@@ -278,7 +279,27 @@ data class Video(
      * }`
      *
      */
-    val user_garb: JsonElement? = null
+    val user_garb: JsonElement? = null,
+
+//    val aid: Long,
+//    val cid: Long,
+//    val ctime: Long,
+//    val desc: String,
+//    val dimension: Dimension,
+//    val duration: Long,
+//    val dynamic: String,
+    val first_frame: String,
+    val jump_url: String,
+//    val owner: Owner,
+//    val pic: String,
+//    val pubdate: Long,
+    val short_link_v2: String,
+//    val stat: Stat,
+//    val state: Long,
+//    val tid: Long,
+//    val title: String,
+//    val tname: String,
+//    val videos: Long
 ) : BaseModel {
     /**
      * bv

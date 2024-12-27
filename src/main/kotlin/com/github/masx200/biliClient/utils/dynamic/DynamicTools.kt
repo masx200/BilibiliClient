@@ -24,8 +24,8 @@ object DynamicTools {
         var items = biliClient.dynamic()!!.withHostUid(uid)!!.list(0L)
         do {
             dynamics.addAll(items!!.items)
-            items = biliClient.dynamic()!!.withHostUid(uid)!!.list(items.nextOffset)
-        } while (items != null && items.hasMore == 1L)
+            items = biliClient.dynamic()!!.withHostUid(uid)!!.list(items.next_offset)
+        } while (items != null && items.has_more == 1L)
         return dynamics
     }
 

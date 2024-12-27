@@ -14,7 +14,7 @@ import kotlinx.serialization.json.JsonElement
  * @since 2021-02-07-21:06
  */@Serializable
 data class DynamicData(
-    val origin: JsonElement?=null,
+    val origin: DynamicData? = null,
     val orig_dy_id_str: String? = null,
     val rid_str: String? = null,
     /**

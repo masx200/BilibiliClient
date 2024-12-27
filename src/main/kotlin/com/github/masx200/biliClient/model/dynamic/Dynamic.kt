@@ -12,7 +12,7 @@ import kotlinx.serialization.json.JsonElement
  * @since 2021-02-07-20:54
  */@Serializable
 data class Dynamic(
-    var origin: JsonElement? = null,
+    var origin: Dynamic? = null,
     var desc: DynamicData? = null,
     var card: JsonElement? = null,
     var extend_json: JsonElement? = null,

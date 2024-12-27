@@ -89,9 +89,10 @@ class DynamicCard (
             dynamic.desc = desc
 //            if (card != null) {
             val decodecardtoelement = decodecardtoelement(card)
+
             dynamic.card = decodecardtoelement
 
-            dynamic.origin = when (decodecardtoelement) {
+            val element = when (decodecardtoelement) {
                 is JsonObject -> {
                     val item = decodecardtoelement["origin"]
                     item
@@ -100,8 +101,30 @@ class DynamicCard (
 
                 else -> null
 
+
             }
+            val dynamic1origin = Dynamic()
+            dynamic1origin.data = desc.origin
+            dynamic1origin.desc = desc.origin
+            dynamic1origin.extend_json = when (decodecardtoelement) {
+                is JsonObject -> {
+//                    println(decodecardtoelement["origin_extend_json"])
+                    val item = decodecardtoelement["origin_extend_json"]
+                    item
+                }
+
+                else -> null
+            }
+            if (desc.orig_type == 8L && element != null) {
+                dynamic1origin.type = Dynamic.DType.VIDEO
+                dynamic1origin.video = Json.decodeFromString<Video>(
+                    Video.serializer(),
+                    Json.encodeToString(JsonElement.serializer(), element)
+                )
+            }
+            dynamic.origin = dynamic1origin
             dynamic.extend_json = extend_json?.let { decodecardtoelement(it) }
+//                if (decodecardtoelement is JsonObject) decodecardtoelement["extend_json"] else null
             dynamic.display = display
 //            }
             // 设置数据
@@ -162,7 +185,7 @@ class DynamicCard (
 //                        }
 //                        }
 //                    }
-                } else if (this.GETDESC().bvid != null && !this.GETDESC().bvid!!.isEmpty()) {
+                } else if (this.desc.type == 8 || (this.GETDESC().bvid != null && !this.GETDESC().bvid!!.isEmpty())) {
                     // 视频
                     dynamic.SETTYPE(Dynamic.DType.VIDEO)
                     // 视频内容
@@ -215,6 +238,7 @@ class DynamicCard (
                 "动态解析遇到错误！可能遇到了格式不支持的动态或该类型为新型动态,原始内容如下\n {}",
                 this
             )
+            throw e
             return null
         }
     }
@@ -259,7 +283,7 @@ fun decodecardtoelement(card: String): JsonElement {
                 when (key.key) {
                     "origin_extend_json", "origin" -> {
                         val card1 = jsonElementoString(value)
-                        if (card1 != null) decodecardtoelement(card1) else value
+                        if (card1 != null) decodecardtoelementcommon(card1) else value
                     }
 
                     else -> value
@@ -269,6 +293,14 @@ fun decodecardtoelement(card: String): JsonElement {
         }
         return JsonObject(jsonmap)
     }
+    return element
+}
+
+fun decodecardtoelementcommon(card: String): JsonElement {
+    val element = Json.decodeFromString<JsonElement>(JsonElement.serializer(), card)
+
+
+
     return element
 }
 

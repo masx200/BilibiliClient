@@ -4,7 +4,7 @@ package com.github.masx200.biliClient.able;
  * 描述： 批量获取
  *
  * @author lpc lpc@hll520.cn
- * @version 1.0  2021-02-05-16:03
+ * @version 1.0 2021-02-05-16:03
  * @since 2021-02-05-16:03
  */
 public interface Listable<T> extends BiliAbel<T> {
@@ -27,10 +27,10 @@ public interface Listable<T> extends BiliAbel<T> {
     /**
      * 批量返回
      *
-     * @param nextOffset next 偏移量
+     * @param next_offset next 偏移量
      * @return 批量对象
      */
-    T list(Long nextOffset) throws Exception;
+    T list(Long next_offset) throws Exception;
 
     /**
      * 分页
