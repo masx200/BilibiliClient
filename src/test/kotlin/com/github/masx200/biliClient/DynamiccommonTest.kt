@@ -132,6 +132,7 @@ class DynamiccommonTest {
             assert(dynamic.repost == null)
             assert(dynamic.desc != null)
             assert(dynamic.detail != null)
+            assert(dynamic.detail?.pictures != null)
             assert(dynamic.origin == null)
             assert(dynamic.origin?.video == null)
             assert(dynamic.origin?.desc == null)
