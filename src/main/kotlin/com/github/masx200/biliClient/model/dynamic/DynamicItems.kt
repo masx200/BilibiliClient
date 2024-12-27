@@ -22,7 +22,7 @@ import kotlinx.serialization.Serializable
 @Slf4j
 data //@com.alibaba.fastjson2.annotation.JSONCompiled
 class DynamicItems(
-    var hasMore: Long? = null,
+//    var has_more: Long? = null,
     var has_more: Long? = null, val cards: MutableList<DynamicCard>?,
     /**
      * dynamic 集合
@@ -39,8 +39,8 @@ class DynamicItems(
      * 第一次为0
      *
      */
-    var nextOffset: Long = 0L,
-    val next_offset: Long = 0,
+    var next_offset: Long = 0L,
+//    val next_offset: Long = 0,
 ) {
     /**
      * 是否还有更多
@@ -73,7 +73,7 @@ class DynamicItems(
                 val dynamicItems: DynamicItems = result.toData<DynamicItems>()
 
                 // 没有更多就返回包含源数据的对象
-                // if (dynamicItems.hasMore != 1) {
+                // if (dynamicItems.has_more != 1) {
                 // return dynamicItems;
                 // }
 
@@ -87,8 +87,8 @@ class DynamicItems(
                     .filter { obj: Any? -> Objects.nonNull(obj) }
                     .collect(Collectors.toList())
                 dynamicItems.SETITEMS(cards)
-                dynamicItems.hasMore = toDataRoot.has_more
-                dynamicItems.nextOffset = toDataRoot.next_offset
+//                dynamicItems.has_more = toDataRoot.has_more
+//                dynamicItems.next_offset = toDataRoot.next_offset
                 // 返回
                 return dynamicItems
             } catch (e: Exception) {

@@ -29,8 +29,8 @@ class RelationList // 带参数的构造函数
         return build(doCall(result.setParams("pn", offset / limit).setParams("ps", limit), beforeRequest))
     }
 
-    override fun list(nextOffset: Long?): Relation {
-        return build(doCall(result.setParams("pn", nextOffset), beforeRequest))
+    override fun list(next_offset: Long?): Relation {
+        return build(doCall(result.setParams("pn", next_offset), beforeRequest))
     }
 
     override fun listPage(size: Long?, page: Long?): Relation {

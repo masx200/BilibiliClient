@@ -60,7 +60,7 @@ class IDynamicConditionTest {
         val list = biliClient.dynamic().withHostUid(392819792L)!!.list()
         println(list)
         println("__________________")
-        val list1 = biliClient.dynamic().withHostUid(392819792L)!!.list(list!!.nextOffset)
+        val list1 = biliClient.dynamic().withHostUid(392819792L)!!.list(list!!.next_offset)
         println(list1)
     }
 

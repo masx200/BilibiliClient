@@ -74,7 +74,7 @@ data class BiliResult(
 //        return  kotlinx.serialization.json.Json.decodeFromJsonElement<T>( element)
 //
         val string = Json.encodeToString<JsonElement>(JsonElement.serializer(), data!!)
-        return Json { ignoreUnknownKeys = true }.decodeFromString<T>(string)
+        return Json.decodeFromString<T>(string)
     }
 
     /**

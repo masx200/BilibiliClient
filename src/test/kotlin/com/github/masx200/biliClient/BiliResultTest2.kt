@@ -2357,7 +2357,7 @@ class BiliResultTest2 {
             }
             }
 """.trimIndent()
-        val result = Json { ignoreUnknownKeys = true }.decodeFromString<BiliResult>(body)
+        val result = Json /* { ignoreUnknownKeys = true } */.decodeFromString<BiliResult>(body)
             .check()
         val items = DynamicItems.build(result)
 

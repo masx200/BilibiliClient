@@ -42,12 +42,12 @@ class DynamicList // 带参数的构造函数
 //                .setParams("offset_dynamic_id", offset)
 //                .setParams("limit", limit));
 //        return DynamicItems.build(biliResult);
-        throw BiliRequestException(request.getURI(), "目前不支持此种方式调用")
+        throw BiliRequestException(request.uri, "目前不支持此种方式调用")
     }
 
     @Throws(Exception::class)
-    override fun list(nextOffset: Long?): DynamicItems {
-        val biliResult = doCall(request.setParams("offset_dynamic_id", nextOffset), beforeRequest)
+    override fun list(next_offset: Long?): DynamicItems {
+        val biliResult = doCall(request.setParams("offset_dynamic_id", next_offset), beforeRequest)
         return build(biliResult)
     }
 }

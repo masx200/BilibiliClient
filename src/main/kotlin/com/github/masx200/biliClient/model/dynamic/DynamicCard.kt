@@ -7,9 +7,11 @@ import com.github.masx200.biliClient.model.dynamic.Slf4j.Companion.log
 import com.github.masx200.biliClient.model.video.Video
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.jsonObject
 
 //import com.alibaba.fastjson.JSONObject;
 
@@ -84,11 +86,88 @@ class DynamicCard (
         }
         try {
             val dynamic = Dynamic()
+
+//            把原始数据保留下来
+            dynamic.desc = desc
+//            if (card != null) {
+            val decodecardtoelement = decodecardtoelement(card)
+            dynamic.user = decodecardtoelement.jsonObject["user"]
+            dynamic.card = decodecardtoelement
+
+            val element = when (decodecardtoelement) {
+                is JsonObject -> {
+                    val item = decodecardtoelement["origin"]
+                    item
+
+                }
+
+                else -> null
+
+
+            }
+
+            if (desc.type == 1) {
+                val dynamic1origin = Dynamic()
+                dynamic1origin.user = decodecardtoelement.jsonObject["origin_user"]
+                dynamic1origin.data = desc.origin
+                dynamic1origin.desc = desc.origin
+                dynamic1origin.extend_json = when (decodecardtoelement) {
+                    is JsonObject -> {
+//                    println(decodecardtoelement["origin_extend_json"])
+                        val item = decodecardtoelement["origin_extend_json"]
+                        item
+                    }
+
+                    else -> null
+                }
+                if (desc.orig_type == 64L && element != null) {
+                    dynamic1origin.type = Dynamic.DType.ESSAY
+                    dynamic1origin.essay = Json.decodeFromString<ESSAY>(
+                        ESSAY.serializer(),
+                        Json.encodeToString(JsonElement.serializer(), element)
+                    )
+                } else
+                if (desc.orig_type == 8L && element != null) {
+                    dynamic1origin.type = Dynamic.DType.VIDEO
+                    dynamic1origin.video = Json.decodeFromString<Video>(
+                        Video.serializer(),
+                        Json.encodeToString(JsonElement.serializer(), element)
+                    )
+                } else {
+                    if (desc.orig_type == 2L && element != null) {
+
+                        val element2 = when (element) {
+                            is JsonObject -> {
+                                val item = element["item"]
+                                item
+
+                            }
+
+                            else -> null
+
+
+                        }
+                        dynamic1origin.type = Dynamic.DType.COMMON
+                        if (element2 != null) {
+//                            println(element2)
+                            dynamic1origin.detail = Json.decodeFromString<DynamicDetail>(
+                                DynamicDetail.serializer(),
+                                Json.encodeToString(JsonElement.serializer(), element2)
+                            )
+                        }
+                    }
+                }
+                dynamic.origin = dynamic1origin
+            }
+            dynamic.extend_json = extend_json?.let { decodecardtoelement(it) }
+//                if (decodecardtoelement is JsonObject) decodecardtoelement["extend_json"] else null
+            dynamic.display = display
+//            }
             // 设置数据
             dynamic.SETDATA(this.GETDESC())
             // 解析动态详情
             val dynamicCard: JsonElement =
-                Json { ignoreUnknownKeys = true }.decodeFromString<JsonElement>(this.GETCARD())
+                Json.decodeFromString<JsonElement>(this.GETCARD())
             if (dynamicCard is JsonObject) {
                 if (this.GETDESC().orig_dy_id != null && this.GETDESC().orig_dy_id != 0L) {
                     // 转发
@@ -100,27 +179,28 @@ class DynamicCard (
                     ) else {
                         null
                     }
-                    val cardorigin = dynamicCard.getString("origin")
-
-                    if (cardorigin != null && cardorigin.isNotEmpty()) {
-                        //println("cardorigin:"+cardorigin)
-                        val cardoriginobj = Json.decodeFromString<JsonObject>(cardorigin.toString())
-                        try {
-                            dynamic.detail =
-                                Json {
-                                    ignoreUnknownKeys = true
-                                }.decodeFromString<DynamicDetail>(cardoriginobj["item"].toString())
-                        } catch (e: Throwable) {
-//                            e.printStackTrace()
-                            println(e)
-                        }
-                    }
+//                    val cardorigin = JsonElementgetString(dynamicCard, ("origin"))
+//
+//                    if (cardorigin != null && cardorigin.isNotEmpty()) {
+//                        //println("cardorigin:"+cardorigin)
+////                        val cardoriginobj = Json.decodeFromString<JsonObject>(cardorigin.toString())
+//                        try {
+////                            val string = JsonElementgetString(cardoriginobj, "item".toString())
+//                            if (cardorigin != null) {
+////                                println(string)
+//                                dynamic.detail =
+//                                    Json.decodeFromString<DynamicDetail>(cardorigin)
+//                            }
+//
+//                        } catch (e: Throwable) {
+////                            e.printStackTrace()
+//                            println(e)
+//                        }
+//                    }
 
 
                     if (stringcontent is String) {
-                        dynamic.setrepost(Json {
-                            ignoreUnknownKeys = true
-                        }.decodeFromString<DynamicRepost>(stringcontent))
+                        dynamic.setrepost(Json.decodeFromString<DynamicRepost>(stringcontent))
                     }
                     // 源内容
 //                    val cardorigin2 = dynamicCard.getString("origin")
@@ -137,20 +217,20 @@ class DynamicCard (
 //                        }
 //                        if (stringcontent is String) {
 //                            dynamic.detail =
-//                                Json { ignoreUnknownKeys = true }.decodeFromString<DynamicDetail>(stringcontent)
+//                                Json .decodeFromString<DynamicDetail>(stringcontent)
 //                        }
 //                        }
 //                    }
-                } else if (this.GETDESC().bvid != null && !this.GETDESC().bvid!!.isEmpty()) {
+                } else if (this.desc.type == 8 || (this.GETDESC().bvid != null && !this.GETDESC().bvid!!.isEmpty())) {
                     // 视频
                     dynamic.SETTYPE(Dynamic.DType.VIDEO)
                     // 视频内容
-                    dynamic.SETVIDEO(Json { ignoreUnknownKeys = true }.decodeFromString<Video>(this.GETCARD()))
+                    dynamic.SETVIDEO(Json.decodeFromString<Video>(this.GETCARD()))
                 } else if (this.GETDESC().type == 64) {
                     // 专栏动态
                     dynamic.SETTYPE(Dynamic.DType.ESSAY)
                     // 写入详情
-                    dynamic.setESSAY(Json { ignoreUnknownKeys = true }.decodeFromString<ESSAY>(this.GETCARD()))
+                    dynamic.setESSAY(Json.decodeFromString<ESSAY>(this.GETCARD()))
                 } else {
                     // 普通动态
                     dynamic.SETTYPE(Dynamic.DType.COMMON)
@@ -163,7 +243,7 @@ class DynamicCard (
                     }
                     if (stringcontent is String) {
                         dynamic.detail =
-                            Json { ignoreUnknownKeys = true }.decodeFromString<DynamicDetail>(stringcontent)
+                            Json.decodeFromString<DynamicDetail>(stringcontent)
                     }
                 }
             }
@@ -178,8 +258,8 @@ class DynamicCard (
                         user = get
                     }
                     if (user != null && !user.isEmpty()) {
-                        dynamic.uid=Long.valueOf(user.getString("uid"))
-                        dynamic.SETNAME(user.getString("name"))
+                        dynamic.uid = LongCompanionvalueOf(JsonObjectgetString(user, ("uid")))
+                        dynamic.SETNAME(JsonObjectgetString(user, ("uname")))
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -194,6 +274,7 @@ class DynamicCard (
                 "动态解析遇到错误！可能遇到了格式不支持的动态或该类型为新型动态,原始内容如下\n {}",
                 this
             )
+            throw e
             return null
         }
     }
@@ -208,7 +289,58 @@ class DynamicCard (
     }
 }
 
-fun Long.Companion.valueOf(string: String?): Long? {
+fun jsonElementoString(obj: JsonElement): String? {
+
+
+    return when (obj) {
+        is JsonPrimitive -> {
+            if (obj.isString) {
+                obj.content
+            } else {
+                null
+            }
+        }
+
+        is JsonArray -> null
+        is JsonObject -> null
+    }
+
+}
+
+fun decodecardtoelement(card: String): JsonElement {
+    val element = Json.decodeFromString<JsonElement>(JsonElement.serializer(), card)
+    if (element is JsonObject) {
+        val jsonmap = mutableMapOf<String, JsonElement>()
+
+        for (key in element) {
+            val value = key.value
+//            println(key)
+            jsonmap[key.key] =
+                when (key.key) {
+                    "origin_extend_json", "origin" -> {
+                        val card1 = jsonElementoString(value)
+                        if (card1 != null) decodecardtoelementcommon(card1) else value
+                    }
+
+                    else -> value
+                }
+//                value
+
+        }
+        return JsonObject(jsonmap)
+    }
+    return element
+}
+
+fun decodecardtoelementcommon(card: String): JsonElement {
+    val element = Json.decodeFromString<JsonElement>(JsonElement.serializer(), card)
+
+
+
+    return element
+}
+
+fun LongCompanionvalueOf(string: String?): Long? {
     return try {
         string!!.toLong()
     } catch (_: Exception) {
@@ -216,17 +348,18 @@ fun Long.Companion.valueOf(string: String?): Long? {
     }
 }
 
- fun JsonObject.getString(string: String): String? {
-    if (this[string] is JsonPrimitive && (this[string] as JsonPrimitive).isString) {
-        return (this[string] as JsonPrimitive).content
+fun JsonObjectgetString(obj: JsonObject, string: String): String? {
+//     val this=obj
+    if (obj[string] is JsonPrimitive && (obj[string] as JsonPrimitive).isString) {
+        return (obj[string] as JsonPrimitive).content
     }
     return null
 }
 
-fun JsonElement.getString(string: String): String? {
-    if (this is JsonObject)
-        if (this[string] is JsonPrimitive && (this[string] as JsonPrimitive).isString) {
-            return (this[string] as JsonPrimitive).content
+fun JsonElementgetString(obj: JsonElement, string: String): String? {
+    if (obj is JsonObject)
+        if (obj[string] is JsonPrimitive && (obj[string] as JsonPrimitive).isString) {
+            return (obj[string] as JsonPrimitive).content
         }
     return null
 }

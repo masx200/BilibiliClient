@@ -2,6 +2,7 @@ package com.github.masx200.biliClient.api.dynamic
 
 import com.github.masx200.biliClient.BiliCall
 import com.github.masx200.biliClient.BiliRequest
+import com.github.masx200.biliClient.BiliResult
 import com.github.masx200.biliClient.able.Gettable
 import com.github.masx200.biliClient.model.dynamic.Dynamic
 import com.github.masx200.biliClient.model.dynamic.DynamicCard
@@ -26,10 +27,12 @@ class DynamicGet // 带参数的构造函数
     override fun get(): Dynamic? {
         val result = BiliCall.doCall(request, beforeRequest)
 //        val data = result.data
-        return result.toData<GetDynamicDetailRoot>().card
-            .toDynamic()
+        return BiliResultToDynamic(result)
     }
 }
+
+fun BiliResultToDynamic(result: BiliResult): Dynamic? = result.toData<GetDynamicDetailRoot>().card
+    .toDynamic()
 
 @Serializable
 data class GetDynamicDetailRoot(
