@@ -7,7 +7,6 @@ import com.github.masx200.biliClient.model.dynamic.Slf4j.Companion.log
 import com.github.masx200.biliClient.model.video.Video
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -155,6 +154,10 @@ class DynamicCard (
                                 Json.encodeToString(JsonElement.serializer(), element2)
                             )
                         }
+                    } else {
+                        dynamic1origin.type = Dynamic.DType.UNKNOWN
+                        dynamic1origin.unknown = element
+
                     }
                 }
                 dynamic.origin = dynamic1origin
@@ -169,7 +172,22 @@ class DynamicCard (
             val dynamicCard: JsonElement =
                 Json.decodeFromString<JsonElement>(this.GETCARD())
             if (dynamicCard is JsonObject) {
-                if (this.GETDESC().orig_dy_id != null && this.GETDESC().orig_dy_id != 0L) {
+                if (this.GETDESC().type == 2) {
+                    // 普通动态
+                    dynamic.SETTYPE(Dynamic.DType.COMMON)
+                    // 写入详情
+                    val stringcontent = if (dynamicCard["item"] != null) Json.encodeToString<JsonElement>(
+                        JsonElement.serializer(),
+                        dynamicCard["item"]!!
+                    ) else {
+                        null
+                    }
+                    if (stringcontent is String) {
+                        dynamic.detail =
+                            Json.decodeFromString<DynamicDetail>(stringcontent)
+                    }
+                } else
+                    if (desc.type == 1 || (this.GETDESC().orig_dy_id != null && this.GETDESC().orig_dy_id != 0L)) {
                     // 转发
                     dynamic.SETTYPE(Dynamic.DType.REPOST)
                     // 转发内容
@@ -221,30 +239,21 @@ class DynamicCard (
 //                        }
 //                        }
 //                    }
-                } else if (this.desc.type == 8 || (this.GETDESC().bvid != null && !this.GETDESC().bvid!!.isEmpty())) {
+                    } else
+                        if (this.desc.type == 8 || (this.GETDESC().bvid != null && !this.GETDESC().bvid!!.isEmpty())) {
                     // 视频
                     dynamic.SETTYPE(Dynamic.DType.VIDEO)
                     // 视频内容
                     dynamic.SETVIDEO(Json.decodeFromString<Video>(this.GETCARD()))
-                } else if (this.GETDESC().type == 64) {
+                        } else
+                            if (this.GETDESC().type == 64) {
                     // 专栏动态
                     dynamic.SETTYPE(Dynamic.DType.ESSAY)
                     // 写入详情
                     dynamic.setESSAY(Json.decodeFromString<ESSAY>(this.GETCARD()))
-                } else {
-                    // 普通动态
-                    dynamic.SETTYPE(Dynamic.DType.COMMON)
-                    // 写入详情
-                    val stringcontent = if (dynamicCard["item"] != null) Json.encodeToString<JsonElement>(
-                        JsonElement.serializer(),
-                        dynamicCard["item"]!!
-                    ) else {
-                        null
-                    }
-                    if (stringcontent is String) {
-                        dynamic.detail =
-                            Json.decodeFromString<DynamicDetail>(stringcontent)
-                    }
+                            } else {
+                                dynamic.type = Dynamic.DType.UNKNOWN
+                                dynamic.unknown = decodecardtoelement
                 }
             }
 
@@ -301,8 +310,9 @@ fun jsonElementoString(obj: JsonElement): String? {
             }
         }
 
-        is JsonArray -> null
-        is JsonObject -> null
+//        is JsonArray -> null
+//        is JsonObject -> null
+        else -> null
     }
 
 }
@@ -319,7 +329,13 @@ fun decodecardtoelement(card: String): JsonElement {
                 when (key.key) {
                     "origin_extend_json", "origin" -> {
                         val card1 = jsonElementoString(value)
-                        if (card1 != null) decodecardtoelementcommon(card1) else value
+//                        if (card1 != null && card1.isEmpty() == true) {
+//                            println("key=\n" + key.key)
+//                            println("card=\n" + card)
+//                        }
+//
+//可能原动态已经被删除
+                        if (card1 != null && card1.length > 0) decodecardtoelementcommon(card1) else value
                     }
 
                     else -> value
@@ -333,6 +349,7 @@ fun decodecardtoelement(card: String): JsonElement {
 }
 
 fun decodecardtoelementcommon(card: String): JsonElement {
+
     val element = Json.decodeFromString<JsonElement>(JsonElement.serializer(), card)
 
 

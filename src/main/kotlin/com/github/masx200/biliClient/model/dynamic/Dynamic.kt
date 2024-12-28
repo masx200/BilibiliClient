@@ -12,6 +12,7 @@ import kotlinx.serialization.json.JsonElement
  * @since 2021-02-07-20:54
  */@Serializable
 data class Dynamic(
+    var unknown: JsonElement? = null,
     var origin: Dynamic? = null,
     var desc: DynamicData? = null,
     var card: JsonElement? = null,
@@ -103,6 +104,7 @@ data class Dynamic(
      */
     @Serializable
     enum class DType {
+        UNKNOWN,
         /**
          * 普通动态
          */
