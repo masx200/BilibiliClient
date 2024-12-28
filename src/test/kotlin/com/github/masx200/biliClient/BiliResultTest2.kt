@@ -2362,12 +2362,14 @@ class BiliResultTest2 {
         val items = DynamicItems.build(result)
 
         for (dynamic in items.items) {
+            println("dynamic_id_str=\n${dynamic?.data?.dynamic_id_str}")
             println(dynamic)
             if (dynamic?.data?.dynamic_id_str == "837314586030899201") {
                 assert(dynamic.type == com.github.masx200.biliClient.model.dynamic.Dynamic.DType.REPOST)
-                assert(dynamic.detail != null)
-                assert(dynamic.detail?.pictures != null)
-
+                assert(dynamic.detail == null)
+                assert(dynamic.detail?.pictures == null)
+                assert(dynamic.origin?.detail != null)
+                assert(dynamic.origin?.detail?.pictures != null)
             }
             if (dynamic?.detail?.pictures != null) {
                 println(dynamic.detail?.pictures)
