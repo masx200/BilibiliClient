@@ -29,7 +29,7 @@
         bilibiliclient
     </artifactId>
     <version>
-        1.5.1
+        1.5.2
     </version>
     <name>
         bilibiliclient
@@ -53,10 +53,10 @@
     <build>
         <testSourceDirectory>
           src/test/kotlin
-      </testSourceDirectory>
+        </testSourceDirectory>
         <sourceDirectory>
           src/main/kotlin
-      </sourceDirectory>
+        </sourceDirectory>
         <plugins>
             <!-- <plugin> -->
             <!-- <groupId>org.jetbrains.kotlin</groupId> -->
@@ -76,13 +76,13 @@
             <plugin>
                 <groupId>
               org.apache.maven.plugins
-          </groupId>
+                </groupId>
                 <artifactId>
               maven-surefire-plugin
-          </artifactId>
+                </artifactId>
                 <version>
               3.5.2
-          </version>
+                </version>
                 <configuration>
                     <!-- <skip>false</skip> -->
                     <!-- <includes> -->
@@ -93,13 +93,13 @@
             <plugin>
                 <groupId>
               org.jetbrains.kotlin
-          </groupId>
+                </groupId>
                 <artifactId>
               kotlin-maven-plugin
-          </artifactId>
+                </artifactId>
                 <version>
               ${kotlin.version}
-          </version>
+                </version>
                 <configuration>
                     <jvmTarget>
                         ${maven.compiler.target}
@@ -123,27 +123,27 @@
                     <dependency>
                         <groupId>
                   org.jetbrains.kotlin
-              </groupId>
+                        </groupId>
                         <artifactId>
                   kotlin-maven-serialization
-              </artifactId>
+                        </artifactId>
                         <version>
                   ${kotlin.version}
-              </version>
+                        </version>
                     </dependency>
                 </dependencies>
                 <executions>
                     <execution>
                         <id>
                   compile
-              </id>
+                        </id>
                         <phase>
                   compile
-              </phase>
+                        </phase>
                         <goals>
                             <goal>
                     compile
-                </goal>
+                            </goal>
                         </goals>
                         <configuration>
                             <compilerPlugins>
@@ -165,20 +165,20 @@
                     <execution>
                         <id>
                   test-compile
-              </id>
+                        </id>
                         <phase>
                   test-compile
-              </phase>
+                        </phase>
                         <goals>
                             <goal>
                     test-compile
-                </goal>
+                            </goal>
                         </goals>
                         <configuration>
                             <sourceDirs>
-<!--                                <source>-->
-<!--                                    src/main/kotlin-->
-<!--                                </source>-->
+                                <!--                                <source>-->
+                                <!--                                    src/main/kotlin-->
+                                <!--                                </source>-->
                                 <!-- <testSource>src/test/kotlin</testSource> -->
                                 <source>
                                     src/test/kotlin
@@ -194,54 +194,54 @@
             <plugin>
                 <groupId>
               org.apache.maven.plugins
-          </groupId>
+                </groupId>
                 <artifactId>
               maven-compiler-plugin
-          </artifactId>
+                </artifactId>
                 <version>
               3.13.0
-          </version>
+                </version>
                 <executions>
                     <execution>
                         <id>
                   default-compile
-              </id>
+                        </id>
                         <phase>
                   none
-              </phase>
+                        </phase>
                     </execution>
                     <execution>
                         <id>
                   default-testCompile
-              </id>
+                        </id>
                         <phase>
                   none
-              </phase>
+                        </phase>
                     </execution>
                     <execution>
                         <id>
                   compile
-              </id>
+                        </id>
                         <phase>
                   compile
-              </phase>
+                        </phase>
                         <goals>
                             <goal>
                     compile
-                </goal>
+                            </goal>
                         </goals>
                     </execution>
                     <execution>
                         <id>
                   testCompile
-              </id>
+                        </id>
                         <phase>
                   test-compile
-              </phase>
+                        </phase>
                         <goals>
                             <goal>
                     testCompile
-                </goal>
+                            </goal>
                         </goals>
                     </execution>
                 </executions>
@@ -259,27 +259,27 @@
             <plugin>
                 <groupId>
               org.codehaus.mojo
-          </groupId>
+                </groupId>
                 <artifactId>
               build-helper-maven-plugin
-          </artifactId>
+                </artifactId>
                 <version>
               3.6.0
-          </version>
+                </version>
                 <executions>
                     <!-- 添加主资源文件目录 -->
                     <!-- 添加主源码目录 -->
                     <execution>
                         <id>
                   add-source
-              </id>
+                        </id>
                         <phase>
                   initialize
-              </phase>
+                        </phase>
                         <goals>
                             <goal>
                     add-source
-                </goal>
+                            </goal>
                         </goals>
                         <configuration>
                             <sources>
@@ -293,14 +293,14 @@
                     <execution>
                         <id>
                   add-test-source
-              </id>
+                        </id>
                         <phase>
                   initialize
-              </phase>
+                        </phase>
                         <goals>
                             <goal>
                     add-test-source
-                </goal>
+                            </goal>
                         </goals>
                         <configuration>
                             <sources>
@@ -345,112 +345,112 @@
         <dependency>
             <groupId>
             org.slf4j
-        </groupId>
+            </groupId>
             <artifactId>
             slf4j-api
-        </artifactId>
+            </artifactId>
             <version>
             2.0.16
-        </version>
+            </version>
         </dependency>
         <dependency>
             <groupId>
             org.slf4j
-        </groupId>
+            </groupId>
             <artifactId>
             slf4j-simple
-        </artifactId>
+            </artifactId>
             <version>
             2.0.16
-        </version>
+            </version>
             <scope>
             test
-        </scope>
+            </scope>
         </dependency>
         <dependency>
             <groupId>
             org.projectlombok
-        </groupId>
+            </groupId>
             <artifactId>
             lombok
-        </artifactId>
+            </artifactId>
             <version>
             1.18.36
-        </version>
+            </version>
         </dependency>
         <dependency>
             <groupId>
             org.apache.httpcomponents
-        </groupId>
+            </groupId>
             <artifactId>
             httpclient
-        </artifactId>
+            </artifactId>
             <version>
             4.5.14
-        </version>
+            </version>
         </dependency>
         <dependency>
             <groupId>
             org.jetbrains.kotlin
-        </groupId>
+            </groupId>
             <artifactId>
             kotlin-stdlib-jdk8
-        </artifactId>
+            </artifactId>
             <version>
             ${kotlin.version}
-        </version>
+            </version>
         </dependency>
         <dependency>
             <groupId>
             org.jetbrains.kotlin
-        </groupId>
+            </groupId>
             <artifactId>
             kotlin-stdlib
-        </artifactId>
+            </artifactId>
             <version>
             ${kotlin.version}
-        </version>
+            </version>
         </dependency>
         <dependency>
             <groupId>
             org.jetbrains.kotlinx
-        </groupId>
+            </groupId>
             <artifactId>
             kotlinx-serialization-json
-        </artifactId>
+            </artifactId>
             <version>
             1.7.3
-        </version>
+            </version>
             <!-- 确认这是最新版本 -->
             <!-- <scope>compile</scope> -->
         </dependency>
         <dependency>
             <groupId>
             org.jetbrains.kotlin
-        </groupId>
+            </groupId>
             <artifactId>
             kotlin-test-junit
-        </artifactId>
+            </artifactId>
             <version>
             ${kotlin.version}
-        </version>
+            </version>
             <scope>
             test
-        </scope>
+            </scope>
         </dependency>
         <dependency>
             <groupId>
             junit
-        </groupId>
+            </groupId>
             <artifactId>
             junit
-        </artifactId>
+            </artifactId>
             <version>
             4.13.2
-        </version>
+            </version>
             <scope>
             test
-        </scope>
+            </scope>
         </dependency>
         <!-- <dependency> -->
         <!-- <groupId>com.alibaba</groupId> -->
