@@ -41,13 +41,13 @@ class BiliRequestException(message: String?) : RuntimeException(message) {
         this.path = path
     }
 
-    fun getUri(): URI {
-        return uri!!
-    }
+//    fun getUri(): URI {
+//        return uri!!
+//    }
 
-    fun setUri(uri: URI) {
-        this.uri = uri
-    }
+//    fun setUri(uri: URI) {
+//        this.uri = uri
+//    }
 
     override fun toString(): String {
         return "BiliRequestException{" +
