@@ -82,6 +82,7 @@ object BiliCall {
                         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
                     )
                     put("host", DomainExtractor.getDomainFromHttpRequest(httpRequest))
+                    put("Referer", httpRequest.uri.toString())
                 }
             }
 
@@ -100,6 +101,19 @@ object BiliCall {
 //            System.out.println(httpRequest.getURI());
 //            System.out.println(response.getStatusLine());
             val statusCode = response.statusLine.statusCode
+            if (statusCode == 412) {
+
+                throw BiliRequestException(
+                    "由于触发哔哩哔哩安全风控策略，该次访问请求被拒绝。",
+                    {
+                        uri = httpRequest.uri
+                        path = httpRequest.uri.path
+                        this.statusCode = statusCode
+
+                        this.method = httpRequest.method
+                    }
+                )
+            }
             if (statusCode != 200) {
                 throw BiliRequestException(
                     httpRequest.uri,
@@ -116,8 +130,8 @@ object BiliCall {
             return Json /* { ignoreUnknownKeys = true } */.decodeFromString<BiliResult>(body)
                 .check()
         } catch (e: BiliRequestException) {
-            System.err.println(e.message)
-            e.printStackTrace()
+//            System.err.println(e.message)
+//            e.printStackTrace()
             throw e
         } catch (e: Exception) {
             System.err.println(e.message)
