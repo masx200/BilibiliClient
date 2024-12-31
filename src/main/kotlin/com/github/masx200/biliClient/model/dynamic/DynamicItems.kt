@@ -81,7 +81,7 @@ class DynamicItems(
                 val toDataRoot = result.toData<SpaceHistoryRoot>()
                 val cardsarray = toDataRoot.cards
                 if (cardsarray == null) {
-                    throw Exception("cardsarray为null,可能未登录")
+                    throw Exception("cardsarray为null,可能未登录",)
                 }
                 val cards: MutableList<Dynamic?> = cardsarray.stream().map { obj: DynamicCard? -> obj!!.toDynamic() }
                     .filter { obj: Any? -> Objects.nonNull(obj) }
@@ -92,9 +92,9 @@ class DynamicItems(
                 // 返回
                 return dynamicItems
             } catch (e: Exception) {
-                e.printStackTrace()
-                this.log.error("当前请求解析异常!原始请求数据为\n {}", result)
-                throw e
+//                e.printStackTrace()
+//                this.log.error("当前请求解析异常!原始请求数据为\n {}", result)
+                throw Exception(e.message,Exception("当前请求解析异常!原始请求数据为\n $result",e.cause))
             }
         }
     }
